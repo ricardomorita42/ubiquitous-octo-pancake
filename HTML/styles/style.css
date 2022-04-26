@@ -1,15 +1,57 @@
-p,li {
-  font-size:38 px;
-  font-family:"Open Sans",sans-serif;
-  line-height: 2;
-  letter-spacing: 1 px;
-}
-h1 {
-  font-size:108 px;
-  font-family:"Verdana";
-}
-h2 {
-  font-size:78 px;
-  font-family:"Verdana";
+html,
+body {
+    height: 100%;
+    margin: auto 4%;
 }
 
+header {
+    background-color: yellow;
+}
+
+main {
+    margin-top: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    line-height: 3rem;
+}
+
+.names-list {
+    line-height: 3rem;
+}
+
+.names-list>span {
+    font-weight: 600;
+}
+
+.nav-link {
+    color: black !important;
+}
+
+.nav-item.active,
+.active>.nav-link {
+    background-color: #603F8B;
+    color: white !important;
+}
+
+.nav-item:hover {
+    background-color: #603F8B;
+}
+
+.nav-item:hover>.nav-link {
+    color: white !important;
+}
+
+.nav-item {
+    padding: 5px;
+    margin: 4px 5px;
+    border-radius: 5px;
+}
+
+#main-box {
+    max-width: 55%;
+    min-width: min(100%, 500px);
+}

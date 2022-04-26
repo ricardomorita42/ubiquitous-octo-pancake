@@ -1,48 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="styles/style.css" rel="stylesheet">
-  </head>
-<body>
 
-<h1>TCC Ricardo e Natália IME 2022</h1>
-<h2>Tema</h2>
-<p>Desenvolvimento de biomarcadores a partir de voz: análise de áudio para detecção do estado de saúde de pacientes admitidos no HC.</p>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>MAC0499</title>
 
-<h2>Supervisor</h2>
-<ul>
-  <li>Marcelo Finger (mfinger at ime.usp.br)</li>
-</ul>
+</head>
 
-<h2> Alunos</h2>
-<ul>
-  <li>Ricardo Mikio Morita (ricardo.morita at usp.br)</li>
-  <li>Natália Hitomi Koza (natalia.koza at usp.br)</li>
-</ul>
+<body class="container-fluid">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    <nav class="navbar navbar-expand-sm navbar-light">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerD1" aria-controls="navbarTogglerD1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerD1"><br>
+            <ul class="navbar-nav ">
+                <li class="nav-item active">
+                    <a href="#" class="nav-link">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Proposta</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Monografia</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <section id="main-box">
+            <h1 class="t">Desenvolvimento de biomarcadores a partir de voz:</h1>
+            <h2>análise de áudio para detecção do nível de SpO2</h2>
+            <p class="names-list">Alunos: <span>Natália Hitomi Koza</span> e <span>Ricardo Mikio Morita</span> <br> Supervisor: <span>Marcelo Finger</span></p>
+            <br>
+            <h3>Resumo:</h3>
+            <h4>Palavras-chave</h4>
+        </section>
 
-<h2> Proposta</h2>
-<ul>
-  <li>A ideia do TCC é realizar a previsão de SpO2 (saturação de O2) do paciente através da análise de áudio do mesmo utilizando métodos de inteligência artificial.</li>
-  <li>Dados obtidos foram inicialmente de pacientes com suspeita de COVID do HC. Um estudo anterior conseguiu acurácia ao redor de 91% para pacientes <= 92% SpO2. </li>
-  <li>Nossa proposta é tentar estimar SpO2 em pacientes através de análise da voz do mesmo. Qual a precisão e desvio padrão da análise?</li>
-  <li>Por quê estudar SpO2?</li>
-  <ul>
-    <li>Pacientes com COVID possuem um sintoma de “hipóxia silenciosa”, o que motivou o estudo anterior.</li>
-    <li>E se fosse possível desenvolver um biomarcador que analise o áudio, este seria barato e uma possível ferramenta para Médicos (biomarcador não pode diagnosticar mas pode auxiliar no diagnóstico)</li>  
-  </ul>
-  <li>Dados disponíveis</li>
-  <ul>
-    <li>Áudio do paciente (gravado com o quê?, quais as condições do paciente na hora da gravação?)</li>
-    <li>Freq. Cardíaca (bpm) (medido com o quê? oxímetro)</li>
-    <li>Saturação O2 (oxímetro)</li>
-  </ul>
-  <li>Conhecimentos importantes para o estudo:</li>
-  <ul>
-    <li>Processamento de linguagem natural (PLN)</li>
-    <li>Tratamento de sinais (MFCC e espectrograma), Transformada de Fourier</li>
-  </ul>
-</ul>
-
+    </main>
 </body>
-</html>
 
+</html>
