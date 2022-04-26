@@ -1,0 +1,15 @@
+p,li {
+  font-size:38 px;
+  font-family:"Open Sans",sans-serif;
+  line-height: 2;
+  letter-spacing: 1 px;
+}
+h1 {
+  font-size:108 px;
+  font-family:"Verdana";
+}
+h2 {
+  font-size:78 px;
+  font-family:"Verdana";
+}
+
