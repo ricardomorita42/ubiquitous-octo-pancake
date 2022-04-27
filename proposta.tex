@@ -3,6 +3,7 @@
 \usepackage{caption}
 \usepackage{float}
 \usepackage{array}
+\usepackage[numbers]{natbib}
 \usepackage{multirow}
 \usepackage{amsfonts}
 \usepackage{titlesec}
@@ -20,7 +21,7 @@
 
 \section{Motivação}
 
-Motivado pelo quadro de hipóxia silenciosa presente no COVID-19 foi realizado um estudo anterior, que apresentou bons resultados, acerca da possibilidade de se identificar pacientes infectados através da voz. No presente trabalho buscamos extender esse estudo, para outras doenças respiratórias.
+Motivado pelo quadro de hipóxia silenciosa presente no COVID-19 foi realizado um estudo anterior \citep{casanova2021deep}, que apresentou bons resultados, acerca da possibilidade de se identificar pacientes infectados através da voz. No presente trabalho buscamos extender esse estudo, para outras doenças respiratórias.
 
 
 \section{Objetivos}
@@ -28,6 +29,13 @@ Motivado pelo quadro de hipóxia silenciosa presente no COVID-19 foi realizado u
 Estimar o nível de SpO2 através da análise de um pequeno trecho de fala, para tentar detectar possíveis problemas respiratórios. E, futuramente, poder auxiliar médicos ou mesmo o público geral, oferecendo um sistema portátil e de baixo custo.
 
 \section{Metodologia}
+
+Inicialmente utilizaremos dados já coletados do ano anterior no Hospital das Clínicas, que são exclusivamente de pacientes com COVID-19 e pacientes saudáveis. Sendo que parte desses dados foi coletada na enfermaria, onde obteve-se a frequência cardíaca e saturação de oxigênio através do oxímetro e coletou-se as vozes com um celular, e grande parte dos dados via doação de voz para um projeto numa interface web.
+
+Posteriormente pretendemo utilizar os novos dados, que incluirão doenças respiratórias como bronquite,
+
+Os sinais de áudio passarão por processamento, como filtros, MFCC e espectrograma, em seguida utilizaremos diferentes modelos de redes neurais em busca de encontrar um com alta acurácia em identificar as doenças respiratórias.
+
 
 \section{Planejamento}
 
@@ -59,5 +67,8 @@ Estimar o nível de SpO2 através da análise de um pequeno trecho de fala, para
     \end{tabular}
 
 \section*{Referências}
+
+\bibliographystyle{plainnat}
+\bibliography{proposta}
 
 \end{document}
