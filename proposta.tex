@@ -12,21 +12,19 @@
 \usepackage[left=2cm, right=2cm, top=1.5cm]{geometry}
 
 \begin{document}
-\title{Desenvolvimento de biomarcadores a partir de voz: análise de áudio para detecção do estado de saúde de pacientes admitidos no Hospital das Clínicas}
+\title{Desenvolvimento de biomarcadores a partir de voz: análise de áudio para previsão do nível de SpO2}
 
 \author{Alunos: Natália Hitomi Koza e Ricardo Mikio Morita \\ Orientador: Prof. Marcelo Finger}
 \maketitle
 
-\section{Introdução}
-
 \section{Motivação}
 
-Motivado pelo quadro de hipóxia silenciosa presente no COVID-19 foi realizado um estudo anterior \citep{casanova2021deep}, que apresentou bons resultados, acerca da possibilidade de se identificar pacientes infectados através da voz. No presente trabalho buscamos extender esse estudo, para outras doenças respiratórias.
+Motivado pelo quadro de hipóxia silenciosa presente no COVID-19 foi realizado um estudo anterior \citep{casanova2021deep}, que apresentou bons resultados, acerca da possibilidade de se identificar pacientes infectados através da voz. No presente trabalho buscamos extender esse estudo, para outras doenças respiratórias através da detecção da insuficiência respiratória prevendo-se os níveis de saturação de oxigênio no sangue (SpO2).
 
 
 \section{Objetivos}
 
-Estimar o nível de SpO2 através da análise de um pequeno trecho de fala, para tentar detectar possíveis problemas respiratórios. E, futuramente, poder auxiliar médicos ou mesmo o público geral, oferecendo um sistema portátil e de baixo custo.
+Estimar o nível de SpO2 através da análise de um pequeno trecho de fala, com um intervalo de confiança, para tentar detectar uma possível insuficiência respiratória, fazendo uso de redes neurais e dispositivos acessíveis e de baixo custo, como smartphones e computadores, para a coleta do áudio. E, futuramente, poder auxiliar na triagem hospitalar ou mesmo o público geral, na avaliação da necessidade de intervenção médica.
 
 \section{Metodologia}
 
@@ -65,8 +63,6 @@ Os sinais de áudio passarão por processamento, como filtros, MFCC e espectrogr
      8 &  &  &  &  &  &  &  &  & \checkmark & \checkmark \\
     \hline
     \end{tabular}
-
-\section*{Referências}
 
 \bibliographystyle{plainnat}
 \bibliography{proposta}
