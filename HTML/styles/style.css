@@ -15,32 +15,21 @@ h4 {
     line-height: 3rem;
 }
 
-.navbar-brand {
-    font-size: 0.85em;
-}
-
-.nav-link {
-    color: black !important;
-}
-
 .nav-item.active,
-.active>.nav-link {
-    background-color: #603F8B;
-    color: white !important;
-}
-
 .nav-item:hover {
     background-color: #603F8B;
 }
 
-.nav-item:hover>.nav-link {
+.nav-link {
     color: white !important;
+    font-weight: 700;
 }
 
 .nav-item {
     padding: 5px;
     margin: 4px 5px;
     border-radius: 5px;
+    background-color: #A16AE8;
 }
 
 .names-list {
