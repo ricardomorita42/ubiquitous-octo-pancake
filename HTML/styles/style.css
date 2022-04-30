@@ -1,7 +1,7 @@
 html,
 body {
     height: 100%;
-    margin: auto 4%;
+    margin: auto min(2%, 40px);
 }
 
 main {
@@ -34,13 +34,20 @@ h4 {
 
 .names-list {
     line-height: 3rem;
+    margin-top: 1rem;
 }
 
-.names-list>span {
+.names-list-item {
     font-weight: 600;
+    display: block;
 }
 
 #main-box {
     max-width: 55%;
     min-width: min(100%, 500px);
+}
+
+#main-box>h1,
+#main-box>h2 {
+    display: inline;
 }
