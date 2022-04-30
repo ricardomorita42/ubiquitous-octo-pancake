@@ -12,27 +12,41 @@
 \usepackage[left=2cm, right=2cm, top=1.5cm]{geometry}
 
 \begin{document}
-\title{Desenvolvimento de biomarcadores a partir de voz: análise de áudio para previsão do nível de SpO2}
+\title{Proposta de Trabalho de Formatura supervisionado: \textbf{Desenvolvimento de biomarcadores a partir de voz: análise de áudio para previsão do nível de SpO2}}
 
-\author{Alunos\\ Natália Hitomi Koza \\ Ricardo Mikio Morita \\ \\Orientador\\ Prof. Dr. Marcelo Finger}
+\author{Alunos: Natália Hitomi Koza e Ricardo Mikio Morita \\ Orientador: Prof. Marcelo Finger}
 \maketitle
 
 \section{Motivação}
+Insuficiência respiratória é um sintoma relevante ao determina se um paciente precisa de hospitalização. Durante as ondas da pandemia de COVID-19 que ocorreu em meados de 2020, uma das complicações ocorridas envolviam uma queda da saturação de oxigênio no sangue(SpO2) para abaixo de $95\%$ em ar ambiente, a qual é visto como ponto de risco segundo o SUS \cite{manualcovid}. Um estudo anterior realizado pelo grupo SPIRA foi motivado por este quadro de hipóxia silenciosa \citep{casanova2021deep} e estudou a criação de um biomarcador que apresentou bons resultados acerca da possibilidade de se identificar pacientes que estão abaixo deste limiar com uma acurácia de $91.66\%$, com perspectivas de melhorar este número. 
 
-Insuficiência respiratória é um sintoma relevante ao determina se um paciente precisa de hospitalização. Durante as ondas da pandemia de COVID-19 que ocorreu em meados de 2020, uma das complicações ocorridas envolviam uma queda da saturação de oxigênio no sangue (SpO2) para abaixo de $95\%$, a qual é considerada um fator de risco e que necessita de atenção médica\cite{manualcovid}. Um estudo anterior realizado pelo grupo SPIRA foi motivado por este quadro de hipóxia silenciosa \citep{casanova2021deep}, levando ao estudo e criação de um biomarcador que apresentou bons resultados acerca da possibilidade de se identificar pacientes abaixo deste limiar com uma acurácia de $91.66\%$, com perspectivas de melhorar este número. No presente trabalho buscamos trabalhar numa linha similar, visando estimar os níveis de SpO2 com o uso estes biomarcadores além de tentar estimar uma aproximação da acurácia desta previsão.
-
+Dois anos após o início da pandemia e uma miríade de estudos sobre a COVID-19, a necessidade de um biomarcador que determine pacientes de risco é bastante reduzida; entretanto, ainda é interessante estudar um pouco mais sobre um biomarcador que não é invasivo e de baixo custo Por isto, no presente trabalho buscaremos trabalhar numa linha similar para determinar níveis de SpO2 dos pacientes analizados usando estes biomarcadores, além de tentar estimar uma aproximação da acurácia desta previsão.
 
 \section{Objetivos}
 
-Estimar o nível de SpO2 através da análise de um pequeno trecho de fala, com um intervalo de confiança, para tentar detectar uma possível insuficiência respiratória, fazendo uso de redes neurais e dispositivos acessíveis e de baixo custo, como smartphones e computadores, para a coleta do áudio. Espera-se obter uma ferramenta que possa ser útil, tanto pela praticidade ou quanto pelo baixo custo, na área médica no futuro.
+Estimar o nível de SpO2 através da análise de um pequeno trecho de fala, com um intervalo de confiança, para tentar detectar uma possível insuficiência respiratória, fazendo uso de redes neurais e dispositivos acessíveis e de baixo custo, como smartphones e computadores, para a coleta do áudio. E, futuramente, poder auxiliar na triagem hospitalar ou mesmo o público geral, na avaliação da necessidade de intervenção médica.
+
+Para isto, iremos trabalhar com os dados coletados do projeto SPIRA, tratando e processando os dados obtidos das gravações de vozes aplicando técnicas de processamentos de sinais, e com redes neurais iremos tentar obter estimativas numéricas ao longo de nosso estudo.
 
 \section{Metodologia}
 
-Inicialmente utilizaremos dados coletados no estudo anterior, que são exclusivamente de pacientes com COVID-19 e pacientes saudáveis. Parte desses dados foi coletada na enfermaria, onde obteve-se a frequência cardíaca e saturação de oxigênio através do oxímetro e coletou-se as vozes com um celular. Uma grande parte dos dados foi obtida via doação de voz para o projeto numa interface web, onde assumiu-se ser de indivíduos saudáveis.
+Inicialmente utilizaremos dados coletados do estudo anterior projeto SPIRA que são exclusivamente de pacientes com COVID-19 e pacientes saudáveis. Parte desses dados foi coletada na enfermaria, onde obteve-se a frequência cardíaca e saturação de oxigênio através do oxímetro e coletou-se as vozes com um celular, e grande parte dos dados via doação de voz para um projeto numa interface web, onde assumiu-se ser de indivíduos saudáveis.
 
-Posteriormente pretendemos utilizar os novos dados, que estão sendo coletados em diversos hospitais, e que incluem outras doenças respiratórias.
+Posteriormente pretendemos utilizar os novos dados, que estão sendo coletados em diversos hospitais, e que incluem outras doenças respiratórias além de grupos controle.
 
 Os sinais de áudio passarão por pré-processamento, como filtros, MFCC e geração de espectrograma, em seguida utilizaremos diferentes modelos de redes neurais em busca de encontrar uma com alta acurácia em identificar as doenças respiratórias.
+
+Existem diversas questões que serão discutidas e refinadas ao longo do estudo. Do ponto de vista atual, observamos como pontos de interesse:
+\begin{itemize}
+    \item Conhecimento das representações de sinais de áudio no computador;
+    \item Conhecimento de téncicas de processamento de sinais;
+    \item Conhecimento das bibiliotecas computacionais usadas no projeto SPIRA;
+    \item Como lidar com o ruído de fundo durante as coletas para evitar a geração de viéses nas redes neurais. Estudar como lidar com as amostras de ruídos ambientes estão sendo coletadas, de modo que para que possamos "normalizar" as amostras de áudio;
+    \item Manuseio do dataset dos dados contendo o áudio dos pacientes coletados; 
+    \item Determinação das features mais adequadas para que tenhamos uma boa acurácia;
+    \item Análise e determinação da viabilidade de nosso modelo;
+\end{itemize}
+
 
 \section{Planejamento}
 
@@ -49,7 +63,7 @@ Os sinais de áudio passarão por pré-processamento, como filtros, MFCC e gera�
 
 \begin{tabular}{|c|cccccccccc|}
     \hline
-      & \multicolumn{10}{c}{Meses}\\
+      & \multicolumn{10}{c}{Meses} \\
      Atividade & Mar & Abr & Maio & Jun & Jul & Ago & Set & Out & Nov & Dez  \\
      \hline
      1 & \checkmark & \checkmark & \checkmark &  &  &  &  &  &  &   \\
@@ -62,6 +76,8 @@ Os sinais de áudio passarão por pré-processamento, como filtros, MFCC e gera�
      8 &  &  &  &  &  &  &  &  & \checkmark & \checkmark \\
     \hline
     \end{tabular}
+
+
 
 \bibliographystyle{plainnat}
 \bibliography{proposta}
