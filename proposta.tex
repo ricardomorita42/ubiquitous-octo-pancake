@@ -19,21 +19,20 @@
 
 \section{Motivação}
 
-Motivado pelo quadro de hipóxia silenciosa presente no COVID-19 foi realizado um estudo anterior \citep{casanova2021deep}, que apresentou bons resultados, com acurácia de 91,66\%, acerca da possibilidade de se classificar através da voz pacientes infectados ou não. No presente trabalho buscamos extender esse estudo, para outras doenças respiratórias através da detecção da insuficiência respiratória prevendo-se o nível de saturação de oxigênio no sangue (SpO2).
+Insuficiência respiratória é um sintoma relevante ao determina se um paciente precisa de hospitalização. Durante as ondas da pandemia de COVID-19 que ocorreu em meados de 2020, uma das complicações ocorridas envolviam uma queda da saturação de oxigênio no sangue(SpO2) para abaixo de $95\%$, a qual é considerada um fator de risco e que necessita de atenção médica\cite{manualcovid}. Um estudo anterior realizado pelo grupo SPIRA foi motivado por este quadro de hipóxia silenciosa \citep{casanova2021deep}, levando ao estudo e criação de um biomarcador que apresentou bons resultados acerca da possibilidade de se identificar pacientes abaixo deste limiar com uma acurácia de $91.66\%$, com perspectivas de melhorar este número. No presente trabalho buscamos trabalhar numa linha similar, visando estimar os níveis de SpO2 com o uso estes biomarcadores além de tentar estimar uma aproximação da acurácia desta previsão.
 
 
 \section{Objetivos}
 
-Estimar o nível de SpO2 através da análise de um pequeno trecho de fala, com um intervalo de confiança, para tentar detectar uma possível insuficiência respiratória, fazendo uso de redes neurais e dispositivos acessíveis e de baixo custo, como smartphones e computadores, para a coleta do áudio. E, futuramente, poder auxiliar na triagem hospitalar ou mesmo o público geral, na avaliação da necessidade de intervenção médica.
+Estimar o nível de SpO2 através da análise de um pequeno trecho de fala, com um intervalo de confiança, para tentar detectar uma possível insuficiência respiratória, fazendo uso de redes neurais e dispositivos acessíveis e de baixo custo, como smartphones e computadores, para a coleta do áudio. Espera-se obter uma ferramenta que possa ser útil, tanto pela praticidade ou quanto pelo baixo custo, na área médica no futuro.
 
 \section{Metodologia}
 
-Inicialmente utilizaremos dados já coletados do ano anterior no Hospital das Clínicas, que são exclusivamente de pacientes com COVID-19 e pacientes saudáveis. Sendo que parte desses dados foi coletada na enfermaria, onde obteve-se a frequência cardíaca e saturação de oxigênio através do oxímetro e coletou-se as vozes com um celular, e grande parte dos dados via doação de voz para um projeto numa interface web, onde assumiu-se ser de indivíduos saudáveis.
+Inicialmente utilizaremos dados coletados no estudo anterior, que são exclusivamente de pacientes com COVID-19 e pacientes saudáveis. Parte desses dados foi coletada na enfermaria, onde obteve-se a frequência cardíaca e saturação de oxigênio através do oxímetro e coletou-se as vozes com um celular. Uma grande parte dos dados foi obtida via doação de voz para o projeto numa interface web, onde assumiu-se ser de indivíduos saudáveis.
 
 Posteriormente pretendemos utilizar os novos dados, que estão sendo coletados em diversos hospitais, e que incluem outras doenças respiratórias.
 
 Os sinais de áudio passarão por pré-processamento, como filtros, MFCC e geração de espectrograma, em seguida utilizaremos diferentes modelos de redes neurais em busca de encontrar uma com alta acurácia em identificar as doenças respiratórias.
-
 
 \section{Planejamento}
 
