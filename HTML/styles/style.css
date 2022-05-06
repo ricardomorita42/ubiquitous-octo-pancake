@@ -1,6 +1,9 @@
-html,
-body {
-    height: 100%;
+:root {
+    --primary: #603F8B;
+    --secondary: #A16AE8;
+}
+
+html {
     margin: auto min(2%, 40px);
 }
 
@@ -15,25 +18,28 @@ h4 {
     line-height: 3rem;
 }
 
+.navbar-header {
+    border-color: var(--secondary) !important;
+}
+
 .nav-item.active,
 .nav-item:hover {
-    background-color: #603F8B;
+    background-color: var(--primary);
 }
 
 .nav-link {
     color: white !important;
-    font-weight: 700;
 }
 
 .nav-item {
     padding: 5px;
     margin: 4px 5px;
     border-radius: 5px;
-    background-color: #A16AE8;
+    background-color: var(--secondary);
 }
 
 .names-list {
-    line-height: 3rem;
+    line-height: 2rem;
     margin-top: 1rem;
 }
 
