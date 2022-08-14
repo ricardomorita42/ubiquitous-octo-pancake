@@ -1,6 +1,6 @@
 # requirements
-# pip install librosa matplotlib 
-# 
+# pip install librosa matplotlib
+#
 # https://stackoverflow.com/questions/44473110/compute-mfcc-using-librosa
 # https://librosa.org/doc/main/generated/librosa.feature.mfcc.html
 # https://librosa.org/doc/main/auto_examples/plot_display.html
@@ -23,35 +23,40 @@ import numpy as np
 
 class AudioProcessor:
   # Adicionar mais parâmetros conforme necessário
-  def __init__(self, sr = 16000, hop_length = 160, win_length = 400, 
+  def __init__(self, sr = 16000, hop_length = 160, win_length = 400,
                n_fft = 1200, n_mfcc = 40, n_mels = 40):
     self.sr = sr
     self.n_mfcc = n_mfcc
     self.hop_length = hop_length
     self.win_length = win_length
     self.n_fft = n_fft
-    self.num_mels = n_mels
+    self.n_mels = n_mels
     self.feature = 0
-    
+
 
   # Retorna um ndarray que calcula Mel-frequency cepstral coefficents a partir
-  # de um .wav. Parâmetros adicionais para alterar o spectrogram podem ser 
-  # passados através de **kwargs 
+  # de um .wav. Parâmetros adicionais para alterar o spectrogram podem ser
+  # passados através de **kwargs
   def wav2feature(self,audio_path):
     y, sr = librosa.load(audio_path)
     #y: np.ndarray that represents audio time series.
-    #sr:  number > 0 [scalar] that represents sampling rate of y 
-    
-    self.feature = librosa.feature.mfcc(y, sr=self.sr, hop_length= self.hop_length, 
-                   win_length= self.win_length, n_fft=self.n_fft, n_mfcc=self.num_mfcc,
-                   n_mels = self.num_mels)
+    #sr:  number > 0 [scalar] that represents sampling rate of y
+
+    # Reamostra o áudio com a taxa de amostragem do experimento
+    if sr != self.sr:
+      y = librosa.resample(y=y, orig_sr=sr, target_sr=self.sr)
+
+
+    self.feature = librosa.feature.mfcc(y=y, sr=self.sr, hop_length=self.hop_length,
+                   win_length=self.win_length, n_fft=self.n_fft, n_mfcc=self.n_mfcc,
+                   n_mels=self.n_mels)
     return self.feature
 
   # Para debug
   def graph_feature(self):
-      plt.figure(figsize=(10,4))
-      librosa.display.specshow(self.feature, sr=self.sr, x_axis ='time')
-      plt.show()
+    plt.figure(figsize=(10,4))
+    librosa.display.specshow(self.feature, sr=self.sr, x_axis ='time')
+    plt.show()
 
 if __name__ == "__main__":
   # Primeira implementação feita
@@ -78,7 +83,7 @@ if __name__ == "__main__":
   # (1) MFCC is based on short-time Fourier transform (STFT), n_fft, hop_length, win_length
   # and window are the parameters for STFT.
   mfccs = librosa.feature.mfcc(y, sr=sr, hop_length=hop_length,
-                              win_length= win_length, n_fft=n_fft, 
+                              win_length= win_length, n_fft=n_fft,
                               n_mfcc=num_mfcc)
   print(mfccs.shape)
 
@@ -86,6 +91,8 @@ if __name__ == "__main__":
   librosa.display.specshow(mfccs,sr=sr,x_axis ='time')
   plt.show()
   '''
-  print(__file__ + " invocado")
 
-
+  # ap = AudioProcessor()
+  # ap.wav2feature("experimento1.wav")
+  # ap.graph_feature()
+  # print(__file__ + " invocado")
