@@ -1,0 +1,10 @@
+{
+    "audio": {
+        "sr": 16000,
+        "hop_length": 160,
+        "win_length": 400,
+        "n_fft": 1200,
+        "n_mfcc": 40,
+        "n_mels": 40
+    }
+}

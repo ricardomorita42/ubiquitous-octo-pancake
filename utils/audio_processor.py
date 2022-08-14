@@ -23,8 +23,8 @@ import numpy as np
 
 class AudioProcessor:
   # Adicionar mais parâmetros conforme necessário
-  def __init__(self, sr = 16000, hop_length = 160, win_length = 400,
-               n_fft = 1200, n_mfcc = 40, n_mels = 40):
+  def __init__(self, sr, hop_length, win_length,
+               n_fft, n_mfcc, n_mels):
     self.sr = sr
     self.n_mfcc = n_mfcc
     self.hop_length = hop_length
@@ -33,11 +33,13 @@ class AudioProcessor:
     self.n_mels = n_mels
     self.feature = 0
 
-
-  # Retorna um ndarray que calcula Mel-frequency cepstral coefficents a partir
-  # de um .wav. Parâmetros adicionais para alterar o spectrogram podem ser
-  # passados através de **kwargs
   def wav2feature(self,audio_path):
+    '''
+    Retorna um ndarray que calcula Mel-frequency cepstral coefficents a partir
+    de um .wav. Parâmetros adicionais para alterar o spectrogram podem ser
+    passados através de **kwargs
+    '''
+
     y, sr = librosa.load(audio_path)
     #y: np.ndarray that represents audio time series.
     #sr:  number > 0 [scalar] that represents sampling rate of y
@@ -46,7 +48,9 @@ class AudioProcessor:
     if sr != self.sr:
       y = librosa.resample(y=y, orig_sr=sr, target_sr=self.sr)
 
-
+    # Extraindo mfcc
+    # (1) MFCC is based on short-time Fourier transform (STFT), n_fft, hop_length, win_length
+    # and window are the parameters for STFT.
     self.feature = librosa.feature.mfcc(y=y, sr=self.sr, hop_length=self.hop_length,
                    win_length=self.win_length, n_fft=self.n_fft, n_mfcc=self.n_mfcc,
                    n_mels=self.n_mels)
@@ -54,12 +58,16 @@ class AudioProcessor:
 
   # Para debug
   def graph_feature(self):
+    '''
+    Função para debug, plota o gráfico contendo as features extraídas do áudio
+    usando MFCC
+    '''
+
     plt.figure(figsize=(10,4))
     librosa.display.specshow(self.feature, sr=self.sr, x_axis ='time')
     plt.show()
 
 if __name__ == "__main__":
-  # Primeira implementação feita
   '''
   # Todos os parâmetros do github da função da pasta utils do github do Edresson
   feature = "mfcc"
@@ -75,24 +83,6 @@ if __name__ == "__main__":
   hop_length = 160
   win_length = 400
   n_fft = 1200
-  # Carregando
-  audio_path = "resultado1.wav"
-  y, sr = librosa.load(audio_path)
+'''
 
-  # Extraindo mfcc
-  # (1) MFCC is based on short-time Fourier transform (STFT), n_fft, hop_length, win_length
-  # and window are the parameters for STFT.
-  mfccs = librosa.feature.mfcc(y, sr=sr, hop_length=hop_length,
-                              win_length= win_length, n_fft=n_fft,
-                              n_mfcc=num_mfcc)
-  print(mfccs.shape)
-
-  plt.figure(figsize=(10,4))
-  librosa.display.specshow(mfccs,sr=sr,x_axis ='time')
-  plt.show()
-  '''
-
-  # ap = AudioProcessor()
-  # ap.wav2feature("experimento1.wav")
-  # ap.graph_feature()
-  # print(__file__ + " invocado")
+  print(__file__ + " invocado")

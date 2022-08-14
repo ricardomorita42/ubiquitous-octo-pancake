@@ -1,6 +1,9 @@
 ## Dataset Files from https://github.com/SPIRA-COVID19/SPIRA-ACL2021
 SPIRA_Dataset_V2/**
 
+## Python auxiliary files
+__pycache__/
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
