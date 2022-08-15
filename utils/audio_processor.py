@@ -11,6 +11,7 @@
 # https://stackoverflow.com/questions/53925401/difference-between-mel-spectrogram-and-an-mfcc
 # https://medium.com/analytics-vidhya/simplifying-audio-data-fft-stft-mfcc-for-machine-learning-and-deep-learning-443a2f962e0e
 # https://stackoverflow.com/questions/52232839/understanding-the-output-of-mfcc
+# https://stackoverflow.com/questions/52841335/how-can-i-pad-wav-file-to-specific-length
 
 import librosa
 import librosa.display
@@ -40,7 +41,7 @@ class AudioProcessor:
     passados através de **kwargs
     '''
 
-    y, sr = librosa.load(audio_path)
+    y, sr = librosa.load(audio_path, mono=True)
     #y: np.ndarray that represents audio time series.
     #sr:  number > 0 [scalar] that represents sampling rate of y
 
@@ -49,7 +50,7 @@ class AudioProcessor:
       y = librosa.resample(y=y, orig_sr=sr, target_sr=self.sr)
 
     # Extraindo mfcc
-    # (1) MFCC is based on short-time Fourier transform (STFT), n_fft, hop_length, win_length
+    # (1) MFCC is based on short-time Fourier transform (STFT). n_fft, hop_length, win_length
     # and window are the parameters for STFT.
     self.feature = librosa.feature.mfcc(y=y, sr=self.sr, hop_length=self.hop_length,
                    win_length=self.win_length, n_fft=self.n_fft, n_mfcc=self.n_mfcc,
