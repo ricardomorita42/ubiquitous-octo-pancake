@@ -58,7 +58,7 @@ class AudioProcessor:
     return self.feature
 
   # Para debug
-  def graph_feature(self):
+  def graphFeature(self):
     '''
     Função para debug, plota o gráfico contendo as features extraídas do áudio
     usando MFCC
