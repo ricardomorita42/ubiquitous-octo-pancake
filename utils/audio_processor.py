@@ -40,13 +40,9 @@ class AudioProcessor:
     passados através de **kwargs
     '''
 
-    y, sr = librosa.load(audio_path)
+    y, sr = librosa.load(audio_path, sr=self.sr)
     #y: np.ndarray that represents audio time series.
     #sr:  number > 0 [scalar] that represents sampling rate of y
-
-    # Reamostra o áudio com a taxa de amostragem do experimento
-    if sr != self.sr:
-      y = librosa.resample(y=y, orig_sr=sr, target_sr=self.sr)
 
     # Extraindo mfcc
     # (1) MFCC is based on short-time Fourier transform (STFT), n_fft, hop_length, win_length
