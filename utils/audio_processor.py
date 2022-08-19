@@ -11,6 +11,7 @@
 # https://stackoverflow.com/questions/53925401/difference-between-mel-spectrogram-and-an-mfcc
 # https://medium.com/analytics-vidhya/simplifying-audio-data-fft-stft-mfcc-for-machine-learning-and-deep-learning-443a2f962e0e
 # https://stackoverflow.com/questions/52232839/understanding-the-output-of-mfcc
+# https://stackoverflow.com/questions/52841335/how-can-i-pad-wav-file-to-specific-length
 
 import librosa
 import librosa.display
@@ -31,8 +32,9 @@ class AudioProcessor:
     self.win_length = win_length
     self.n_fft = n_fft
     self.n_mels = n_mels
-    self.feature = 0
-
+    self.feature = None
+    self.max_length = 0 
+  
   def wav2feature(self,audio_path):
     '''
     Retorna um ndarray que calcula Mel-frequency cepstral coefficents a partir
@@ -40,27 +42,40 @@ class AudioProcessor:
     passados através de **kwargs
     '''
 
-    y, sr = librosa.load(audio_path, sr=self.sr)
+    y, sr = librosa.load(audio_path, sr=self.sr, mono=True)
     #y: np.ndarray that represents audio time series.
     #sr:  number > 0 [scalar] that represents sampling rate of y
 
+    librosa.util.pad_center(y, self.max_length, mode="constant")
+
     # Extraindo mfcc
-    # (1) MFCC is based on short-time Fourier transform (STFT), n_fft, hop_length, win_length
+    # (1) MFCC is based on short-time Fourier transform (STFT). n_fft, hop_length, win_length
     # and window are the parameters for STFT.
     self.feature = librosa.feature.mfcc(y=y, sr=self.sr, hop_length=self.hop_length,
                    win_length=self.win_length, n_fft=self.n_fft, n_mfcc=self.n_mfcc,
                    n_mels=self.n_mels)
     return self.feature
 
+
+  def extractMaxLength(self,audio_path):
+    y, sr = librosa.load(audio_path, mono=True)
+    if y.shape[0] > self.max_length:
+      self.max_length = y.shape[0]
+
+    #print("max_length: " + str(self.max_length))
+
+  def getMaxLength(self):
+    return self.max_length
+
   # Para debug
-  def graph_feature(self):
+  def graphFeature(self,feature):
     '''
     Função para debug, plota o gráfico contendo as features extraídas do áudio
     usando MFCC
     '''
 
     plt.figure(figsize=(10,4))
-    librosa.display.specshow(self.feature, sr=self.sr, x_axis ='time')
+    librosa.display.specshow(feature, sr=self.sr, x_axis ='time')
     plt.show()
 
 if __name__ == "__main__":

@@ -39,3 +39,6 @@ __pycache__/
 *.synctex.gz
 *.synctex.gz(busy)
 *.pdfsync
+
+## Additional ignored files:
+*.wav
