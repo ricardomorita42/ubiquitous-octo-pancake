@@ -14,14 +14,14 @@ import jdata as jd
 class Dataset:
   def __init__(self, ap, file_path, file_name):
     # Para evitar que '\0' vire null
-    self.ap = ap
     self.filePath = file_path
     self.fileName = file_path + '/' + file_name
+    
+    self.ap = ap
     self.datasetHeader = []
     self.datasetDict = {}
     self.maxLength = 0
     self.preloadedFile = False
-
 
     assert os.path.isfile(self.fileName),"arquivo para importar não existe!"
     print("arquivo recebido:" + self.fileName)
@@ -58,6 +58,8 @@ class Dataset:
       print("Max Length: " + str(ap.getMaxLength()))
 
       print("Calculando MFCCs...")
+      
+      #values estão como valor None neste momento (não são usadas)
       for key, value in self.getWholeDataset().items():
         feature = ap.wav2feature(key)
         self.setItem(key=key,value=feature)
