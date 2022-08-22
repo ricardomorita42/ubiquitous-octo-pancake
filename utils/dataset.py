@@ -8,6 +8,8 @@ import os
 import csv
 # import pprint
 
+from tqdm import tqdm
+
 import jdata as jd
 
 class Dataset:
@@ -47,17 +49,23 @@ class Dataset:
       #pprint.pprint(self.datasetDict)
 
       print("Descobrindo max length...")
+      pbar = tqdm(total=len(self.getWholeDataset()))
       for key, value in self.getWholeDataset().items():
         # Internamente é registrado para cada chamada o max_length local
         ap.extractMaxLength(key)
+        pbar.update(1)
+      pbar.close()
 
       print("Max Length: " + str(ap.getMaxLength()))
 
       print("Calculando MFCCs...")
       # values estão como valor None neste momento (não são usadas)
+      pbar = tqdm(total=len(self.getWholeDataset()))
       for key, value in self.getWholeDataset().items():
         feature = ap.wav2feature(key)
         self.setItem(key=key, value=feature)
+        pbar.update(1)
+      pbar.close()
 
       print("Salvando para disco...")
       self.save2file()
