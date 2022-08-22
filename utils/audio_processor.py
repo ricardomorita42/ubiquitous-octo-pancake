@@ -33,8 +33,8 @@ class AudioProcessor:
     self.n_fft = n_fft
     self.n_mels = n_mels
     self.feature = None
-    self.max_length = 0 
-  
+    self.max_length = 0
+
   def wav2feature(self,audio_path):
     '''
     Retorna um ndarray que calcula Mel-frequency cepstral coefficents a partir
@@ -46,7 +46,7 @@ class AudioProcessor:
     #y: np.ndarray that represents audio time series.
     #sr:  number > 0 [scalar] that represents sampling rate of y
 
-    librosa.util.pad_center(y, self.max_length, mode="constant")
+    librosa.util.pad_center(y, size=self.max_length, mode="constant")
 
     # Extraindo mfcc
     # (1) MFCC is based on short-time Fourier transform (STFT). n_fft, hop_length, win_length
@@ -57,7 +57,7 @@ class AudioProcessor:
     return self.feature
 
 
-  def extractMaxLength(self,audio_path):
+  def extractMaxLength(self, audio_path):
     y, sr = librosa.load(audio_path, mono=True)
     if y.shape[0] > self.max_length:
       self.max_length = y.shape[0]

@@ -21,3 +21,11 @@ def load_config(config_path):
   data = json.loads(input_str)
   config.update(data)
   return config
+
+def cmpDictExcept(self, dict1, dict2, excluded_keys):
+  """
+  Compara dois dicionários, exceto pelas chaves passadas em excluded_keys
+  """
+  dct1 = {k: v for k, v in dict1.items() if k not in excluded_keys}
+  dct2 = {k: v for k, v in dict2.items() if k not in excluded_keys}
+  return dct1 == dct2
