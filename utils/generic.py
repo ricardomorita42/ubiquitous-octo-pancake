@@ -22,7 +22,7 @@ def load_config(config_path):
   config.update(data)
   return config
 
-def cmpDictExcept(self, dict1, dict2, excluded_keys):
+def cmpDictExcept(dict1, dict2, excluded_keys):
   """
   Compara dois dicionários, exceto pelas chaves passadas em excluded_keys
   """
