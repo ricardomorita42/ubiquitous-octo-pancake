@@ -8,7 +8,11 @@
         "n_mels": 40
     },
     "dataset": {
-        "file_path":"SPIRA_Dataset_V2",
-        "file_name":"metadata_train.csv"
+        "train_csv": "SPIRA_Dataset_V2/filtered_metadata_train.csv",
+        "test_csv": "SPIRA_Dataset_V2/filtered_metadata_test.csv",
+        "eval_csv": "SPIRA_Dataset_V2/filtered_metadata_eval.csv"
+    },
+    "train_config": {
+
     }
 }

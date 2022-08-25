@@ -14,37 +14,35 @@ from utils.generic import cmpDictExcept
 import jdata as jd
 
 class Dataset:
-    def __init__(self, ap, file_path, file_name):
-        # Para evitar que '\0' vire null
-        self.filePath = file_path
-        self.fileName = file_path + '/' + file_name
-
+    def __init__(self, ap, file_path):
         self.ap = ap
+        self.filePath = file_path
         self.datasetHeader = []
         self.datasetDict = {}
         self.maxLength = 0
 
-        assert os.path.isfile(self.fileName), "Arquivo do dataset não existe!"
-        print("Arquivo recebido: " + self.fileName)
+        assert os.path.isfile(self.filePath), "Arquivo do dataset não existe!"
+        print("Arquivo recebido:", self.filePath)
 
-        saved_file = self.fileName[:-4] + "_processed.json"
+        saved_file = self.filePath[:-4] + "_processed.json"
 
         # Configuração do dataset atualmente é apenas o Audio Processor
-        dataset_config = self.fileName[:-4] + "_dataset_config.json"
+        dataset_config = self.filePath[:-4] + "_dataset_config.json"
 
         if not os.path.isfile(saved_file) or not os.path.isfile(dataset_config) or \
           not cmpDictExcept(jd.load(dataset_config), self.ap.__dict__, ["feature", "max_length"]):
             # Arquivo pré-processado não foi encontrado ou as configurações eram diferentes
 
-            file = open(self.fileName)
+            file = open(self.filePath)
             csvreader = csv.reader(file)
 
             self.dataSetheader = next(csvreader)
             #print(self.header)
 
             # Quais atributos precisamos manter? Mudar aqui se quiser mais dados do csv
+            basePath = os.path.dirname(self.filePath)
             for row in csvreader:
-                fullPath = self.filePath + '/' + row[0]
+                fullPath = basePath + '/' + row[0]
                 self.datasetDict[fullPath] = None
             #pprint.pprint(self.datasetDict)
 
@@ -79,7 +77,7 @@ class Dataset:
     def save2file(self, file_name=None):
         # Artificio para usar self como default value
         if file_name is None:
-            file_name = self.fileName[:-4] + "_processed.json"
+            file_name = self.filePath[:-4] + "_processed.json"
 
         jd.save(self.datasetDict, file_name)
 
@@ -97,3 +95,9 @@ class Dataset:
 
     def getWholeDataset(self):
         return self.datasetDict
+
+
+    # Funções mágicas
+
+    def __len__(self):
+        return len(self.datasetDict)

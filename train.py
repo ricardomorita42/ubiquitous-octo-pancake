@@ -22,7 +22,9 @@ if __name__ == '__main__':
   c = load_config(args.config_path)
 
   ap = AudioProcessor(**c.audio)
-  d = Dataset(ap, **c.dataset)
+
+  # Treino
+  d = Dataset(ap, c.dataset["train_csv"])
 
   # Deixando esta parte executando para que se possa checar o funcionamento...
   print("Imprimindo um exemplo")
