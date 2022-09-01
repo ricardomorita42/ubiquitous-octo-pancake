@@ -33,37 +33,37 @@ class Dataset:
           not cmpDictExcept(jd.load(dataset_config), self.ap.__dict__, ["feature", "max_length"]):
             # Arquivo pré-processado não foi encontrado ou as configurações eram diferentes
 
-            file = open(self.filePath)
-            csvreader = csv.reader(file)
+            with open(self.filePath) as file:
+                csvreader = csv.DictReader(file)
 
-            self.dataSetheader = next(csvreader)
-            #print(self.header)
+                self.dataSetheader = csvreader.fieldnames
+                #print(self.header)
 
-            # Quais atributos precisamos manter? Mudar aqui se quiser mais dados do csv
-            basePath = os.path.dirname(self.filePath)
-            for row in csvreader:
-                fullPath = basePath + '/' + row[0]
-                self.datasetDict[fullPath] = None
-            #pprint.pprint(self.datasetDict)
+                # Quais atributos precisamos manter? Mudar aqui se quiser mais dados do csv
+                basePath = os.path.dirname(self.filePath)
+                for row in csvreader:
+                    fullPath = basePath + '/' + row["audio_path"]
+                    self.datasetDict[fullPath] = [row["sexo"], row["idade"], row["spO2"]]
+                #pprint.pprint(self.datasetDict)
 
-            print("Descobrindo max length...")
-            pbar = tqdm(total=len(self.datasetDict))
+            max_length_pbar = tqdm(total=len(self.datasetDict))
+            max_length_pbar.set_description_str("Descobrindo max length")
             for key, value in self.datasetDict.items():
                 # Internamente é registrado para cada chamada o max_length local
                 ap.extractMaxLength(key)
-                pbar.update(1)
-            pbar.close()
+                max_length_pbar.update(1)
+            max_length_pbar.close()
 
-            print("Max Length: " + str(ap.getMaxLength()))
+            print("Max Length:", str(ap.getMaxLength()))
 
-            print("Calculando MFCCs...")
             # values estão como valor None neste momento (não são usadas)
-            pbar = tqdm(total=len(self.datasetDict))
-            for key, value in self.datasetDict.items():
+            mfcc_pbar = tqdm(total=len(self.datasetDict))
+            mfcc_pbar.set_description_str("Calculando MFCCs")
+            for key, val in self.datasetDict.items():
                 feature = ap.wav2feature(key)
-                self.setItem(key=key, value=feature)
-                pbar.update(1)
-            pbar.close()
+                self.setItem(key=key, value=[feature, *val])
+                mfcc_pbar.update(1)
+            mfcc_pbar.close()
 
             print("Salvando para disco...")
             self.save2file()

@@ -5,7 +5,7 @@ from utils.audio_processor import AudioProcessor
 from utils.dataset import Dataset
 from utils.generic import load_config
 
-import random
+from random import choice
 
 if __name__ == '__main__':
   '''
@@ -28,6 +28,6 @@ if __name__ == '__main__':
 
   # Deixando esta parte executando para que se possa checar o funcionamento...
   print("Imprimindo um exemplo")
-  audio_path,feature = random.choice(list(d.getWholeDataset().items()))
-  print("Exemplo: " + audio_path)
+  audio_path, [feature, sexo, idade, spO2] = choice(list(d.getWholeDataset().items()))
+  print("Exemplo:", audio_path)
   ap.graphFeature(feature)

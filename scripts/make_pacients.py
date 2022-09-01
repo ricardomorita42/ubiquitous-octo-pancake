@@ -23,9 +23,9 @@ def main():
 
             for row in csvreader:
                 # caminho do áudio, sexo, idade, saturação de O2
-                audio_path = "SPIRA_Dataset_V2/pacientes/" + os.path.basename(row["palavras_opus"][:-5] + ".wav")
+                audio_path = "pacientes/" + os.path.basename(row["palavras_opus"][:-5] + ".wav")
 
-                if os.path.isfile(audio_path):
+                if os.path.isfile("SPIRA_Dataset_V2/" + audio_path):
                     writer.writerow({
                         "audio_path": audio_path,
                         "sexo": row["sexo"],
