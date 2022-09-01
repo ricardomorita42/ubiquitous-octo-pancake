@@ -5,12 +5,13 @@
         "win_length": 400,
         "n_fft": 1200,
         "n_mfcc": 40,
-        "n_mels": 40
+        "n_mels": 40,
+        "mono": false
     },
     "dataset": {
-        "train_csv": "SPIRA_Dataset_V2/filtered_metadata_train.csv",
-        "test_csv": "SPIRA_Dataset_V2/filtered_metadata_test.csv",
-        "eval_csv": "SPIRA_Dataset_V2/filtered_metadata_eval.csv"
+        "train_csv": "SPIRA_Dataset_V2/metadata_train.csv",
+        "test_csv": "SPIRA_Dataset_V2/metadata_test.csv",
+        "eval_csv": "SPIRA_Dataset_V2/metadata_eval.csv"
     },
     "train_config": {
 

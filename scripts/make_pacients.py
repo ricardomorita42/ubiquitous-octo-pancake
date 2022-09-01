@@ -4,7 +4,7 @@ import sys
 
 def main():
     if len(sys.argv) != 3:
-        print("Uso: python make_paients.py pacientes.csv filtered_pacientes.csv")
+        print("Uso: python make_pacients.py pacientes.csv filtered_pacientes.csv")
         return
 
     origin, destiny = sys.argv[1], sys.argv[2]
