@@ -1,7 +1,7 @@
 ## Dataset Files from https://github.com/SPIRA-COVID19/SPIRA-ACL2021
 SPIRA_Dataset_V2/controle/**
 SPIRA_Dataset_V2/pacientes/**
-
+SPIRA_Dataset_V2/*processed.json
 ## Python auxiliary files
 __pycache__/
 
