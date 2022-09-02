@@ -1,8 +1,7 @@
-from re import X
 from sklearn.model_selection import train_test_split
-import sys
 import csv
 import os
+import argparse
 
 
 def write_csv(filename, header, data):
@@ -11,12 +10,18 @@ def write_csv(filename, header, data):
         csv_writer.writerow(header)
         csv_writer.writerows(data)
 
-def main():
-    if len(sys.argv) != 2:
-        print("Uso: python split_test_train.py pacientes.csv")
-        return
 
-    csv_file = sys.argv[1]
+def main():
+    parser = argparse.ArgumentParser(
+        description='Split original csv in test and train')
+    parser.add_argument('original_csv',
+                        metavar='pacients.csv',
+                        nargs=1,
+                        type=str,
+                        help="Original CSV filepath")
+    args = parser.parse_args()
+
+    csv_file = args.original_csv[0]
     x, y = [], []
 
     if not os.path.isfile(csv_file):
@@ -41,5 +46,6 @@ def main():
 
     write_csv(root_dir + '/metadata_train.csv', csv_header, x_train)
     write_csv(root_dir + '/metadata_test.csv', csv_header, x_test)
+
 
 main()
