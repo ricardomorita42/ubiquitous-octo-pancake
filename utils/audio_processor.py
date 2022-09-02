@@ -25,7 +25,7 @@ import numpy as np
 class AudioProcessor:
   # Adicionar mais parâmetros conforme necessário
   def __init__(self, sr, hop_length, win_length,
-               n_fft, n_mfcc, n_mels):
+               n_fft, n_mfcc, n_mels, mono):
     self.sr = sr
     self.n_mfcc = n_mfcc
     self.hop_length = hop_length
@@ -34,6 +34,10 @@ class AudioProcessor:
     self.n_mels = n_mels
     self.feature = None
     self.max_length = 0
+    if mono == "true":
+      self.mono = True
+    else:
+      self.mono = False
 
   def wav2feature(self,audio_path):
     '''
@@ -42,7 +46,7 @@ class AudioProcessor:
     passados através de **kwargs
     '''
 
-    y, sr = librosa.load(audio_path, sr=self.sr, mono=True)
+    y, sr = librosa.load(audio_path, sr=self.sr, mono=self.mono)
     #y: np.ndarray that represents audio time series.
     #sr:  number > 0 [scalar] that represents sampling rate of y
 
@@ -58,7 +62,7 @@ class AudioProcessor:
 
 
   def extractMaxLength(self, audio_path):
-    y, sr = librosa.load(audio_path, mono=True)
+    y, sr = librosa.load(audio_path, mono=self.mono)
     if y.shape[0] > self.max_length:
       self.max_length = y.shape[0]
 
