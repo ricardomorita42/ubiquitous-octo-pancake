@@ -32,14 +32,13 @@ class AudioProcessor:
     self.win_length = win_length
     self.n_fft = n_fft
     self.n_mels = n_mels
-    self.feature = None
     self.max_length = 0
     if mono == "true":
       self.mono = True
     else:
       self.mono = False
 
-  def wav2feature(self,audio_path):
+  def wav2feature(self, audio_path):
     '''
     Retorna um ndarray que calcula Mel-frequency cepstral coefficents a partir
     de um .wav. Parâmetros adicionais para alterar o spectrogram podem ser
@@ -55,11 +54,10 @@ class AudioProcessor:
     # Extraindo mfcc
     # (1) MFCC is based on short-time Fourier transform (STFT). n_fft, hop_length, win_length
     # and window are the parameters for STFT.
-    self.feature = librosa.feature.mfcc(y=y, sr=self.sr, hop_length=self.hop_length,
+    feature = librosa.feature.mfcc(y=y, sr=self.sr, hop_length=self.hop_length,
                    win_length=self.win_length, n_fft=self.n_fft, n_mfcc=self.n_mfcc,
                    n_mels=self.n_mels)
-    return self.feature
-
+    return feature
 
   def extractMaxLength(self, audio_path):
     y, sr = librosa.load(audio_path, mono=self.mono)
@@ -72,7 +70,7 @@ class AudioProcessor:
     return self.max_length
 
   # Para debug
-  def graphFeature(self,feature):
+  def graphFeature(self, feature):
     '''
     Função para debug, plota o gráfico contendo as features extraídas do áudio
     usando MFCC

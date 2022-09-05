@@ -30,7 +30,7 @@ class Dataset:
         dataset_config = self.filePath[:-4] + "_dataset_config.json"
 
         if not os.path.isfile(saved_file) or not os.path.isfile(dataset_config) or \
-          not cmpDictExcept(jd.load(dataset_config), self.ap.__dict__, ["feature", "max_length"]):
+          not cmpDictExcept(jd.load(dataset_config), self.ap.__dict__, ["max_length"]):
             # Arquivo pré-processado não foi encontrado ou as configurações eram diferentes
 
             with open(self.filePath) as file:
@@ -73,6 +73,7 @@ class Dataset:
             # Existe um arquivo já processado e com essa configuração para este csv
             print("Arquivo pré-processado encontrado: " + saved_file + "\nCarregando este arquivo...")
             self.datasetDict = jd.load(saved_file)
+            self.ap.max_length = jd.load(dataset_config)["max_length"]
 
     def save2file(self, file_name=None):
         # Artificio para usar self como default value
@@ -95,7 +96,6 @@ class Dataset:
 
     def getWholeDataset(self):
         return self.datasetDict
-
 
     # Funções mágicas
 
