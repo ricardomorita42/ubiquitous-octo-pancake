@@ -30,14 +30,13 @@ class Dataset:
         dataset_config = self.filePath[:-4] + "_dataset_config.json"
 
         if not os.path.isfile(saved_file) or not os.path.isfile(dataset_config) or \
-          not cmpDictExcept(jd.load(dataset_config), self.ap.__dict__, ["max_length"]):
+          not cmpDictExcept(jd.load(dataset_config)["ap"], self.ap.__dict__, ["max_length"]):
             # Arquivo pré-processado não foi encontrado ou as configurações eram diferentes
 
             with open(self.filePath) as file:
                 csvreader = csv.DictReader(file)
 
-                self.dataSetheader = csvreader.fieldnames
-                #print(self.header)
+                self.datasetHeader = csvreader.fieldnames
 
                 # Quais atributos precisamos manter? Mudar aqui se quiser mais dados do csv
                 basePath = os.path.dirname(self.filePath)
@@ -68,12 +67,13 @@ class Dataset:
             print("Salvando para disco...")
             self.save2file()
             print("Salvando arquivo de configuração: " + dataset_config)
-            jd.save(self.ap.__dict__, dataset_config)
+            jd.save({"ap": self.ap.__dict__, "datasetHeader": self.datasetHeader}, dataset_config)
         else:
             # Existe um arquivo já processado e com essa configuração para este csv
             print("Arquivo pré-processado encontrado: " + saved_file + "\nCarregando este arquivo...")
             self.datasetDict = jd.load(saved_file)
-            self.ap.max_length = jd.load(dataset_config)["max_length"]
+            self.ap.max_length = jd.load(dataset_config)["ap"]["max_length"]
+            self.datasetHeader = jd.load(dataset_config)["datasetHeader"]
 
     def save2file(self, file_name=None):
         # Artificio para usar self como default value
