@@ -25,7 +25,7 @@ import numpy as np
 class AudioProcessor:
   # Adicionar mais parâmetros conforme necessário
   def __init__(self, sr, hop_length, win_length,
-               n_fft, n_mfcc, n_mels, mono):
+               n_fft, n_mfcc, n_mels, mono, window_length):
     self.sr = sr
     self.n_mfcc = n_mfcc
     self.hop_length = hop_length
@@ -33,6 +33,8 @@ class AudioProcessor:
     self.n_fft = n_fft
     self.n_mels = n_mels
     self.max_length = 0
+    self.window_length = window_length
+
     if mono == "true":
       self.mono = True
     else:
@@ -49,14 +51,20 @@ class AudioProcessor:
     #y: np.ndarray that represents audio time series.
     #sr:  number > 0 [scalar] that represents sampling rate of y
 
-    librosa.util.pad_center(y, size=self.max_length, mode="constant")
+    # y = librosa.util.pad_center(y, size=self.max_length, mode="constant")
+    y = librosa.util.frame(x=y, frame_length=self.sr*self.window_length,
+                          hop_length=self.sr, axis=0)
 
     # Extraindo mfcc
-    # (1) MFCC is based on short-time Fourier transform (STFT). n_fft, hop_length, win_length
-    # and window are the parameters for STFT.
-    feature = librosa.feature.mfcc(y=y, sr=self.sr, hop_length=self.hop_length,
-                   win_length=self.win_length, n_fft=self.n_fft, n_mfcc=self.n_mfcc,
-                   n_mels=self.n_mels)
+    # (1) MFCC is based on short-time Fourier transform (STFT). n_fft,
+    # hop_length, win_length and window are the parameters for STFT.
+    feature = []
+    for frame_y in y:
+      feature.append(librosa.feature.mfcc(y=frame_y, sr=self.sr,
+                    hop_length=self.hop_length, win_length=self.win_length,
+                    n_fft=self.n_fft, n_mfcc=self.n_mfcc,
+                    n_mels=self.n_mels))
+
     return feature
 
   def extractMaxLength(self, audio_path):
