@@ -7,7 +7,8 @@
         "n_mfcc": 40,
         "n_mels": 40,
         "mono": false,
-        "window_length": 4
+        "window_length": 4,
+        "step": 1
     },
     "dataset": {
         "train_csv": "SPIRA_Dataset_V2/metadata_train.csv",

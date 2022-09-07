@@ -59,7 +59,7 @@ class Dataset:
             mfcc_pbar = tqdm(total=len(self.datasetDict))
             mfcc_pbar.set_description_str("Calculando MFCCs")
             for key, val in self.datasetDict.items():
-                feature = ap.wav2feature(key)
+                feature = ap.wav2featureWindowing(key)
                 self.setItem(key=key, value=[feature, *val])
                 mfcc_pbar.update(1)
             mfcc_pbar.close()
