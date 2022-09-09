@@ -23,104 +23,108 @@ import numpy as np
 # situação mude.
 
 class AudioProcessor:
-  # Adicionar mais parâmetros conforme necessário
-  def __init__(self, sr, hop_length, win_length,
-               n_fft, n_mfcc, n_mels, mono, window_length, step):
-    self.sr = sr
-    self.n_mfcc = n_mfcc
-    self.hop_length = hop_length
-    self.win_length = win_length
-    self.n_fft = n_fft
-    self.n_mels = n_mels
-    self.max_length = 0
-    self.window_length = window_length
-    self.step = step
+    def __init__(self, sr, hop_length, win_length, n_fft, n_mfcc, n_mels, mono,
+                 window_length, step):
+        self.sr = sr
+        self.n_mfcc = n_mfcc
+        self.hop_length = hop_length
+        self.win_length = win_length
+        self.n_fft = n_fft
+        self.n_mels = n_mels
+        self.max_length = 0
+        self.window_length = window_length
+        self.step = step
+        print(mono)
+        self.mono = mono
 
-    if mono == "true":
-      self.mono = True
-    else:
-      self.mono = False
+    def wav2feature(self, audio_path):
+        '''
+        Retorna um ndarray que calcula Mel-frequency cepstral coefficents a
+        partir de um .wav. Parâmetros adicionais para alterar o spectrogram
+        podem ser passados através de **kwargs
+        '''
 
-  def wav2feature(self, audio_path):
-    '''
-    Retorna um ndarray que calcula Mel-frequency cepstral coefficents a partir
-    de um .wav. Parâmetros adicionais para alterar o spectrogram podem ser
-    passados através de **kwargs
-    '''
+        y, sr = librosa.load(audio_path, sr=self.sr, mono=self.mono)
+        #y: np.ndarray [(duration*sr,)] that represents audio time series.
+        #sr:  number > 0 [scalar] that represents sampling rate of y
 
-    y, sr = librosa.load(audio_path, sr=self.sr, mono=self.mono)
-    #y: np.ndarray that represents audio time series.
-    #sr:  number > 0 [scalar] that represents sampling rate of y
+        y = librosa.util.pad_center(y, size=self.max_length, mode="constant")
 
-    y = librosa.util.pad_center(y, size=self.max_length, mode="constant")
+        # Extraindo mfcc
+        # (1) MFCC is based on short-time Fourier transform (STFT). n_fft,
+        # hop_length, win_length and window are the parameters for STFT.
+        feature = librosa.feature.mfcc(y=y, sr=self.sr,
+                                       hop_length=self.hop_length,
+                                       win_length=self.win_length,
+                                       n_fft=self.n_fft,
+                                       n_mfcc=self.n_mfcc,
+                                       n_mels=self.n_mels)
 
-    # Extraindo mfcc
-    # (1) MFCC is based on short-time Fourier transform (STFT). n_fft,
-    # hop_length, win_length and window are the parameters for STFT.
-    feature = librosa.feature.mfcc(y=y, sr=self.sr,
-                    hop_length=self.hop_length, win_length=self.win_length,
-                    n_fft=self.n_fft, n_mfcc=self.n_mfcc,
-                    n_mels=self.n_mels)
+        return feature
 
-    return feature
+    def wav2featureWindowing(self, audio_path):
+        y, sr = librosa.load(audio_path, sr=self.sr, mono=self.mono)
+        #y: np.ndarray [(duration*sr,)] that represents audio time series.
+        #sr:  number > 0 [scalar] that represents sampling rate of y
 
-  def wav2featureWindowing(self, audio_path):
-    y, sr = librosa.load(audio_path, sr=self.sr, mono=self.mono)
+        y = librosa.util.frame(x=y,
+                               frame_length=self.sr * self.window_length,
+                               hop_length=self.sr * self.step,
+                               axis=0)
 
-    # y = librosa.util.pad_center(y, size=self.max_length, mode="constant")
-    y = librosa.util.frame(x=y, frame_length=self.sr*self.window_length,
-                          hop_length=self.sr*self.step, axis=0)
+        # Extraindo mfcc
+        # (1) MFCC is based on short-time Fourier transform (STFT). n_fft,
+        # hop_length, win_length and window are the parameters for STFT.
+        feature = []
+        for frame_y in y:
+            feature.append(
+                librosa.feature.mfcc(y=frame_y,
+                                     sr=self.sr,
+                                     hop_length=self.hop_length,
+                                     win_length=self.win_length,
+                                     n_fft=self.n_fft,
+                                     n_mfcc=self.n_mfcc,
+                                     n_mels=self.n_mels))
 
-    # Extraindo mfcc
-    # (1) MFCC is based on short-time Fourier transform (STFT). n_fft,
-    # hop_length, win_length and window are the parameters for STFT.
-    feature = []
-    for frame_y in y:
-      feature.append(librosa.feature.mfcc(y=frame_y, sr=self.sr,
-                    hop_length=self.hop_length, win_length=self.win_length,
-                    n_fft=self.n_fft, n_mfcc=self.n_mfcc,
-                    n_mels=self.n_mels))
+            return feature
 
-      return feature
+    def extractMaxLength(self, audio_path):
+        y, sr = librosa.load(audio_path, mono=self.mono)
+        if y.shape[0] > self.max_length:
+            self.max_length = y.shape[0]
 
+        #print("max_length: " + str(self.max_length))
 
-  def extractMaxLength(self, audio_path):
-    y, sr = librosa.load(audio_path, mono=self.mono)
-    if y.shape[0] > self.max_length:
-      self.max_length = y.shape[0]
+    def getMaxLength(self):
+        return self.max_length
 
-    #print("max_length: " + str(self.max_length))
+    # Para debug
+    def graphFeature(self, feature):
+        '''
+        Função para debug, plota o gráfico contendo as features extraídas do áudio
+        usando MFCC
+        '''
 
-  def getMaxLength(self):
-    return self.max_length
-
-  # Para debug
-  def graphFeature(self, feature):
-    '''
-    Função para debug, plota o gráfico contendo as features extraídas do áudio
-    usando MFCC
-    '''
-
-    plt.figure(figsize=(10,4))
-    librosa.display.specshow(feature, sr=self.sr, x_axis ='time')
-    plt.show()
+        plt.figure(figsize=(10, 4))
+        librosa.display.specshow(feature, sr=self.sr, x_axis='time')
+        plt.show()
 
 if __name__ == "__main__":
-  '''
-  # Todos os parâmetros do github da função da pasta utils do github do Edresson
-  feature = "mfcc"
-  num_mels = 40
-  num_mfcc = 40
-  log_mels = False
-  mel_fmin = 0.0
-  mel_fmax = 8000.0
-  sample_rate = 16000
-  normalization = True
-  num_freq = 601
+    '''
+    # Todos os parâmetros do github da função da pasta utils do github do Edresson
+    feature = "mfcc"
+    num_mels = 40
+    num_mfcc = 40
+    log_mels = False
+    mel_fmin = 0.0
+    mel_fmax = 8000.0
+    sample_rate = 16000
+    normalization = True
+    num_freq = 601
 
-  hop_length = 160
-  win_length = 400
-  n_fft = 1200
-'''
+    hop_length = 160
+    win_length = 400
+    n_fft = 1200
+    '''
 
-  print(__file__ + " invocado")
+    print(__file__ + " invocado")
