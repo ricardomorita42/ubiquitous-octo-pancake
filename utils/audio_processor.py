@@ -34,7 +34,6 @@ class AudioProcessor:
         self.max_length = 0
         self.window_length = window_length
         self.step = step
-        print(mono)
         self.mono = mono
 
     def wav2feature(self, audio_path):
@@ -86,7 +85,7 @@ class AudioProcessor:
                                      n_mfcc=self.n_mfcc,
                                      n_mels=self.n_mels))
 
-            return feature
+        return feature
 
     def extractMaxLength(self, audio_path):
         y, sr = librosa.load(audio_path, mono=self.mono)
