@@ -24,10 +24,10 @@ class Dataset:
         assert os.path.isfile(self.filePath), "Arquivo do dataset não existe!"
         print("Arquivo recebido:", self.filePath)
 
-        saved_file = self.filePath[:-4] + "_processed.json"
+        saved_file = os.path.splitext(self.filePath)[0] + "_processed.json"
 
         # Configuração do dataset atualmente é apenas o Audio Processor
-        dataset_config = self.filePath[:-4] + "_dataset_config.json"
+        dataset_config = os.path.splitext(self.filePath)[0] + "_dataset_config.json"
 
         if not os.path.isfile(saved_file) or not os.path.isfile(dataset_config) or \
           not cmpDictExcept(jd.load(dataset_config)["ap"], self.ap.__dict__, ["max_length"]):
@@ -41,13 +41,13 @@ class Dataset:
                 # Quais atributos precisamos manter? Mudar aqui se quiser mais dados do csv
                 basePath = os.path.dirname(self.filePath)
                 for row in csvreader:
-                    fullPath = basePath + '/' + row["audio_path"]
-                    self.datasetDict[fullPath] = [row["sexo"], row["idade"], row["spO2"]]
+                    fullPath = os.path.join(basePath, row["audio_path"])
+                    self.setItem(key=fullPath, value=[row["sexo"], row["idade"], row["spO2"]])
                 #pprint.pprint(self.datasetDict)
 
             max_length_pbar = tqdm(total=len(self.datasetDict))
             max_length_pbar.set_description_str("Descobrindo max length")
-            for key, value in self.datasetDict.items():
+            for key in self.datasetDict:
                 # Internamente é registrado para cada chamada o max_length local
                 ap.extractMaxLength(key)
                 max_length_pbar.update(1)
@@ -78,7 +78,7 @@ class Dataset:
     def save2file(self, file_name=None):
         # Artificio para usar self como default value
         if file_name is None:
-            file_name = self.filePath[:-4] + "_processed.json"
+            file_name = os.path.splitext(self.filePath)[0] + "_processed.json"
 
         jd.save(self.datasetDict, file_name)
 
@@ -86,10 +86,10 @@ class Dataset:
 
     # Setters e getters básicos
     def getItem(self, key):
-        if self.datasetDict[key] == None:
-            return None
-        else:
+        if key in self.datasetDict:
             return self.datasetDict[key]
+        else:
+            return None
 
     def setItem(self, key, value):
         self.datasetDict[key] = value
