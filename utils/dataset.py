@@ -13,7 +13,11 @@ from utils.generic import cmpDictExcept
 
 import jdata as jd
 
-class Dataset:
+import torch
+from torch.utils.data import Dataset, DataLoader
+from torch.nn.utils.rnn import pad_sequence
+
+class Dataset(Dataset):
     def __init__(self, ap, file_path):
         self.ap = ap
         self.filePath = file_path
@@ -100,4 +104,40 @@ class Dataset:
     # Funções mágicas
 
     def __len__(self):
-        return len(self.datasetDict)
+        counter = 0
+
+        for val in self.datasetDict.values():
+            counter += len(val[0])
+
+        return counter
+
+    def __getitem__(self, idx):
+        counter = 0
+
+        for val in self.datasetDict.values():
+            if (counter + len(val[0])) < idx:
+                counter += len(val[0])
+            else:
+                return val[0][idx - counter], int(val[3])
+
+        return None
+
+def train_dataloader(c, ap):
+    return DataLoader(dataset=Dataset(ap, c.dataset["train_csv"]),
+                      pin_memory=True,
+                      batch_size=5,
+                      collate_fn=own_collate_fn,
+                      drop_last=True,
+                      sampler=None)
+
+def own_collate_fn(batch):
+    features, targets = [], []
+
+    for (feature, target) in batch:
+        features.append(torch.tensor(feature.transpose()))
+        targets.append(target)
+
+    targets = torch.tensor(targets, dtype=torch.uint8)
+    features = pad_sequence(features, batch_first=True, padding_value=0)
+
+    return features, targets
