@@ -17,9 +17,17 @@
         "test_csv": "SPIRA_Dataset_V2/metadata_test.csv",
         "eval_csv": "SPIRA_Dataset_V2/metadata_eval.csv"
     },
-    "train_config": {
-        "epochs": 100,
+    "model_config": {
         "fc1_dim": 100,
         "fc2_dim": 1
+    },
+    "train_config": {
+        "optimizer": "Adam",
+        "loss_fn": "MSE",
+        "epochs": 200,
+        "lr": 1e-3,
+        "weight_decay": 0.01,
+        "logs_dir": "checkpoints/exp-1.1/",
+        "checkpoint_interval": 50
     }
 }

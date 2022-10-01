@@ -3,9 +3,9 @@ import torch.nn as nn
 from utils.generic import Mish
 
 class SpiraConvV2(nn.Module):
-    def __init__(self, train_config):
+    def __init__(self, model_config):
         super(SpiraConvV2, self).__init__()
-        self.config = train_config
+        self.config = model_config
 
         convs = [
             # CNN 1
