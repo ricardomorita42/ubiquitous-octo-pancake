@@ -115,7 +115,7 @@ class Dataset(Dataset):
         counter = 0
 
         for val in self.datasetDict.values():
-            if (counter + len(val[0])) < idx:
+            if (counter + len(val[0])) <= idx:
                 counter += len(val[0])
             else:
                 return val[0][idx - counter], int(val[3])
@@ -130,14 +130,22 @@ def train_dataloader(c, ap):
                       drop_last=True,
                       sampler=None)
 
+def test_dataloader(c, ap):
+    return DataLoader(dataset=Dataset(ap, c.dataset["test_csv"]),
+                      pin_memory=True,
+                      batch_size=5,
+                      collate_fn=own_collate_fn,
+                      drop_last=True,
+                      sampler=None)
+
 def own_collate_fn(batch):
     features, targets = [], []
 
     for (feature, target) in batch:
         features.append(torch.tensor(feature.transpose()))
-        targets.append(target)
+        targets.append([target])
 
-    targets = torch.tensor(targets, dtype=torch.uint8)
+    targets = torch.tensor(targets, dtype=torch.float)
     features = pad_sequence(features, batch_first=True, padding_value=0)
 
     return features, targets
