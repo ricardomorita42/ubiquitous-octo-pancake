@@ -1,4 +1,6 @@
 {
+
+    "model_name": "SpiraConvV2",
     "audio": {
         "sr": 16000,
         "hop_length": 160,
@@ -16,6 +18,8 @@
         "eval_csv": "SPIRA_Dataset_V2/metadata_eval.csv"
     },
     "train_config": {
-
+        "epochs": 100,
+        "fc1_dim": 100,
+        "fc2_dim": 1
     }
 }
