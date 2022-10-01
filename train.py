@@ -31,8 +31,8 @@ def train(dataloader, model, loss_fn, optimizer, device):
 
         # if batch_id % 5 == 0:
         #     loss, current = loss.item(), batch_id * len(features)
-        #     print(f"loss: {loss:>7f}  [{current:>5d}/{size:>5d}]")
-        #     # print("targets:", targets, "/ pred", pred)
+        #     print(f"loss: {loss:>7f}  [{current:>5d}/{len(dataloader.dataset):>5d}]")
+        #     print("targets:", targets, "/ pred", pred)
 
 def test(dataloader, model, loss_fn, device):
     num_batches = len(dataloader)
@@ -42,6 +42,8 @@ def test(dataloader, model, loss_fn, device):
         for features, targets in dataloader:
             features, targets = features.to(device), targets.to(device)
             pred = torch.round(model(features))
+            print("pred = ", pred.view(pred.size(0)))
+            print("targets = ", targets.view(targets.size(0)))
             test_loss += loss_fn(pred, targets).item()
             correct += (pred == targets).type(torch.float).sum().item()
 
@@ -55,9 +57,9 @@ def get_loss(loss_name):
     else:
         raise Exception("A loss '" + loss_name + "' não é suportada")
 
-def get_model(model_name, model_config):
+def get_model(model_name, model_config, audio_config):
     if model_name == "SpiraConvV2":
-        model = SpiraConvV2(model_config)
+        model = SpiraConvV2(model_config, audio_config)
         return model
     else:
         raise Exception("O modelo '" + model_name + "' não é suportado")
@@ -101,7 +103,7 @@ if __name__ == '__main__':
     trainloader = train_dataloader(c, ap)
     testloader = test_dataloader(c, ap)
 
-    model = get_model(c.model_name, c.model_config)
+    model = get_model(c.model_name, c.model_config, c.audio)
     loss_fn = get_loss(c.train_config["loss_fn"])
     optimizer = get_optimizer(c.train_config, model)
 

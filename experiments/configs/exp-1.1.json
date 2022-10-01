@@ -28,6 +28,8 @@
         "lr": 1e-3,
         "weight_decay": 0.01,
         "logs_dir": "checkpoints/exp-1.1/",
-        "checkpoint_interval": 50
+        "checkpoint_interval": 50,
+        "batch_size": 15,
+        "num_workers": 4
     }
 }

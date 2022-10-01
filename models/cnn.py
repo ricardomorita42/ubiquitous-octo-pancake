@@ -3,9 +3,10 @@ import torch.nn as nn
 from utils.generic import Mish
 
 class SpiraConvV2(nn.Module):
-    def __init__(self, model_config):
+    def __init__(self, model_config, audio_config):
         super(SpiraConvV2, self).__init__()
         self.config = model_config
+        self.audio = audio_config
 
         convs = [
             # CNN 1
@@ -58,7 +59,7 @@ class SpiraConvV2(nn.Module):
         # self.fc1 = nn.Linear(4*self.conv(inp).shape[-1], self.config['fc1_dim'])
 
         # FC1
-        inp = torch.zeros(1, 1, 401, 40)
+        inp = torch.zeros(1, 1, 100*self.audio["window_length"]+1, self.audio["n_mfcc"])
         toy_activation_shape = self.conv(inp).shape
         fc1_input_dim = toy_activation_shape[1]*toy_activation_shape[2]*toy_activation_shape[3]
         self.fc1 = nn.Linear(fc1_input_dim, self.config['fc1_dim'])
@@ -85,7 +86,6 @@ class SpiraConvV2(nn.Module):
         x = self.mish(x)
         x = self.dropout(x)
         x = self.fc2(x)
-        x = self.mish(x)
         # x = torch.sigmoid(x)
 
         return x
