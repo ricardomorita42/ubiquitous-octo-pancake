@@ -2,12 +2,13 @@ import argparse
 import os
 import torch
 import torch.nn as nn
+from torch.optim.lr_scheduler import ExponentialLR
 
 from utils.audio_processor import AudioProcessor
 from utils.dataset import train_dataloader, test_dataloader
 from utils.generic import load_config
 from utils.lr_scheduler import NoamLR
-from models.cnn import SpiraConvV2
+from models.cnn import SpiraConvV2, CNN2
 
 # Não usados
 from unittest.util import _MAX_LENGTH
@@ -55,30 +56,43 @@ def test(dataloader, model, loss_fn, device):
 def get_loss(loss_name):
     if loss_name == "MSE":
         return nn.MSELoss()
+    elif loss_name == "MAE":
+        return nn.L1Loss()
     else:
         raise Exception("A loss '" + loss_name + "' não é suportada")
 
 def get_model(model_name, model_config, audio_config):
     if model_name == "SpiraConvV2":
-        model = SpiraConvV2(model_config, audio_config)
-        return model
+        return SpiraConvV2(model_config, audio_config)
+    if model_name == "CNN2":
+        return CNN2(model_config, audio_config)
     else:
         raise Exception("O modelo '" + model_name + "' não é suportado")
 
 def get_optimizer(train_config, model):
-    if train_config["optimizer"] == "Adam":
-        optimizer = torch.optim.Adam(model.parameters(),
-                                 lr=train_config["lr"],
-                                 weight_decay=train_config["weight_decay"])
-        return optimizer
+    optimizers = {
+        'Adam': torch.optim.Adam,
+        'AdamW': torch.optim.AdamW,
+        'RMS': torch.optim.RMSprop
+    }
+    optimizer = optimizers.get(train_config["optimizer"])
+
+    if optimizer:
+        return optimizer(model.parameters(),
+                         lr=train_config["lr"],
+                         weight_decay=train_config["weight_decay"])
     else:
         raise Exception("O otimizador '" + train_config["optimizer"] + "' não é suportado")
+
 
 def get_scheduler(train_config, optimizer, last_epoch):
     if train_config["scheduler"] == "Noam":
         scheduler = NoamLR(optimizer,
                            warmup_steps=train_config['warmup_steps'],
                            last_epoch=last_epoch - 1)
+        return scheduler
+    elif train_config["scheduler"] == "Exponential":
+        scheduler = ExponentialLR(optimizer, gamma=0.96, last_epoch=last_epoch-1)
         return scheduler
     else:
         return None
