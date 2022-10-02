@@ -6,6 +6,7 @@ import torch.nn as nn
 from utils.audio_processor import AudioProcessor
 from utils.dataset import train_dataloader, test_dataloader
 from utils.generic import load_config
+from utils.lr_scheduler import NoamLR
 from models.cnn import SpiraConvV2
 
 # Não usados
@@ -73,6 +74,15 @@ def get_optimizer(train_config, model):
     else:
         raise Exception("O otimizador '" + train_config["optimizer"] + "' não é suportado")
 
+def get_scheduler(train_config, optimizer, last_epoch):
+    if train_config["scheduler"] == "Noam":
+        scheduler = NoamLR(optimizer,
+                           warmup_steps=train_config['warmup_steps'],
+                           last_epoch=last_epoch - 1)
+        return scheduler
+    else:
+        return None
+
 if __name__ == '__main__':
     '''
     Exemplo de uso: python train.py -c experiments/configs/exp-1.1.json
@@ -129,6 +139,10 @@ if __name__ == '__main__':
     else:
         epoch = 0
 
+    # LEARNING RATE SCHEDULER ==================================================
+
+    scheduler = get_scheduler(c.train_config, optimizer, epoch)
+
     # TREINO / EPOCHS ==========================================================
 
     while epoch < c.train_config['epochs']:
@@ -138,6 +152,9 @@ if __name__ == '__main__':
 
         train(trainloader, model, loss_fn, optimizer, device)
         test(testloader, model, loss_fn, device)
+
+        if scheduler:
+            scheduler.step()
 
         epoch += 1
 

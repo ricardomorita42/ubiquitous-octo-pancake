@@ -24,7 +24,9 @@
     "train_config": {
         "optimizer": "Adam",
         "loss_fn": "MSE",
-        "epochs": 200,
+        "scheduler": "Noam",
+        "warmup_steps": 10,
+        "epochs": 300,
         "lr": 1e-3,
         "weight_decay": 0.01,
         "logs_dir": "checkpoints/exp-1.1/",

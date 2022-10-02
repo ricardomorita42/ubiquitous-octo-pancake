@@ -70,6 +70,7 @@ class SpiraConvV2(nn.Module):
                             self.config['fc2_dim'])
         self.dropout = nn.Dropout(p=0.7)
 
+        self.linear = nn.Linear(1, 1)
 
     def forward(self, x):
         # print(x.shape)
@@ -87,5 +88,6 @@ class SpiraConvV2(nn.Module):
         x = self.dropout(x)
         x = self.fc2(x)
         # x = torch.sigmoid(x)
+        x = self.linear(x)
 
         return x
