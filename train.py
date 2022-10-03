@@ -1,14 +1,12 @@
 import argparse
 import os
 import torch
-import torch.nn as nn
-from torch.optim.lr_scheduler import ExponentialLR
 
 from utils.audio_processor import AudioProcessor
 from utils.dataset import train_dataloader, test_dataloader
 from utils.generic import load_config
-from utils.lr_scheduler import NoamLR
-from models.cnn import SpiraConvV2, CNN2
+from utils.tensorboard import TensorboardWriter
+from utils.get_params import get_loss, get_model, get_optimizer, get_scheduler
 
 # Não usados
 from unittest.util import _MAX_LENGTH
@@ -16,6 +14,7 @@ from random import choice
 
 def train(dataloader, model, loss_fn, optimizer, device):
     model.train()
+    train_loss = 0
 
     for batch_id, (features, targets) in enumerate(dataloader):
         features, targets = features.to(device), targets.to(device)
@@ -25,6 +24,7 @@ def train(dataloader, model, loss_fn, optimizer, device):
         # print('Shape of pred:', pred.shape, 'type:', pred.dtype)
 
         loss = loss_fn(pred, targets)
+        train_loss += loss.item()
 
         # Bakpropagation
         optimizer.zero_grad()
@@ -36,6 +36,8 @@ def train(dataloader, model, loss_fn, optimizer, device):
         #     print(f"loss: {loss:>7f}  [{current:>5d}/{len(dataloader.dataset):>5d}]")
         #     print("targets:", targets, "/ pred", pred)
 
+    return train_loss/len(dataloader)
+
 def test(dataloader, model, loss_fn, device):
     num_batches = len(dataloader)
     model.eval()
@@ -44,62 +46,21 @@ def test(dataloader, model, loss_fn, device):
         for features, targets in dataloader:
             features, targets = features.to(device), targets.to(device)
             pred = torch.round(model(features))
-            print("pred = ", pred.view(pred.size(0)))
-            print("targets = ", targets.view(targets.size(0)))
+            # print("pred = ", pred.view(pred.size(0)))
+            # print("targets = ", targets.view(targets.size(0)))
             test_loss += loss_fn(pred, targets).item()
             correct += (pred == targets).type(torch.float).sum().item()
 
     test_loss /= num_batches
-    correct /= len(dataloader.dataset)
-    print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
+    test_acc = 100 * correct/len(dataloader.dataset)
+    print(f"Test Error: \n Accuracy: {test_acc:>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
-def get_loss(loss_name):
-    if loss_name == "MSE":
-        return nn.MSELoss()
-    elif loss_name == "MAE":
-        return nn.L1Loss()
-    else:
-        raise Exception("A loss '" + loss_name + "' não é suportada")
-
-def get_model(model_name, model_config, audio_config):
-    if model_name == "SpiraConvV2":
-        return SpiraConvV2(model_config, audio_config)
-    if model_name == "CNN2":
-        return CNN2(model_config, audio_config)
-    else:
-        raise Exception("O modelo '" + model_name + "' não é suportado")
-
-def get_optimizer(train_config, model):
-    optimizers = {
-        'Adam': torch.optim.Adam,
-        'AdamW': torch.optim.AdamW,
-        'RMS': torch.optim.RMSprop
-    }
-    optimizer = optimizers.get(train_config["optimizer"])
-
-    if optimizer:
-        return optimizer(model.parameters(),
-                         lr=train_config["lr"],
-                         weight_decay=train_config["weight_decay"])
-    else:
-        raise Exception("O otimizador '" + train_config["optimizer"] + "' não é suportado")
-
-
-def get_scheduler(train_config, optimizer, last_epoch):
-    if train_config["scheduler"] == "Noam":
-        scheduler = NoamLR(optimizer,
-                           warmup_steps=train_config['warmup_steps'],
-                           last_epoch=last_epoch - 1)
-        return scheduler
-    elif train_config["scheduler"] == "Exponential":
-        scheduler = ExponentialLR(optimizer, gamma=0.96, last_epoch=last_epoch-1)
-        return scheduler
-    else:
-        return None
+    return test_loss, test_acc
 
 if __name__ == '__main__':
     '''
-    Exemplo de uso: python train.py -c experiments/configs/exp-1.1.json
+    Exemplo de uso: python train.py -c experiments/configs/exp-1.1.json \
+                    --checkpoint_path checkpoints/exp-1.1/checkpoint_25.pt
     '''
 
     # Converte e carrega arquivo json com dados do experimento
@@ -117,6 +78,9 @@ if __name__ == '__main__':
 
     # Cria diretório dos logs se ele não existir
     os.makedirs(logs_dir, exist_ok=True)
+
+    # Inicializa o writer para escrever logs compatíveis com o Tensorboard
+    writer = TensorboardWriter(os.path.join(logs_dir, 'tensorboard'))
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -164,13 +128,20 @@ if __name__ == '__main__':
         print("Epoch %d" % epoch)
         print('=================================================')
 
-        train(trainloader, model, loss_fn, optimizer, device)
-        test(testloader, model, loss_fn, device)
+        train_loss = train(trainloader, model, loss_fn, optimizer, device)
+        test_loss, test_acc = test(testloader, model, loss_fn, device)
 
         if scheduler:
             scheduler.step()
 
         epoch += 1
+
+        if epoch%c.train_config["summary_interval"] == 0:
+            writer.log_train_loss(train_loss, epoch)
+            writer.log_test_loss_acc(test_loss, test_acc, epoch)
+            print("Write summary at epoch", epoch)
+            print(f'Avg. Train Loss: {train_loss:>8f}')
+            print(f'Avg. Test Loss: {test_loss:>8f} / Test Acc: {test_acc:>0.1f}%\n')
 
         if epoch%c.train_config["checkpoint_interval"] == 0:
             save_path = os.path.join(logs_dir, "checkpoint_%d.pt" % epoch)
@@ -182,6 +153,10 @@ if __name__ == '__main__':
             print("Salvou checkpoint em", save_path)
 
     print("Done!")
+
+    # Assegura de que todos tensorboard logs foram escritos e encerra ele
+    writer.flush()
+    writer.close()
 
     # d = Dataset(ap, c.dataset["train_csv"])
 

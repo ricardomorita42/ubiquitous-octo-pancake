@@ -2,3 +2,4 @@ librosa
 jdata
 tdqm
 torch
+tensorboard
