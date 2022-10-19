@@ -29,7 +29,7 @@ def train(dataloader, model, loss_fn, optimizer, device):
         # Bakpropagation
         optimizer.zero_grad()
         loss.backward()
-        optimizer.step()
+        optimizer.step() 
 
         # if batch_id % 5 == 0:
         #     loss, current = loss.item(), batch_id * len(features)
@@ -38,21 +38,40 @@ def train(dataloader, model, loss_fn, optimizer, device):
 
     return train_loss/len(dataloader)
 
-def test(dataloader, model, loss_fn, device):
+def test(dataloader, model, loss_fn, device, acceptable_interval):
     num_batches = len(dataloader)
     model.eval()
     test_loss, correct = 0, 0
     with torch.no_grad():
         for features, targets in dataloader:
+            number_features = 0
             features, targets = features.to(device), targets.to(device)
             pred = torch.round(model(features))
             # print("pred = ", pred.view(pred.size(0)))
             # print("targets = ", targets.view(targets.size(0)))
             test_loss += loss_fn(pred, targets).item()
-            correct += (pred == targets).type(torch.float).sum().item()
+            
+            items = 0.0
+            correct_items = 0.0
+            for x in targets:
+                for y in pred:
+                    items += 1
+                    #print("({}, {})".format(x.item(),y.item()),end=" ")
+                    #print("c",(y + acceptable_interval <= x <= y - acceptable_interval))
+                    if ((y.item() - acceptable_interval) <= x.item() <= (y.item() + acceptable_interval)):
+                        #print("({}, {})".format(x.item(),y.item()),end=" ")
+                        correct_items += 1
 
+            percent_corrects = correct_items / items
+            correct += percent_corrects
+            #print("total items:", items)
+            #print("number of hits:",correct_items)
+            #print("hits/total items:", percent_corrects)
+    
+    #print("correct:", correct)
+    #print("number features:", number_features)        
     test_loss /= num_batches
-    test_acc = 100 * correct/len(dataloader.dataset)
+    test_acc = 100 * correct/number_features
     print(f"Test Error: \n Accuracy: {test_acc:>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
     return test_loss, test_acc
@@ -83,8 +102,11 @@ if __name__ == '__main__':
     writer = TensorboardWriter(os.path.join(logs_dir, 'tensorboard'))
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
-
+    print("device: ",device)
     ap = AudioProcessor(**c.audio)
+
+    # Inicialização variáveis extras
+    acceptable_interval = float(c.train_config["acceptable_interval"])
 
     # INICIALIZA MODELO E DATASETS =============================================
 
@@ -129,7 +151,7 @@ if __name__ == '__main__':
         print('=================================================')
 
         train_loss = train(trainloader, model, loss_fn, optimizer, device)
-        test_loss, test_acc = test(testloader, model, loss_fn, device)
+        test_loss, test_acc = test(testloader, model, loss_fn, device, acceptable_interval)
 
         if scheduler:
             scheduler.step()
