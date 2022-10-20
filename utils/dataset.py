@@ -49,7 +49,7 @@ class Dataset(Dataset):
                     fullPath = os.path.join(basePath, row["audio_path"])
                     self.setItem(key=fullPath, value=[row["sexo"], row["idade"], row["spO2"]])
                 #pprint.pprint(self.datasetDict)
-            
+
             max_length_pbar = tqdm(total=len(self.datasetDict))
             max_length_pbar.set_description_str("Descobrindo max length")
             for key in self.datasetDict:
@@ -57,7 +57,7 @@ class Dataset(Dataset):
                 ap.extractMaxLength(key)
                 max_length_pbar.update(1)
             max_length_pbar.close()
-            
+
             #ap.max_length = 10000
             print("Max Length:", str(ap.getMaxLength()))
 
@@ -67,10 +67,6 @@ class Dataset(Dataset):
             for key, val in self.datasetDict.items():
                 feature = ap.wav2featureWindowing(key)
                 self.setItem(key=key, value=[feature, *val])
-                
-                for f in feature:
-                    ref = [f,int(val[2])]
-                    self.datasetRefs.append(ref)
                 mfcc_pbar.update(1)
             mfcc_pbar.close()
 
@@ -84,6 +80,11 @@ class Dataset(Dataset):
             self.datasetDict = jd.load(saved_file)
             self.ap.max_length = jd.load(dataset_config)["ap"]["max_length"]
             self.datasetHeader = jd.load(dataset_config)["datasetHeader"]
+
+        # Inicializa self.datasetRefs
+        for key, val in self.datasetDict.items():
+            for f in val[0]:
+                self.datasetRefs.append([f, int(val[2])])
 
     def save2file(self, file_name=None):
         # Artificio para usar self como default value
@@ -118,9 +119,7 @@ class Dataset(Dataset):
         return counter
 
     def __getitem__(self, idx):
-        return self.datasetRefs[0], self.datasetRefs[1]
-
-        
+        return self.datasetRefs[idx][0], self.datasetRefs[idx][1]
 
 def train_dataloader(c, ap):
     return DataLoader(dataset=Dataset(ap, c.dataset["train_csv"]),
@@ -151,4 +150,3 @@ def own_collate_fn(batch):
     features = pad_sequence(features, batch_first=True, padding_value=0)
 
     return features, targets
-    

@@ -29,7 +29,7 @@ def train(dataloader, model, loss_fn, optimizer, device):
         # Bakpropagation
         optimizer.zero_grad()
         loss.backward()
-        optimizer.step() 
+        optimizer.step()
 
         # if batch_id % 5 == 0:
         #     loss, current = loss.item(), batch_id * len(features)
@@ -39,39 +39,33 @@ def train(dataloader, model, loss_fn, optimizer, device):
     return train_loss/len(dataloader)
 
 def test(dataloader, model, loss_fn, device, acceptable_interval):
-    num_batches = len(dataloader)
     model.eval()
-    test_loss, correct = 0, 0
+    num_batches = len(dataloader)
+    test_loss, test_acc = 0, 0
+
     with torch.no_grad():
         for features, targets in dataloader:
-            number_features = 0
             features, targets = features.to(device), targets.to(device)
-            pred = torch.round(model(features))
+            pred = model(features)
             # print("pred = ", pred.view(pred.size(0)))
             # print("targets = ", targets.view(targets.size(0)))
             test_loss += loss_fn(pred, targets).item()
-            
-            items = 0.0
-            correct_items = 0.0
-            for x in targets:
-                for y in pred:
-                    items += 1
-                    #print("({}, {})".format(x.item(),y.item()),end=" ")
-                    #print("c",(y + acceptable_interval <= x <= y - acceptable_interval))
-                    if ((y.item() - acceptable_interval) <= x.item() <= (y.item() + acceptable_interval)):
-                        #print("({}, {})".format(x.item(),y.item()),end=" ")
-                        correct_items += 1
 
-            percent_corrects = correct_items / items
-            correct += percent_corrects
-            #print("total items:", items)
-            #print("number of hits:",correct_items)
-            #print("hits/total items:", percent_corrects)
-    
-    #print("correct:", correct)
-    #print("number features:", number_features)        
+            correct_items = 0.0
+            for x, y in zip(targets, pred):
+                #print("({}, {})".format(x.item(),y.item()),end=" ")
+                #print("c",(y + acceptable_interval <= x <= y - acceptable_interval))
+                if ((y.item() - acceptable_interval) <= x.item() <= (y.item() + acceptable_interval)):
+                    #print("({}, {})".format(x.item(),y.item()),end=" ")
+                    correct_items += 1
+
+            test_acc += correct_items / len(pred)
+            # print("total items:", len(pred))
+            # print("number of hits:", correct_items)
+            # print("hits/total items:", correct_items/len(pred))
+
     test_loss /= num_batches
-    test_acc = 100 * correct/number_features
+    test_acc = 100*test_acc/num_batches
     print(f"Test Error: \n Accuracy: {test_acc:>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
     return test_loss, test_acc

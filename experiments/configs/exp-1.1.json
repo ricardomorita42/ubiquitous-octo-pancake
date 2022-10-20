@@ -33,6 +33,7 @@
         "checkpoint_interval": 50,
         "summary_interval": 2,
         "batch_size": 5,
-        "num_workers": 4
+        "num_workers": 4,
+        "acceptable_interval": 5
     }
 }
