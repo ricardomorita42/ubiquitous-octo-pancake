@@ -44,11 +44,13 @@ def test(dataloader, model, loss_fn, device, acceptable_interval):
     test_loss, test_acc = 0, 0
 
     with torch.no_grad():
+        round = 0
         for features, targets in dataloader:
+            round += 1
             features, targets = features.to(device), targets.to(device)
             pred = model(features)
-            # print("pred = ", pred.view(pred.size(0)))
-            # print("targets = ", targets.view(targets.size(0)))
+            #print("pred = ", pred.view(pred.size(0)))
+            #print("targets = ", targets.view(targets.size(0)))
             test_loss += loss_fn(pred, targets).item()
 
             correct_items = 0.0
@@ -60,12 +62,13 @@ def test(dataloader, model, loss_fn, device, acceptable_interval):
                     correct_items += 1
 
             test_acc += correct_items / len(pred)
-            # print("total items:", len(pred))
-            # print("number of hits:", correct_items)
-            # print("hits/total items:", correct_items/len(pred))
+            #print(f"\nround:{round}")
+            #print("total items:", len(pred))
+            #print("number of hits:", correct_items)
+            #print("hits/total items:", correct_items/len(pred))
 
-    test_loss /= num_batches
-    test_acc = 100*test_acc/num_batches
+    test_loss /= round
+    test_acc = 100*test_acc/round
     print(f"Test Error: \n Accuracy: {test_acc:>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
     return test_loss, test_acc

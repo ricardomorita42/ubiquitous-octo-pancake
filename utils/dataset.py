@@ -84,7 +84,7 @@ class Dataset(Dataset):
         # Inicializa self.datasetRefs
         for key, val in self.datasetDict.items():
             for f in val[0]:
-                self.datasetRefs.append([f, int(val[2])])
+                self.datasetRefs.append([f, int(val[3])])
 
     def save2file(self, file_name=None):
         # Artificio para usar self como default value
