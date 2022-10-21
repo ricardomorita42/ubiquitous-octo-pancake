@@ -1,4 +1,6 @@
 {
+
+    "model_name": "SpiraConvV2",
     "audio": {
         "sr": 16000,
         "hop_length": 160,
@@ -15,7 +17,23 @@
         "test_csv": "SPIRA_Dataset_V2/metadata_test.csv",
         "eval_csv": "SPIRA_Dataset_V2/metadata_eval.csv"
     },
+    "model_config": {
+        "fc1_dim": 100,
+        "fc2_dim": 1
+    },
     "train_config": {
-
+        "optimizer": "Adam",
+        "loss_fn": "MSE",
+        "scheduler": "Noam",
+        "warmup_steps": 10,
+        "epochs": 300,
+        "lr": 1e-3,
+        "weight_decay": 0.01,
+        "logs_dir": "checkpoints/exp-1.1/",
+        "checkpoint_interval": 50,
+        "summary_interval": 2,
+        "batch_size": 5,
+        "num_workers": 4,
+        "acceptable_interval": 5
     }
 }
