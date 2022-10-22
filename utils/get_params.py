@@ -1,9 +1,9 @@
 from torch.nn import MSELoss, L1Loss
 from torch.optim.lr_scheduler import ExponentialLR
-from torch.optim import Adam, AdamW, RMSprop
+from torch.optim import Adam, AdamW, RMSprop, SGD
 
 from utils.lr_scheduler import NoamLR
-from models.cnn import SpiraConvV2, CNN2
+from models.cnn import SpiraConvV2, CNN2, CNN3
 
 def get_loss(loss_name):
     if loss_name == "MSE":
@@ -19,6 +19,8 @@ def get_model(model_name, model_config, audio_config):
         return SpiraConvV2(model_config, audio_config)
     if model_name == "CNN2":
         return CNN2(model_config, audio_config)
+    if model_name == "CNN3":
+        return CNN3(model_config, audio_config)
     else:
         raise Exception("O modelo '" + model_name + "' não é suportado")
 
@@ -27,7 +29,8 @@ def get_optimizer(train_config, model):
     optimizers = {
         'Adam': Adam,
         'AdamW': AdamW,
-        'RMS': RMSprop
+        'RMS': RMSprop,
+        'SGD': SGD,
     }
     optimizer = optimizers.get(train_config["optimizer"])
 

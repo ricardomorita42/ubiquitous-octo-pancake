@@ -1,6 +1,17 @@
 import torch
 import torch.nn as nn
 
+
+class Transpose(nn.Module):
+
+    def __init__(self):
+        super().__init__()
+
+    def forward(self, inp):
+        inp = inp.unsqueeze(1)
+        # inp = inp.transpose(1, 2).contiguous()
+        return inp
+
 class SpiraConvV2(nn.Module):
     def __init__(self, model_config, audio_config):
         super(SpiraConvV2, self).__init__()
@@ -105,6 +116,15 @@ class CNN2(nn.Module):
         # is selected. Average pooling method smooths out the image and hence
         # the sharp features may not be identified when this pooling method is used.
 
+        # Dropout. Dropout is a common technique in ML that freezes randomly
+        # chosen parts of the model during training and recovers them during evaluation.
+
+        # https://pytorch.org/tutorials/recipes/recipes/tuning_guide.html:
+        # If a nn.Conv2d layer is directly followed by a nn.BatchNorm2d layer,
+        # then the bias in the convolution is not needed, instead use nn.Conv2d
+        # (..., bias=False, ....). Bias is not needed because in the first step
+        # BatchNorm subtracts the mean, which effectively cancels out the effect of bias.
+
         convs = [
             # CNN1
             nn.Conv2d(1, 32, kernel_size=(7, 1), dilation=(2, 1)),
@@ -145,5 +165,57 @@ class CNN2(nn.Module):
         # x = self.softmax(x)
         # x = self.dropout(x)
         # x = self.linear(x)
+
+        return x
+
+
+class CNN3(nn.Module):
+
+    def __init__(self, model_config, audio_config):
+        super(CNN3, self).__init__()
+        self.config = model_config
+        self.audio = audio_config
+
+        convs = [
+            # CNN1
+            nn.Conv2d(1, 4, kernel_size=(7, 1), dilation=(2, 1)),
+            nn.GroupNorm(2, 4),
+            nn.Mish(),
+            nn.MaxPool2d(kernel_size=(2, 1)),
+            nn.Dropout(p=0.2),
+
+            # CNN2
+            nn.Conv2d(4, 8, kernel_size=(1, 1), dilation=(2, 1)),
+            nn.GroupNorm(4, 8),
+            nn.Mish(),
+            nn.MaxPool2d(kernel_size=(2, 1)),
+            nn.Dropout(p=0.3),
+
+            # CNN3
+            nn.Conv2d(8, 32, kernel_size=(1, 1), dilation=(2, 1)),
+            nn.GroupNorm(16, 32),
+            nn.Mish(),
+            nn.MaxPool2d(kernel_size=(2, 1)),
+            nn.Dropout(p=0.2)
+        ]
+
+        self.conv = nn.Sequential(*convs)
+        self.transpose = Transpose()
+        self.flatten = nn.Flatten()
+
+        # FC1
+        inp = torch.zeros(1, 1, 100*self.audio["window_length"]+1, self.audio["n_mfcc"])
+        toy_activation_shape = self.flatten(self.conv(inp)).shape
+
+        self.linear = nn.Linear(toy_activation_shape[1], 1)
+
+    def forward(self, x):
+        # N, H, W
+        x = x.unsqueeze(1)
+        # N, C, H, W
+        x = self.conv(x)
+        x = self.transpose(x)
+        x = self.flatten(x)
+        x = self.linear(x)
 
         return x
