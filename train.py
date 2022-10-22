@@ -1,6 +1,7 @@
 import argparse
 import os
 import torch
+import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 
@@ -28,7 +29,7 @@ def train(dataloader, model, loss_fn, optimizer, device):
         loss = loss_fn(pred, targets)
         train_loss += loss.item()
 
-        # Bakpropagation
+        # Backpropagation
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
@@ -42,8 +43,8 @@ def train(dataloader, model, loss_fn, optimizer, device):
 
 def test(dataloader, model, loss_fn, device, acceptable_interval):
     model.eval()
-    num_batches = len(dataloader)
     test_loss, test_acc = 0, 0
+    errors = []
 
     with torch.no_grad():
         round = 0
@@ -57,9 +58,11 @@ def test(dataloader, model, loss_fn, device, acceptable_interval):
 
             correct_items = 0.0
             for x, y in zip(targets, pred):
+                error = y.item() - x.item()
+                errors.append(error)
                 #print("({}, {})".format(x.item(),y.item()),end=" ")
                 #print("c",(y + acceptable_interval <= x <= y - acceptable_interval))
-                if ((y.item() - acceptable_interval) <= x.item() <= (y.item() + acceptable_interval)):
+                if abs(error) <= acceptable_interval:
                     #print("({}, {})".format(x.item(),y.item()),end=" ")
                     correct_items += 1
 
@@ -71,9 +74,24 @@ def test(dataloader, model, loss_fn, device, acceptable_interval):
 
     test_loss /= round
     test_acc = 100*test_acc/round
-    print(f"Test Error: \n Accuracy: {test_acc:>0.1f}%, Avg loss: {test_loss:>8f} \n")
+    test_std = np.std(errors)
 
-    return test_loss, test_acc
+    print(f"Test Error: \n Accuracy: {test_acc:>0.1f}%, \
+        Avg loss: {test_loss:>8f}, \
+        Std dev: {test_std:>8f} \n"                                                                                                                                                                               )
+
+    return test_loss, test_acc, test_std
+
+def save_checkpoint(path, model, optimizer, epoch, test_loss):
+    try:
+        torch.save({
+        "epoch": epoch,
+        "model_state_dict": model.state_dict(),
+        "optimizer_state_dict": optimizer.state_dict(),
+        "test_loss": test_loss
+        }, path)
+    except:
+        print("Ocorreu um erro enquanto salvava o checkpoint", path)
 
 if __name__ == '__main__':
     '''
@@ -124,12 +142,18 @@ if __name__ == '__main__':
         print("Lendo checkpoint", checkpoint_path)
 
         try:
-            if device == 'cuda':
-                checkpoint = torch.load(os.path.abspath(checkpoint_path), map_location="cuda:0")
-            else:
-                checkpoint = torch.load(os.path.abspath(checkpoint_path))
-            model.load_state_dict(checkpoint["model_state_dict"])
-            optimizer.load_state_dict(checkpoint["optimizer_state_dict"], )
+            try:
+                checkpoint = torch.load(os.path.abspath(checkpoint_path), map_location=device)
+            except:
+                print("Não localizou o arquivo ", os.path.abspath(checkpoint_path))
+            try:
+                model.load_state_dict(checkpoint["model_state_dict"])
+            except:
+                print("Falhou ao inicializar modelo")
+            try:
+                optimizer.load_state_dict(checkpoint["optimizer_state_dict"], )
+            except:
+                print("Falhou ao inicializar otimizador, talvez seja outro.")
             epoch = checkpoint["epoch"]
         except:
             print("Aconteceu um erro na leitura do checkpoint", checkpoint_path)
@@ -144,12 +168,12 @@ if __name__ == '__main__':
     # TREINO / EPOCHS ==========================================================
 
     while epoch < c.train_config['epochs']:
-        print('=================================================')
+        print('========================================================================')
         print("Epoch %d" % epoch)
-        print('=================================================')
+        print('========================================================================')
 
         train_loss = train(trainloader, model, loss_fn, optimizer, device)
-        test_loss, test_acc = test(testloader, model, loss_fn, device, acceptable_interval)
+        test_loss, test_acc, test_std = test(testloader, model, loss_fn, device, acceptable_interval)
 
         if scheduler:
             scheduler.step()
@@ -158,19 +182,31 @@ if __name__ == '__main__':
 
         if epoch%c.train_config["summary_interval"] == 0:
             writer.log_train_loss(train_loss, epoch)
-            writer.log_test_loss_acc(test_loss, test_acc, epoch)
+            writer.log_test_loss_acc_std(test_loss, test_acc, test_std, epoch)
             print("Write summary at epoch", epoch)
             print(f'Avg. Train Loss: {train_loss:>8f}')
-            print(f'Avg. Test Loss: {test_loss:>8f} / Test Acc: {test_acc:>0.1f}%\n')
+            print(f'Avg. Test Loss: {test_loss:>8f} / Test Acc: {test_acc:>0.1f}% / Test std. dev: {test_std:>0.8f}\n')
 
         if epoch%c.train_config["checkpoint_interval"] == 0:
             save_path = os.path.join(logs_dir, "checkpoint_%d.pt" % epoch)
-            torch.save({
-                "epoch": epoch,
-                "model_state_dict": model.state_dict(),
-                "optimizer_state_dict": optimizer.state_dict()
-            }, save_path)
+            save_checkpoint(save_path, model, optimizer, epoch, test_loss)
             print("Salvou checkpoint em", save_path)
+
+        try:
+            if device == 'cuda':
+                checkpoint = torch.load('checkpoints/best_checkpoint.pt', map_location="cuda:0")
+            else:
+                checkpoint = torch.load('checkpoints/best_checkpoint.pt')
+            best_saved_loss = checkpoint["test_loss"]
+        except:
+            best_saved_loss = 9999999
+
+        if test_loss < best_saved_loss:
+            # Encontrei um modelo melhor que o salvo
+            print("Saved loss: ", best_saved_loss, ", Actual loss:", test_loss)
+            save_path = 'checkpoints/best_checkpoint.pt'
+            save_checkpoint(save_path, model, optimizer, epoch, test_loss)
+            print("Salvou melhor checkpoint em", save_path)
 
     print("Done!")
 

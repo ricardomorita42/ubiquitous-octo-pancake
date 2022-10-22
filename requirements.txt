@@ -3,3 +3,4 @@ jdata
 tdqm
 torch
 tensorboard
+numpy
