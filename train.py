@@ -1,6 +1,8 @@
 import argparse
 import os
 import torch
+import matplotlib
+matplotlib.use('Agg')
 
 from utils.audio_processor import AudioProcessor
 from utils.dataset import train_dataloader, test_dataloader
@@ -122,14 +124,13 @@ if __name__ == '__main__':
         print("Lendo checkpoint", checkpoint_path)
 
         try:
-            checkpoint = torch.load(checkpoint_path)
-            optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
-            epoch = checkpoint["epoch"]
-            if device == "cuda":
-                model.load_state_dict(checkpoint["model_state_dict"],
-                                      map_location="cuda:0")
+            if device == 'cuda':
+                checkpoint = torch.load(os.path.abspath(checkpoint_path), map_location="cuda:0")
             else:
-                model.load_state_dict(checkpoint["model_state_dict"])
+                checkpoint = torch.load(os.path.abspath(checkpoint_path))
+            model.load_state_dict(checkpoint["model_state_dict"])
+            optimizer.load_state_dict(checkpoint["optimizer_state_dict"], )
+            epoch = checkpoint["epoch"]
         except:
             print("Aconteceu um erro na leitura do checkpoint", checkpoint_path)
             epoch = 0

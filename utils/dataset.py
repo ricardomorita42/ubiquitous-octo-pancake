@@ -123,7 +123,6 @@ class Dataset(Dataset):
 
 def train_dataloader(c, ap):
     return DataLoader(dataset=Dataset(ap, c.dataset["train_csv"]),
-                      pin_memory=True,
                       num_workers=c.train_config["num_workers"],
                       batch_size=c.train_config["batch_size"],
                       collate_fn=own_collate_fn,
@@ -132,7 +131,6 @@ def train_dataloader(c, ap):
 
 def test_dataloader(c, ap):
     return DataLoader(dataset=Dataset(ap, c.dataset["test_csv"]),
-                      pin_memory=True,
                       num_workers=c.train_config["num_workers"],
                       batch_size=c.train_config["batch_size"],
                       collate_fn=own_collate_fn,
