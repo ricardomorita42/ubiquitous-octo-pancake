@@ -129,6 +129,14 @@ def train_dataloader(c, ap):
                       drop_last=True,
                       sampler=None)
 
+def val_dataloader(c, ap):
+    return DataLoader(dataset=Dataset(ap, c.dataset["eval_csv"]),
+                      num_workers=c.train_config["num_workers"],
+                      batch_size=c.train_config["batch_size"],
+                      collate_fn=own_collate_fn,
+                      drop_last=True,
+                      sampler=None)
+
 def test_dataloader(c, ap):
     return DataLoader(dataset=Dataset(ap, c.dataset["test_csv"]),
                       num_workers=c.train_config["num_workers"],

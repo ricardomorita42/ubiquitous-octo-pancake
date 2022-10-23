@@ -13,7 +13,7 @@ def write_csv(filename, header, data):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Split original csv in test and train')
+        description='Split original csv in 80% train, 10% test, 10% validation')
     parser.add_argument('original_csv',
                         metavar='pacients.csv',
                         nargs=1,
@@ -37,15 +37,20 @@ def main():
             x.append(row)
             y.append(row[3])
 
-    x_train, x_test, y_train, y_test = train_test_split(x,
+    x_train, x_rem, y_train, y_rem = train_test_split(x,
                                                         y,
-                                                        test_size=0.1,
+                                                        train_size=0.8,
                                                         random_state=0)
+
+    x_test, x_val, y_test, y_val = train_test_split(x_rem,
+                                                      y_rem,
+                                                      test_size=0.5,
+                                                      random_state=0)
 
     root_dir = os.path.split(csv_file)[0]
 
     write_csv(root_dir + '/metadata_train.csv', csv_header, x_train)
     write_csv(root_dir + '/metadata_test.csv', csv_header, x_test)
-
+    write_csv(root_dir + '/metadata_eval.csv', csv_header, x_val)
 
 main()
