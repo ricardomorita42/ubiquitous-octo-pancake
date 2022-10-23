@@ -1,6 +1,7 @@
 import argparse
 import os
 import torch
+import torch.nn as nn
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
@@ -16,10 +17,10 @@ from unittest.util import _MAX_LENGTH
 from random import choice
 
 def train(dataloader, model, loss_fn, optimizer, device):
-    model.train()
     train_loss = 0
 
-    for batch_id, (features, targets) in enumerate(dataloader):
+    model.train()
+    for features, targets in dataloader:
         features, targets = features.to(device), targets.to(device)
         pred = model(features)
         # print('Shape of features:', features.shape)
@@ -34,18 +35,13 @@ def train(dataloader, model, loss_fn, optimizer, device):
         loss.backward()
         optimizer.step()
 
-        # if batch_id % 5 == 0:
-        #     loss, current = loss.item(), batch_id * len(features)
-        #     print(f"loss: {loss:>7f}  [{current:>5d}/{len(dataloader.dataset):>5d}]")
-        #     print("targets:", targets, "/ pred", pred)
-
     return train_loss/len(dataloader)
 
 def test(dataloader, model, loss_fn, device, acceptable_interval):
-    model.eval()
     test_loss, test_acc = 0, 0
     errors = []
 
+    model.eval()
     with torch.no_grad():
         round = 0
         for features, targets in dataloader:
@@ -55,8 +51,8 @@ def test(dataloader, model, loss_fn, device, acceptable_interval):
             #print("pred = ", pred.view(pred.size(0)))
             #print("targets = ", targets.view(targets.size(0)))
             test_loss += loss_fn(pred, targets).item()
-
             correct_items = 0.0
+
             for x, y in zip(targets, pred):
                 error = y.item() - x.item()
                 errors.append(error)
@@ -76,9 +72,7 @@ def test(dataloader, model, loss_fn, device, acceptable_interval):
     test_acc = 100*test_acc/round
     test_std = np.std(errors)
 
-    print(f"Error: \n Accuracy: {test_acc:>0.1f}%, \
-        Avg loss: {test_loss:>8f}, \
-        Std dev: {test_std:>8f} \n"                                                                                                                                            )
+    print(f"Error: \n Accuracy: {test_acc:>0.1f}%, Avg loss: {test_loss:>8f}, Std dev: {test_std:>8f} \n")
 
     return test_loss, test_acc, test_std
 
@@ -92,6 +86,24 @@ def save_checkpoint(path, model, optimizer, epoch, val_loss):
         }, path)
     except:
         print("Ocorreu um erro enquanto salvava o checkpoint", path)
+
+def load_checkpoint(path, model, optimizer, device):
+    if os.path.isfile(path):
+        checkpoint = torch.load(path, map_location=device)
+        try:
+            model.load_state_dict(checkpoint["model_state_dict"])
+        except:
+            print("Falhou ao inicializar modelo, talvez seja outro.")
+        try:
+            optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+        except:
+            print("Falhou ao inicializar otimizador, talvez seja outro.")
+        epoch = checkpoint["epoch"]
+    else:
+        print("Não localizou o arquivo ", path)
+        epoch = 0
+
+    return epoch
 
 if __name__ == '__main__':
     '''
@@ -145,24 +157,7 @@ if __name__ == '__main__':
 
     if (checkpoint_path is not None):
         print("Lendo checkpoint", checkpoint_path)
-
-        try:
-            try:
-                checkpoint = torch.load(os.path.abspath(checkpoint_path), map_location=device)
-            except:
-                print("Não localizou o arquivo ", os.path.abspath(checkpoint_path))
-            try:
-                model.load_state_dict(checkpoint["model_state_dict"])
-            except:
-                print("Falhou ao inicializar modelo, talvez seja outro.")
-            try:
-                optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
-            except:
-                print("Falhou ao inicializar otimizador, talvez seja outro.")
-            epoch = checkpoint["epoch"]
-        except:
-            print("Aconteceu um erro na leitura do checkpoint", checkpoint_path)
-            epoch = 0
+        epoch = load_checkpoint(os.path.abspath(checkpoint_path), model, optimizer, device)
     else:
         epoch = 0
 
@@ -214,7 +209,7 @@ if __name__ == '__main__':
 
     print("Done!\n")
 
-   # Assegura de que todos tensorboard logs foram escritos e encerra ele
+    # Assegura de que todos tensorboard logs foram escritos e encerra ele
     writer.flush()
     writer.close()
 
@@ -226,12 +221,8 @@ if __name__ == '__main__':
     print("TEST SUMMARY OF THE BEST CHECKPOINT")
     print('========================================================================')
 
-    try:
-        best_checkpoint_path = os.path.join(logs_dir, "best_checkpoint.pt")
-        checkpoint = torch.load(best_checkpoint_path, map_location=device)
-        model.load_state_dict(checkpoint["model_state_dict"])
-    except:
-        print("Falhou na leitura do melhor checkpoint. Imprime da última época")
+    best_checkpoint_path = os.path.join(logs_dir, "best_checkpoint.pt")
+    load_checkpoint(best_checkpoint_path, model, optimizer, device)
 
     test_loss, test_acc, test_std = test(testloader, model, loss_fn, device,
                                          acceptable_interval)
@@ -244,11 +235,3 @@ if __name__ == '__main__':
     # audio_path, [feature, sexo, idade, spO2] = choice(list(d.getWholeDataset().items()))
     # print("Exemplo:", audio_path)
     # ap.graphFeature(feature[0])
-
-    # # Cria lista das features e dos targets
-    # # features, targets = [], []
-
-    # # for key, val in d.getWholeDataset().items():
-    # #     for item in val[0]:
-    # #         features.append(item)
-    # #         targets.append(val[3])
