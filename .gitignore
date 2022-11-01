@@ -3,6 +3,7 @@ SPIRA_Dataset_V2/controle/**
 SPIRA_Dataset_V2/pacientes/**
 SPIRA_Dataset_V2/*processed.json
 SPIRA_Dataset_V2/*config.json
+Ruidos-Hospitalares
 checkpoints/
 
 ## Python auxiliary files

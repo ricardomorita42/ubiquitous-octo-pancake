@@ -13,10 +13,11 @@
 # https://stackoverflow.com/questions/52232839/understanding-the-output-of-mfcc
 # https://stackoverflow.com/questions/52841335/how-can-i-pad-wav-file-to-specific-length
 
+from random import choices, randint
+
 import librosa
 import librosa.display
 import matplotlib.pyplot as plt
-import numpy as np
 
 # Nesta implementação estamos sempre retornando mfcc em vez de retornar
 # spectrograma ou melspectogram. Necessário adaptar feature caso esta
@@ -24,7 +25,7 @@ import numpy as np
 
 class AudioProcessor:
     def __init__(self, sr, hop_length, win_length, n_fft, n_mfcc, n_mels, mono,
-                 window_length, step):
+                 window_length, step, num_noise):
         self.sr = sr
         self.n_mfcc = n_mfcc
         self.hop_length = hop_length
@@ -35,6 +36,9 @@ class AudioProcessor:
         self.window_length = window_length
         self.step = step
         self.mono = mono
+        # Vai ser atualizada no futuro
+        self.noise = None
+        self.num_noise = num_noise
 
     def wav2feature(self, audio_path):
         '''
@@ -46,6 +50,22 @@ class AudioProcessor:
         y, sr = librosa.load(audio_path, sr=self.sr, mono=self.mono)
         #y: np.ndarray [(duration*sr,)] that represents audio time series.
         #sr:  number > 0 [scalar] that represents sampling rate of y
+
+        if self.noise is not None:
+            # Sorteia um número aleatório de noise samples (pelo menos um)
+            if self.num_noise is None:
+                # Adiciona número aleatório de nosie samples
+                noise_samples = choices(self.noise.noise, k=randint(1, len(self.noise.noise)))
+            else:
+                noise_samples = choices(self.noise.noise, k=self.num_noise)
+
+            for elem in noise_samples:
+                x, sr = librosa.load(elem, sr=self.sr, mono=self.mono)
+
+                if len(y) < len(x):
+                    idx = randint(len(y), len(x))
+                    y += x[idx-len(y):idx]
+
 
         y = librosa.util.pad_center(y, size=self.max_length, mode="constant")
 
@@ -65,6 +85,21 @@ class AudioProcessor:
         y, sr = librosa.load(audio_path, sr=self.sr, mono=self.mono)
         #y: np.ndarray [(duration*sr,)] that represents audio time series.
         #sr:  number > 0 [scalar] that represents sampling rate of y
+
+        if self.noise is not None:
+            # Sorteia um número aleatório de noise samples (pelo menos um)
+            if self.num_noise is None:
+                # Adiciona número aleatório de nosie samples
+                noise_samples = choices(self.noise.noise, k=randint(1, len(self.noise.noise)))
+            else:
+                noise_samples = choices(self.noise.noise, k=self.num_noise)
+
+            for elem in noise_samples:
+                x, sr = librosa.load(elem, sr=self.sr, mono=self.mono)
+
+                if len(y) < len(x):
+                    idx = randint(len(y), len(x))
+                    y += x[idx-len(y):idx]
 
         y = librosa.util.frame(x=y,
                                frame_length=self.sr * self.window_length,
@@ -93,6 +128,9 @@ class AudioProcessor:
             self.max_length = y.shape[0]
 
         #print("max_length: " + str(self.max_length))
+
+    def setNoise(self, noise):
+        self.noise = noise
 
     def getMaxLength(self):
         return self.max_length

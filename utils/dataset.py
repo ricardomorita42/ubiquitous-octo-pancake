@@ -17,6 +17,21 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 from torch.nn.utils.rnn import pad_sequence
 
+class Noise:
+    def __init__(self, noise_csv):
+        if os.path.isfile(noise_csv):
+            self.noise = []
+            basepath = os.path.dirname(noise_csv)
+            print("Criando dataset de ruídos", noise_csv)
+
+            with open(noise_csv) as file:
+                csvreader = csv.reader(file)
+                for row in csvreader:
+                    fullpath = os.path.join(basepath, row[0])
+                    self.noise.append(fullpath)
+        else:
+            raise Exception("Arquivo dos ruídos não foi encontrado")
+
 class Dataset(Dataset):
     def __init__(self, ap, file_path):
         self.ap = ap
@@ -35,7 +50,7 @@ class Dataset(Dataset):
         dataset_config = os.path.splitext(self.filePath)[0] + "_dataset_config.json"
 
         if not os.path.isfile(saved_file) or not os.path.isfile(dataset_config) or \
-          not cmpDictExcept(jd.load(dataset_config)["ap"], self.ap.__dict__, ["max_length"]):
+          not cmpDictExcept(jd.load(dataset_config)["ap"], self.ap.__dict__, ["max_length", "noise"]):
             # Arquivo pré-processado não foi encontrado ou as configurações eram diferentes
 
             with open(self.filePath) as file:

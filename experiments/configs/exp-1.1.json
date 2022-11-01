@@ -10,12 +10,14 @@
         "n_mels": 40,
         "mono": false,
         "window_length": 4,
-        "step": 1
+        "step": 1,
+        "num_noise": 2
     },
     "dataset": {
         "train_csv": "SPIRA_Dataset_V2/metadata_train.csv",
         "test_csv": "SPIRA_Dataset_V2/metadata_test.csv",
-        "eval_csv": "SPIRA_Dataset_V2/metadata_eval.csv"
+        "eval_csv": "SPIRA_Dataset_V2/metadata_eval.csv",
+        "noise_csv": "Ruidos-Hospitalares/noise_data.csv"
     },
     "model_config": {
         "fc1_dim": 100,
