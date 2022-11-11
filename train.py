@@ -66,7 +66,7 @@ def test(dataloader, model, loss_fn, device):
     #print("\nloss function = ", type(loss_fn).__name__)
     #print("tam dataloader = ", len(dataloader))
     #print(f"rounds:{round}")
-    #print(f"Error: \n Avg loss: {test_loss:>8f}, Std dev: {test_std:>8f} \n")
+    print(f"Error: \n Avg loss: {test_loss:>8f}, Std dev: {test_std:>8f} \n")
 
     return test_loss, test_std
 
