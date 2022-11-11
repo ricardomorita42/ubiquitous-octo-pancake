@@ -12,6 +12,8 @@ from utils.generic import load_config
 from utils.tensorboard import TensorboardWriter
 from utils.get_params import get_loss, get_model, get_optimizer, get_scheduler
 
+import math
+
 # Não usados
 from unittest.util import _MAX_LENGTH
 from random import choice
@@ -35,46 +37,38 @@ def train(dataloader, model, loss_fn, optimizer, device):
         loss.backward()
         optimizer.step()
 
-    return train_loss/len(dataloader)
+    return train_loss / len(dataloader)
 
-def test(dataloader, model, loss_fn, device, acceptable_interval):
-    test_loss, test_acc = 0, 0
+def test(dataloader, model, loss_fn, device):
     errors = []
+    loss_list = []
 
     model.eval()
     with torch.no_grad():
         round = 0
         for features, targets in dataloader:
-            round += 1
             features, targets = features.to(device), targets.to(device)
             pred = model(features)
+            #print(f"round:{round}")
             #print("pred = ", pred.view(pred.size(0)))
             #print("targets = ", targets.view(targets.size(0)))
-            test_loss += loss_fn(pred, targets).item()
-            correct_items = 0.0
 
-            for x, y in zip(targets, pred):
-                error = y.item() - x.item()
-                errors.append(error)
-                #print("({}, {})".format(x.item(),y.item()),end=" ")
-                #print("c",(y + acceptable_interval <= x <= y - acceptable_interval))
-                if abs(error) <= acceptable_interval:
-                    #print("({}, {})".format(x.item(),y.item()),end=" ")
-                    correct_items += 1
+            loss = loss_fn(pred, targets).item() 
+            loss_list.append(loss)
 
-            test_acc += correct_items / len(pred)
-            #print(f"\nround:{round}")
             #print("total items:", len(pred))
-            #print("number of hits:", correct_items)
-            #print("hits/total items:", correct_items/len(pred))
+            round += 1
 
-    test_loss /= round
-    test_acc = 100*test_acc/round
-    test_std = np.std(errors)
+    #print("loss list = ", loss_list)
+    test_loss = np.mean(loss_list)
+    test_std = np.std(loss_list)
 
-    print(f"Error: \n Accuracy: {test_acc:>0.1f}%, Avg loss: {test_loss:>8f}, Std dev: {test_std:>8f} \n")
+    #print("\nloss function = ", type(loss_fn).__name__)
+    #print("tam dataloader = ", len(dataloader))
+    #print(f"rounds:{round}")
+    #print(f"Error: \n Avg loss: {test_loss:>8f}, Std dev: {test_std:>8f} \n")
 
-    return test_loss, test_acc, test_std
+    return test_loss, test_std
 
 def save_checkpoint(path, model, optimizer, epoch, val_loss):
     try:
@@ -130,12 +124,12 @@ if __name__ == '__main__':
     # Inicializa o writer para escrever logs compatíveis com o Tensorboard
     writer = TensorboardWriter(os.path.join(logs_dir, 'tensorboard'))
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cuda:1" if torch.cuda.is_available() else "cpu"
     print("device: ",device)
     ap = AudioProcessor(**c.audio)
 
     # Inicialização variáveis extras
-    acceptable_interval = float(c.train_config["acceptable_interval"])
+    #acceptable_interval = float(c.train_config["acceptable_interval"])
 
     # INICIALIZA MODELO E DATASETS =============================================
 
@@ -147,9 +141,9 @@ if __name__ == '__main__':
     loss_fn = get_loss(c.train_config["loss_fn"])
     optimizer = get_optimizer(c.train_config, model)
 
-    if torch.cuda.device_count() > 1:
-        print("Usando", torch.cuda.device_count(), "GPUs!")
-        model = nn.DataParallel(model)
+    #if torch.cuda.device_count() > 1:
+    #    print("Usando", torch.cuda.device_count(), "GPUs!")
+    #    model = nn.DataParallel(model)
 
     model.to(device)
 
@@ -167,13 +161,15 @@ if __name__ == '__main__':
 
     # TREINO / EPOCHS ==========================================================
 
+    best_epoch = 0
+
     while epoch < c.train_config['epochs']:
         print('========================================================================')
         print("Epoch %d" % epoch)
         print('========================================================================')
 
         train_loss = train(trainloader, model, loss_fn, optimizer, device)
-        val_loss, val_acc, val_std = test(valloader, model, loss_fn, device, acceptable_interval)
+        val_loss, val_std = test(valloader, model, loss_fn, device)
 
         if scheduler:
             scheduler.step()
@@ -182,10 +178,10 @@ if __name__ == '__main__':
 
         if epoch%c.train_config["summary_interval"] == 0:
             writer.log_train_loss(train_loss, epoch)
-            writer.log_val_loss_acc_std(val_loss, val_acc, val_std, epoch)
+            writer.log_val_loss_std(val_loss, val_std, epoch)
             print("Write summary at epoch", epoch)
             print(f'Avg. Train Loss: {train_loss:>8f}')
-            print(f'Avg. Val Loss: {val_loss:>8f} / Val Acc: {val_acc:>0.1f}% / Val std. dev: {val_std:>0.8}\n')
+            print(f'Avg. Val Loss: {val_loss:>8f} / Val std. dev: {val_std:>0.8}\n')
 
         if epoch%c.train_config["checkpoint_interval"] == 0:
             save_path = os.path.join(logs_dir, "checkpoint_%d.pt" % epoch)
@@ -206,6 +202,7 @@ if __name__ == '__main__':
             print("Saved loss: ", best_saved_loss, ", Actual loss:", val_loss)
             save_checkpoint(best_checkpoint_path, model, optimizer, epoch, val_loss)
             print("Salvou melhor checkpoint em", best_checkpoint_path)
+            best_epoch = epoch
 
     print("Done!\n")
 
@@ -224,8 +221,8 @@ if __name__ == '__main__':
     best_checkpoint_path = os.path.join(logs_dir, "best_checkpoint.pt")
     load_checkpoint(best_checkpoint_path, model, optimizer, device)
 
-    test_loss, test_acc, test_std = test(testloader, model, loss_fn, device,
-                                         acceptable_interval)
+    test_loss, test_std = test(testloader, model, loss_fn, device)
+    print("Best Epoch:",best_epoch)
 
     # d = Dataset(ap, c.dataset["train_csv"])
 
