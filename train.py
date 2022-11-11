@@ -39,6 +39,34 @@ def train(dataloader, model, loss_fn, optimizer, device):
 
     return train_loss / len(dataloader)
 
+def validate(dataloader, model, loss_fn, device):
+    errors = []
+    loss_list = []
+
+    model.eval()
+    with torch.no_grad():
+        for features, targets in dataloader:
+            features, targets = features.to(device), targets.to(device)
+            pred = model(features)
+            #print(f"round:{round}")
+            #print("pred = ", pred.view(pred.size(0)))
+            #print("targets = ", targets.view(targets.size(0)))
+
+            loss = loss_fn(pred, targets).item() 
+            loss_list.append(loss)
+
+            #print("total items:", len(pred))
+
+    #print("loss list = ", loss_list)
+    val_loss = np.mean(loss_list)
+
+    #print("\nloss function = ", type(loss_fn).__name__)
+    #print("tam dataloader = ", len(dataloader))
+    #print(f"rounds:{round}")
+    print(f"Error: \n Avg loss: {val_loss:>8f}\n")
+
+    return val_loss
+
 def test(dataloader, model, loss_fn, device):
     errors = []
     loss_list = []
@@ -68,7 +96,7 @@ def test(dataloader, model, loss_fn, device):
     #print(f"rounds:{round}")
     print(f"Error: \n Avg loss: {test_loss:>8f}, Std dev: {test_std:>8f} \n")
 
-    return test_loss, test_std
+    return test_loss, test_std, epoch
 
 def save_checkpoint(path, model, optimizer, epoch, val_loss):
     try:
@@ -161,15 +189,13 @@ if __name__ == '__main__':
 
     # TREINO / EPOCHS ==========================================================
 
-    best_epoch = 0
-
     while epoch < c.train_config['epochs']:
         print('========================================================================')
         print("Epoch %d" % epoch)
         print('========================================================================')
 
         train_loss = train(trainloader, model, loss_fn, optimizer, device)
-        val_loss, val_std = test(valloader, model, loss_fn, device)
+        val_loss = validate(valloader, model, loss_fn, device)
 
         if scheduler:
             scheduler.step()
@@ -178,10 +204,10 @@ if __name__ == '__main__':
 
         if epoch%c.train_config["summary_interval"] == 0:
             writer.log_train_loss(train_loss, epoch)
-            writer.log_val_loss_std(val_loss, val_std, epoch)
+            writer.log_val_loss(val_loss, epoch)
             print("Write summary at epoch", epoch)
             print(f'Avg. Train Loss: {train_loss:>8f}')
-            print(f'Avg. Val Loss: {val_loss:>8f} / Val std. dev: {val_std:>0.8}\n')
+            print(f'Avg. Val Loss: {val_loss:>8f}\n')
 
         if epoch%c.train_config["checkpoint_interval"] == 0:
             save_path = os.path.join(logs_dir, "checkpoint_%d.pt" % epoch)
@@ -202,7 +228,6 @@ if __name__ == '__main__':
             print("Saved loss: ", best_saved_loss, ", Actual loss:", val_loss)
             save_checkpoint(best_checkpoint_path, model, optimizer, epoch, val_loss)
             print("Salvou melhor checkpoint em", best_checkpoint_path)
-            best_epoch = epoch
 
     print("Done!\n")
 
@@ -221,8 +246,12 @@ if __name__ == '__main__':
     best_checkpoint_path = os.path.join(logs_dir, "best_checkpoint.pt")
     load_checkpoint(best_checkpoint_path, model, optimizer, device)
 
-    test_loss, test_std = test(testloader, model, loss_fn, device)
-    print("Best Epoch:",best_epoch)
+    test_loss, test_std, test_epoch = test(testloader, model, loss_fn, device)
+    #print(f'Avg. Test Loss: {test_loss:>8f} / Test std: {test_std:>8f}\n')
+    writer.log_test_loss_std(test_loss, test_std, epoch)
+    print(f'Avg. Test Loss: {test_loss:>8f}')
+    print(f'Avg. Test std dev: {test_std:>8f}\n')
+    print("Best Epoch:",test_epoch)
 
     # d = Dataset(ap, c.dataset["train_csv"])
 

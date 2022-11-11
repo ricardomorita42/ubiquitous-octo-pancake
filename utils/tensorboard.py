@@ -5,9 +5,11 @@ class TensorboardWriter(SummaryWriter):
         super(TensorboardWriter, self).__init__(logdir)
 
     def log_train_loss(self, train_loss, epoch):
-        self.add_scalar("Loss/train", train_loss, epoch)
+        self.add_scalar("Train Loss", train_loss, epoch)
 
-    def log_val_loss_std(self, val_loss, val_std, epoch):
-        self.add_scalar("Loss/val", val_loss, epoch)
-        #self.add_scalar("Acc/val", val_acc, epoch)
-        self.add_scalar("StdDev/val", val_std, epoch)
+    def log_val_loss(self, val_loss, epoch):
+        self.add_scalar("Valid. Loss", val_loss, epoch)
+
+    def log_test_loss_std(self, test_loss, test_std, epoch):
+        self.add_scalar("Test Loss", test_loss, epoch)
+        self.add_scalar("Test StdDev", test_std, epoch)
