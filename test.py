@@ -17,6 +17,8 @@ from utils.get_params import get_model
 
 def test(dataloader, model, device, loss_fn=None):
     feature_list, mse_loss_list, mae_loss_list = [], [], []
+    mse_under_92, mse_above_92 = [], []
+    mae_under_92, mae_above_92 = [], []
     mae_loss = nn.L1Loss()
     mse_loss = nn.MSELoss()
 
@@ -31,17 +33,40 @@ def test(dataloader, model, device, loss_fn=None):
 
             for x, y, feat in zip(targets, pred, features):
                 feature_list.append(feat)
-                mse_loss_list.append(mse_loss(y, x).item())
-                mae_loss_list.append(mae_loss(y, x).item())
+                temp_mse = mse_loss(y, x).item()
+                temp_mae = mae_loss(y, x).item()
+                mse_loss_list.append(temp_mse)
+                mae_loss_list.append(temp_mae)
 
+                if x >= 92:
+                    mse_above_92.append(temp_mse)
+                    mae_above_92.append(temp_mae)
+                else:
+                    mse_under_92.append(temp_mse)
+                    mae_under_92.append(temp_mae)
 
     mse_loss_mean = np.mean(mse_loss_list)
     mae_loss_mean = np.mean(mae_loss_list)
+    msea_loss_mean = np.mean(mse_above_92)
+    mseu_loss_mean = np.mean(mse_under_92)
+    maea_loss_mean = np.mean(mae_above_92)
+    maeu_loss_mean = np.mean(mae_under_92)
     mse_loss_std = np.std(mse_loss_list)
     mae_loss_std = np.std(mae_loss_list)
+    msea_loss_std = np.std(mse_above_92)
+    mseu_loss_std = np.std(mse_under_92)
+    maea_loss_std = np.std(mae_above_92)
+    maeu_loss_std = np.std(mae_under_92)
 
-    print(f"MAE - Error: \n Avg loss: {mae_loss_mean:>8f}, Std dev: {mae_loss_std:>8f} \n")
-    print(f"MSE - Error: \n Avg loss: {mse_loss_mean:>8f}, Std dev: {mse_loss_std:>8f} \n")
+    print(f"MAE - Error: \n \
+        Geral: Avg loss: {mae_loss_mean:>8f}, Std dev: {mae_loss_std:>8f} \n \
+        >= 92: Avg loss: {maea_loss_mean:>8f}, Std dev: {maea_loss_std:>8f} \n \
+        <  92: Avg loss: {maeu_loss_mean:>8f}, Std dev: {maeu_loss_std:>8f} \n")
+
+    print(f"MSE - Error: \n \
+        Geral: Avg loss: {mse_loss_mean:>8f}, Std dev: {mse_loss_std:>8f} \n \
+        >= 92: Avg loss: {msea_loss_mean:>8f}, Std dev: {msea_loss_std:>8f} \n \
+        <  92: Avg loss: {mseu_loss_mean:>8f}, Std dev: {mseu_loss_std:>8f} \n")
 
     if type(loss_fn).__name__ == "L1Loss":
         return mae_loss_mean, mae_loss_std
@@ -132,7 +157,7 @@ if __name__ == '__main__':
     load_checkpoint(checkpoint_path, model, device)
 
     print('========================================================================')
-    print("TEST SUMMARY")
+    print("TEST SUMMARY", args.config_path)
     print('========================================================================')
 
     # print("Model:", c.model_name)
