@@ -58,7 +58,13 @@ class AudioProcessor:
                                        n_fft=self.n_fft,
                                        n_mfcc=self.n_mfcc,
                                        n_mels=self.n_mels)
-
+        '''
+        feature = librosa.feature.melspectrogram(y=y, sr=self.sr,
+                                                 hop_length = self.hop_length,
+                                                 win_length = self.win_length,
+                                                 n_fft=self.n_fft,
+                                                 n_mels = self.n_mels)
+        '''
         return feature
 
     def wav2featureWindowing(self, audio_path):

@@ -13,12 +13,13 @@ from utils.tensorboard import TensorboardWriter
 from utils.get_params import get_loss, get_model, get_optimizer, get_scheduler
 
 import math
+import test as t
 
 # Não usados
 from unittest.util import _MAX_LENGTH
 from random import choice
 
-def train(dataloader, model, loss_fn, optimizer, device):
+def train(dataloader, model, loss_fn, optimizer, device, rmse_flag):
     train_loss = 0
 
     model.train()
@@ -30,6 +31,10 @@ def train(dataloader, model, loss_fn, optimizer, device):
         # print('Shape of pred:', pred.shape, 'type:', pred.dtype)
 
         loss = loss_fn(pred, targets)
+        
+        if rmse_flag == True:
+            loss = torch.sqrt(loss)
+
         train_loss += loss.item()
 
         # Backpropagation
@@ -39,7 +44,7 @@ def train(dataloader, model, loss_fn, optimizer, device):
 
     return train_loss / len(dataloader)
 
-def validate(dataloader, model, loss_fn, device):
+def validate(dataloader, model, loss_fn, device, rmse_flag):
     errors = []
     loss_list = []
 
@@ -53,6 +58,8 @@ def validate(dataloader, model, loss_fn, device):
             #print("targets = ", targets.view(targets.size(0)))
 
             loss = loss_fn(pred, targets).item() 
+            if rmse_flag == True:
+                loss = math.sqrt(loss)
             loss_list.append(loss)
 
             #print("total items:", len(pred))
@@ -66,37 +73,6 @@ def validate(dataloader, model, loss_fn, device):
     print(f"Error: \n Avg loss: {val_loss:>8f}\n")
 
     return val_loss
-
-def test(dataloader, model, loss_fn, device):
-    errors = []
-    loss_list = []
-
-    model.eval()
-    with torch.no_grad():
-        round = 0
-        for features, targets in dataloader:
-            features, targets = features.to(device), targets.to(device)
-            pred = model(features)
-            #print(f"round:{round}")
-            #print("pred = ", pred.view(pred.size(0)))
-            #print("targets = ", targets.view(targets.size(0)))
-
-            loss = loss_fn(pred, targets).item() 
-            loss_list.append(loss)
-
-            #print("total items:", len(pred))
-            round += 1
-
-    #print("loss list = ", loss_list)
-    test_loss = np.mean(loss_list)
-    test_std = np.std(loss_list)
-
-    #print("\nloss function = ", type(loss_fn).__name__)
-    #print("tam dataloader = ", len(dataloader))
-    #print(f"rounds:{round}")
-    print(f"Error: \n Avg loss: {test_loss:>8f}, Std dev: {test_std:>8f} \n")
-
-    return test_loss, test_std, epoch
 
 def save_checkpoint(path, model, optimizer, epoch, val_loss):
     try:
@@ -169,6 +145,10 @@ if __name__ == '__main__':
     loss_fn = get_loss(c.train_config["loss_fn"])
     optimizer = get_optimizer(c.train_config, model)
 
+    if c.train_config["loss_fn"] == "RMSE":
+        rmse_flag = True
+    else:
+        rmse_flag = False
     #if torch.cuda.device_count() > 1:
     #    print("Usando", torch.cuda.device_count(), "GPUs!")
     #    model = nn.DataParallel(model)
@@ -194,8 +174,8 @@ if __name__ == '__main__':
         print("Epoch %d" % epoch)
         print('========================================================================')
 
-        train_loss = train(trainloader, model, loss_fn, optimizer, device)
-        val_loss = validate(valloader, model, loss_fn, device)
+        train_loss = train(trainloader, model, loss_fn, optimizer, device, rmse_flag)
+        val_loss = validate(valloader, model, loss_fn, device, rmse_flag)
 
         if scheduler:
             scheduler.step()
@@ -232,8 +212,6 @@ if __name__ == '__main__':
     print("Done!\n")
 
     # Assegura de que todos tensorboard logs foram escritos e encerra ele
-    writer.flush()
-    writer.close()
 
     # save_path = os.path.join(logs_dir, "checkpoint_%d.pt" % epoch)
     # save_checkpoint(save_path, model, optimizer, epoch, val_loss)
@@ -246,12 +224,15 @@ if __name__ == '__main__':
     best_checkpoint_path = os.path.join(logs_dir, "best_checkpoint.pt")
     load_checkpoint(best_checkpoint_path, model, optimizer, device)
 
-    test_loss, test_std, test_epoch = test(testloader, model, loss_fn, device)
+    test_loss, test_std = t.test(testloader, model, loss_fn, device)
     #print(f'Avg. Test Loss: {test_loss:>8f} / Test std: {test_std:>8f}\n')
-    writer.log_test_loss_std(test_loss, test_std, epoch)
+    writer.add_text("avg difference",str(test_loss),0)
+    writer.add_text("avg std",str(test_std),1)
     print(f'Avg. Test Loss: {test_loss:>8f}')
     print(f'Avg. Test std dev: {test_std:>8f}\n')
-    print("Best Epoch:",test_epoch)
+
+    writer.flush()
+    writer.close()
 
     # d = Dataset(ap, c.dataset["train_csv"])
 

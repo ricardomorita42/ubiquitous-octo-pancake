@@ -137,3 +137,5 @@ if __name__ == '__main__':
     writer.add_text("avg std",str(test_std),1)
     print(f'Avg. Difference: {test_loss:>8f}')
     print(f'Avg. std dev: {test_std:>8f}\n')
+    writer.flush()
+    writer.close()
