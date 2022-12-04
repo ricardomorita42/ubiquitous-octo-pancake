@@ -145,10 +145,6 @@ if __name__ == '__main__':
     loss_fn = get_loss(c.train_config["loss_fn"])
     optimizer = get_optimizer(c.train_config, model)
 
-    if c.train_config["loss_fn"] == "RMSE":
-        rmse_flag = True
-    else:
-        rmse_flag = False
     #if torch.cuda.device_count() > 1:
     #    print("Usando", torch.cuda.device_count(), "GPUs!")
     #    model = nn.DataParallel(model)
@@ -168,6 +164,11 @@ if __name__ == '__main__':
     scheduler = get_scheduler(c.train_config, optimizer, epoch)
 
     # TREINO / EPOCHS ==========================================================
+    # Tentei adicionar RMSE no util/get_params.py mas não estava indo, então coloquei aqui
+    if c.train_config["loss_fn"] == "RMSE":
+        rmse_flag = True
+    else:
+        rmse_flag = False
 
     while epoch < c.train_config['epochs']:
         print('========================================================================')
@@ -224,12 +225,30 @@ if __name__ == '__main__':
     best_checkpoint_path = os.path.join(logs_dir, "best_checkpoint.pt")
     load_checkpoint(best_checkpoint_path, model, optimizer, device)
 
-    test_loss, test_std = t.test(testloader, model, loss_fn, device)
+    test_avg_diff, test_std, test_conf, relative_diff_list = t.test(testloader, model, loss_fn, device)
     #print(f'Avg. Test Loss: {test_loss:>8f} / Test std: {test_std:>8f}\n')
-    writer.add_text("avg difference",str(test_loss),0)
+
+    fig, ax = plt.subplots(tight_layout=True)
+    relative_error = pd.DataFrame(relative_diff_list, columns=['erro_relativo'])
+    relative_error.plot(kind='hist', density=True, bins=50, ax=ax)
+    relative_error.plot(style={'erro_relativo': 'k-'}, kind='kde', ax=ax)
+    ax.set_title(args.config_path.replace("experiments/configs/exp-","Exp ").replace(".json",""))
+    ax.set_ylabel('Amostras')
+    ax.set_xlabel('Erro relativo')
+    ax.set_xlim([-0.01, 0.15])
+    ax.get_legend().remove()
+    img_path = 'images/' + args.config_path.replace("experiments/configs/exp-","saida-").replace(".json",".png")
+    plt.savefig(img_path)
+
+    test_conf_str = ' '.join(test_conf)
+    writer.add_text("avg difference",str(test_avg_diff),0)
     writer.add_text("avg std",str(test_std),1)
-    print(f'Avg. Test Loss: {test_loss:>8f}')
+    writer.add_text("confusion matrix (TP,TN,FP,FN)",str(test_conf_str),2)
+
+    print(f'Avg. Test avg diff: {test_avg_diff:>8f}')
     print(f'Avg. Test std dev: {test_std:>8f}\n')
+    print(f"(TP,TN,FP,FN) em %:{test_conf[0]:0.2f},{test_conf[1]:0.2f},{test_conf[2]:0.2f},{test_conf[3]:0.2f}")
+    print("conf list:", test_conf_str)
 
     writer.flush()
     writer.close()

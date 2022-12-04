@@ -9,3 +9,6 @@ class TensorboardWriter(SummaryWriter):
 
     def log_val_loss(self, val_loss, epoch):
         self.add_scalar("Valid. Loss", val_loss, epoch)
+
+    def log_rel_diff(self, rel_diff, iter):
+        self.add_scalar("Rel. Difference", rel_diff, iter)

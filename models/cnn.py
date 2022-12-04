@@ -52,6 +52,7 @@ class SpiraConvV2(nn.Module):
         self.conv = nn.Sequential(*convs)
 
         # FC1
+        #inp = torch,zeros(1, 1, math.ceil(sr/hop_length*window_length), n_mels)
         inp = torch.zeros(1, 1, 100*self.audio["window_length"]+1, self.audio["n_mfcc"])
         toy_activation_shape = self.conv(inp).shape
         fc1_input_dim = toy_activation_shape[1]*toy_activation_shape[2]*toy_activation_shape[3]

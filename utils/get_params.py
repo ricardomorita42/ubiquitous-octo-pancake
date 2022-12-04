@@ -6,11 +6,6 @@ from utils.lr_scheduler import NoamLR
 from models.cnn import SpiraConvV2, CNN2
 from math import sqrt
 
-def RMSELoss():
-    def banana():
-        return MSELoss()
-    return banana
-
 def get_loss(loss_name):
     if loss_name == "MSE" or loss_name == "RMSE":
         return MSELoss()

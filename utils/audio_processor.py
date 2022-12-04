@@ -23,8 +23,9 @@ import numpy as np
 # situação mude.
 
 class AudioProcessor:
-    def __init__(self, sr, hop_length, win_length, n_fft, n_mfcc, n_mels, mono,
+    def __init__(self, feature,sr, hop_length, win_length, n_fft, n_mfcc, n_mels, mono,
                  window_length, step):
+        self.feature = feature
         self.sr = sr
         self.n_mfcc = n_mfcc
         self.hop_length = hop_length
@@ -90,7 +91,14 @@ class AudioProcessor:
                                      n_fft=self.n_fft,
                                      n_mfcc=self.n_mfcc,
                                      n_mels=self.n_mels))
-
+            '''
+            librosa.feature.melspectrogram(y=frame_y,
+                                           sr=self.sr, 
+                                           hop_length=self.hop_length,
+                                           win_length=self.win_length,
+                                           n_fft=self.n_fft,
+                                           n_mels=self.n_mels))
+            '''
         return feature
 
     def extractMaxLength(self, audio_path):

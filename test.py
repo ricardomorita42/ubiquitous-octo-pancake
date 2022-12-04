@@ -2,6 +2,8 @@ import argparse
 import torch
 import torch.nn as nn
 import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
 import os
 
 from utils.audio_processor import AudioProcessor
@@ -13,11 +15,14 @@ from utils.get_params import get_loss, get_model, get_optimizer, get_scheduler
 def test(dataloader, model, loss_fn, device):
     errors = []
     loss_list = []
+    relative_diff_list = []
 
     model.eval()
     with torch.no_grad():
-        #round = 0
+        round = 0
         diff_list = []
+        TP,TN,FP,FN = 0,0,0,0
+
         for features, targets in dataloader:
             features, targets = features.to(device), targets.to(device)
             pred = model(features)
@@ -29,11 +34,32 @@ def test(dataloader, model, loss_fn, device):
                 difference = np.abs(x.item() - y.item())
                 diff_list.append(difference)
 
+                writer.log_rel_diff(difference/x.item(),round)
+                relative_diff_list.append(difference/x.item())
+
+                #target é normal (T) (x.item() >= 92)
+                if (x.item() >= 92):        
+                    #pred disse que é normal(T) (y.item() >= 92)
+                    if (y.item() >= 92):
+                        TP += 1 
+                    #pred disse que é doente(F) (y.item() < 92)
+                    else:
+                        FP += 1
+
+                #target é doente(F) (x.item() < 92)
+                else:
+                    #pred disse que é normal(T) (y.item() >= 92)
+                    if (y.item() >= 92):
+                        FN += 1
+                    #pred disse que é doente(F) (y.item() < 92)
+                    else:
+                        TN += 1
+
             #loss = loss_fn(pred, targets).item() 
             #loss_list.append(loss)
 
             #print("total items:", len(pred))
-            #round += 1
+            round += 1
 
     #print("loss list = ", loss_list)
     #test_loss = np.mean(loss_list)
@@ -49,10 +75,21 @@ def test(dataloader, model, loss_fn, device):
     #print("tam dataloader = ", len(dataloader))
     #print(f"rounds:{round}")
     #print(f"Error: \n Avg loss: {test_loss:>8f}, Std dev: {test_std:>8f} \n")
-    print(f"Avg Difference: {diff_mean:>8f}, Std dev: {diff_std:>8f} \n")
+    #print(f"Avg Difference: {diff_mean:>8f}, Std dev: {diff_std:>8f} \n")
+    #print("relative diff list: ", relative_diff_list)
+
+    #print(f"(TP,TN,FP,FN):{TP},{TN},{FP},{FN}")
+    comparisons = TP+TN+FP+FN
+    TP_p = TP / comparisons * 100
+    TN_p = TN / comparisons * 100
+    FP_p = FP / comparisons * 100
+    FN_p = FN / comparisons * 100
+    #print(f"(TP,TN,FP,FN) em %:{TP_p:0.2f},{TN_p:0.2f},{FP_p:0.2f},{FN_p:0.2f}")
+
+    confusion_list = [TP_p, TN_p, FP_p, FN_p]
 
     #return test_loss, test_std
-    return np.mean(diff_list), np.std(diff_list)
+    return diff_mean, diff_std, confusion_list, relative_diff_list
 
 def load_checkpoint(path, model, optimizer, device):
     if os.path.isfile(path):
@@ -130,12 +167,33 @@ if __name__ == '__main__':
     best_checkpoint_path = os.path.join(logs_dir, "best_checkpoint.pt")
     load_checkpoint(best_checkpoint_path, model, optimizer, device)
 
-    test_loss, test_std = test(testloader, model, loss_fn, device)
+    test_loss, test_std, test_confusion_matrix, relative_diff_list = test(testloader, model, loss_fn, device)
     #print(f'Avg. Test Loss: {test_loss:>8f} / Test std: {test_std:>8f}\n')
     #writer.log_test_loss_std(test_loss, test_std, epoch)
+
+    fig, ax = plt.subplots(tight_layout=True)
+    relative_error = pd.DataFrame(relative_diff_list, columns=['erro_relativo'])
+    relative_error.plot(kind='hist', density=True, bins=50, ax=ax)
+    relative_error.plot(style={'erro_relativo': 'k-'}, kind='kde', ax=ax)
+    ax.set_title(args.config_path.replace("experiments/configs/exp-","Exp ").replace(".json",""))
+    ax.set_ylabel('Amostras')
+    ax.set_xlabel('Erro relativo')
+    ax.set_xlim([-0.01, 0.15])
+    ax.get_legend().remove()
+    img_path = 'images/' + args.config_path.replace("experiments/configs/exp-","saida-").replace(".json",".png")
+    plt.savefig(img_path)
+
+    test_confusion_str = ''
+    for number in test_confusion_matrix:
+        test_confusion_str = test_confusion_str + str(number) + ' '
+    test_confusion_str = test_confusion_str.rstrip()
+
     writer.add_text("avg difference",str(test_loss),0)
     writer.add_text("avg std",str(test_std),1)
+    writer.add_text("confusion matrix (TP,TN,FP,FN)",str(test_confusion_matrix),2)
     print(f'Avg. Difference: {test_loss:>8f}')
     print(f'Avg. std dev: {test_std:>8f}\n')
+    print("conf list:", test_confusion_str)
     writer.flush()
     writer.close()
+
