@@ -32,28 +32,29 @@ def test(dataloader, model, loss_fn, device):
             
             for x,y in zip(targets,pred):
                 difference = np.abs(x.item() - y.item())
+                brute_difference = x.item() - y.item()
                 diff_list.append(difference)
 
                 writer.log_rel_diff(difference/x.item(),round)
-                relative_diff_list.append(difference/x.item())
+                relative_diff_list.append(brute_difference/x.item())
 
-                #target é normal (T) (x.item() >= 92)
+                #target é normal (x.item() >= 92)
                 if (x.item() >= 92):        
-                    #pred disse que é normal(T) (y.item() >= 92)
+                    #pred disse que é normal (y.item() >= 92)
                     if (y.item() >= 92):
-                        TP += 1 
-                    #pred disse que é doente(F) (y.item() < 92)
+                        TN += 1 
+                    #pred disse que é doente (y.item() < 92)
                     else:
                         FP += 1
 
-                #target é doente(F) (x.item() < 92)
+                #target é doente (x.item() < 92)
                 else:
-                    #pred disse que é normal(T) (y.item() >= 92)
+                    #pred disse que é normal (y.item() >= 92)
                     if (y.item() >= 92):
                         FN += 1
-                    #pred disse que é doente(F) (y.item() < 92)
+                    #pred disse que é doente (y.item() < 92)
                     else:
-                        TN += 1
+                        TP += 1
 
             #loss = loss_fn(pred, targets).item() 
             #loss_list.append(loss)
@@ -190,7 +191,7 @@ if __name__ == '__main__':
 
     writer.add_text("avg difference",str(test_loss),0)
     writer.add_text("avg std",str(test_std),1)
-    writer.add_text("confusion matrix (TP,TN,FP,FN)",str(test_confusion_matrix),2)
+    writer.add_text("confusion matrix (TP,TN,FP,FN)",str(test_confusion_str),2)
     print(f'Avg. Difference: {test_loss:>8f}')
     print(f'Avg. std dev: {test_std:>8f}\n')
     print("conf list:", test_confusion_str)

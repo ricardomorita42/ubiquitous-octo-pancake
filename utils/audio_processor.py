@@ -92,12 +92,13 @@ class AudioProcessor:
                                      n_mfcc=self.n_mfcc,
                                      n_mels=self.n_mels))
             '''
-            librosa.feature.melspectrogram(y=frame_y,
-                                           sr=self.sr, 
-                                           hop_length=self.hop_length,
-                                           win_length=self.win_length,
-                                           n_fft=self.n_fft,
-                                           n_mels=self.n_mels))
+            feature.append(
+                librosa.feature.melspectrogram(y=frame_y,
+                                               sr=self.sr, 
+                                               hop_length=self.hop_length,
+                                               win_length=self.win_length,
+                                               n_fft=self.n_fft,
+                                               n_mels=self.n_mels))
             '''
         return feature
 
