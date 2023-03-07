@@ -28,3 +28,15 @@ Os dados foram obtidos de pacientes com suspeita de COVID no HC, e estão dispon
 - Conhecimentos importantes para o estudo:
   - Processamento de linguagem natural (PLN)
   - Tratamento de sinais (MFCC e espectrograma), Transformada de Fourier
+
+
+## Detalhes de implementação
+A divisão dos pacientes em teste/treinamento/validação estão na pasta SPIRA_Dataset_V2/. Estes ainda não estão processados para serem usados, usando o script em scripts/make_pacients.py podemos gerar os arquivos processados.
+
+Para rodar o código:
+1. Criar um arquivo de configuração ou usar um de experiments/configs/
+2. rodar train.py ou test.py de acordo com a operação desejada.
+
+Exemplos de como invocar testes/treinamentos podem ser vistos nos scripts run_train.sh ou run_test.sh
+
+	
