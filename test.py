@@ -22,6 +22,10 @@ def test(dataloader, model, loss_fn, device):
         round = 0
         diff_list = []
         TP,TN,FP,FN = 0,0,0,0
+        # numero de previsões corretas no indice 0, previsões erradas no indice 1
+        above94 = [0,0]
+        below90 = [0,0]
+        between = [0,0]
 
         for features, targets in dataloader:
             features, targets = features.to(device), targets.to(device)
@@ -35,7 +39,7 @@ def test(dataloader, model, loss_fn, device):
                 brute_difference = x.item() - y.item()
                 diff_list.append(difference)
 
-                writer.log_rel_diff(difference/x.item(),round)
+                writer.log_rel_diff(brute_difference/x.item(),round)
                 relative_diff_list.append(brute_difference/x.item())
 
                 #target é normal (x.item() >= 92)
@@ -55,6 +59,34 @@ def test(dataloader, model, loss_fn, device):
                     #pred disse que é doente (y.item() < 92)
                     else:
                         TP += 1
+
+                #estimando acerto em faixas
+                if (y.item() >= 94):      #pred maior que 94
+                    if (x.item() >= 92):  # paciente é saudável
+                        above94[0] += 1
+                    else:
+                        above94[1] += 1
+
+                elif (y.item() < 90):      #pred menor que 90
+                    if (x.item() <= 92):    # paciente é doente
+                        below90[0] += 1
+                    else:
+                        below90[1] += 1
+                
+                else: 
+                    if (y.item() >= 92):        
+                        if (x.item() >= 92):
+                            between[0] += 1 
+                        else:
+                            between[1] += 1
+
+                    else:
+                        if (y.item() < 92):
+                            between[0] += 1 
+                        else:
+                            between[1] += 1
+
+
 
             #loss = loss_fn(pred, targets).item() 
             #loss_list.append(loss)
@@ -90,7 +122,7 @@ def test(dataloader, model, loss_fn, device):
     confusion_list = [TP_p, TN_p, FP_p, FN_p]
 
     #return test_loss, test_std
-    return diff_mean, diff_std, confusion_list, relative_diff_list
+    return diff_mean, diff_std, confusion_list, relative_diff_list, above94, below90, between
 
 def load_checkpoint(path, model, optimizer, device):
     if os.path.isfile(path):
@@ -168,7 +200,7 @@ if __name__ == '__main__':
     best_checkpoint_path = os.path.join(logs_dir, "best_checkpoint.pt")
     load_checkpoint(best_checkpoint_path, model, optimizer, device)
 
-    test_loss, test_std, test_confusion_matrix, relative_diff_list = test(testloader, model, loss_fn, device)
+    test_loss, test_std, test_confusion_matrix, relative_diff_list, above94,below90,between = test(testloader, model, loss_fn, device)
     #print(f'Avg. Test Loss: {test_loss:>8f} / Test std: {test_std:>8f}\n')
     #writer.log_test_loss_std(test_loss, test_std, epoch)
 
@@ -192,9 +224,15 @@ if __name__ == '__main__':
     writer.add_text("avg difference",str(test_loss),0)
     writer.add_text("avg std",str(test_std),1)
     writer.add_text("confusion matrix (TP,TN,FP,FN)",str(test_confusion_str),2)
+    writer.add_text("above94",str(above94),3)
+    writer.add_text("abelow90",str(below90),4)
+    writer.add_text("abetween",str(between),5)
     print(f'Avg. Difference: {test_loss:>8f}')
     print(f'Avg. std dev: {test_std:>8f}\n')
     print("conf list:", test_confusion_str)
+    print("above94",str(above94))
+    print("below90",str(below90))
+    print("between",str(between))
     writer.flush()
     writer.close()
 

@@ -1,0 +1,247 @@
+exp 1 
+	lr: 1e-3
+	loss_fn: MSE
+	scheduler: Noam
+
+exp 2
+	lr: 1e-2
+	loss_fn: MSE
+	scheduler: Noam
+	
+exp 3
+	lr: 1e-4
+	loss_fn: MSE
+	scheduler: Noam
+
+exp 4
+	lr: 5e-6
+	loss_fn: MSE
+	scheduler: None
+
+exp 5
+	lr: 1e-5
+	loss_fn: MSE
+	scheduler: None
+
+exp 6
+	lr: 5e-6
+	loss_fn: MSE
+	scheduler: Noam
+
+exp 7
+	lr: 1e-5
+	loss_fn: MSE
+	scheduler: Noam
+
+exp 8 
+	lr: 1e-3
+	loss_fn: MSE
+	scheduler: None
+
+exp 9
+	lr: 1e-2
+	loss_fn: MSE
+	scheduler: None
+	
+exp 10
+	lr: 1e-4
+	loss_fn: MSE
+	scheduler: None
+
+exp 11
+	lr: 1e-3
+	loss_fn: MAE
+	scheduler: Noam
+
+exp 12
+	lr: 1e-2
+	loss_fn: MAE
+	scheduler: Noam
+	
+exp 13
+	lr: 1e-4
+	loss_fn: MAE
+	scheduler: Noam
+
+exp 14
+	lr: 5e-6
+	loss_fn: MAE
+	scheduler: None
+
+exp 15
+	lr: 1e-5
+	loss_fn: MAE
+	scheduler: None
+
+exp 16
+	lr: 5e-6
+	loss_fn: MAE
+	scheduler: Noam
+
+exp 17
+	lr: 1e-5
+	loss_fn: MAE
+	scheduler: Noam
+
+exp 18 
+	lr: 1e-3
+	loss_fn: MAE
+	scheduler: None
+
+exp 19
+	lr: 1e-2
+	loss_fn: MAE
+	scheduler: None
+	
+exp 20
+	lr: 1e-4
+	loss_fn: MAE
+	scheduler: None
+
+exp 21 
+	lr: 1e-3
+	loss_fn: MSE
+	scheduler: Noam
+	fc1_dim: 200
+
+exp 22
+	lr: 1e-3
+	loss_fn: MSE
+	scheduler: Noam
+	fc1_dim: 50
+
+exp 23
+	lr: 1e-3
+	loss_fn: MSE
+	scheduler: Noam
+	optimizer: AdamW
+	
+exp 24
+	lr: 1e-3
+	loss_fn: MSE
+	scheduler: Noam
+	optimizer: RMS
+	
+exp 25
+	melspectrogram em vez de mfcc
+	
+exp 26
+	weight decay 0.1
+
+exp 27
+	weight decay 0.2
+
+exp 28
+	weight decay 0.05
+	epochs 500
+
+exp 29
+	lr: 1e-4
+	loss_fn: MSE
+	Schedule: Noam
+	epoch: 500
+	batch: 10
+
+exp 30
+	lr: 1e-3
+	loss_fn: MAE
+	scheduler: Noam
+	epoch: 500
+	batch: 10
+	
+exp 31
+	lr: 1e-4
+	loss_fn: MAE
+	scheduler: Noam
+	epoch: 500
+	batch: 10
+	
+exp 32
+	lr: 5e-6
+	loss_fn: MAE
+	scheduler: None
+	epoch: 500
+	batch: 10
+exp 33
+	lr: 1e-4
+	loss_fn: MAE
+	scheduler: None
+	epoch: 500
+	batch: 10
+	
+exp 34
+	lr: 1e-4
+	loss_fn: MSE
+	Schedule: Noam
+	epoch: 500
+	Metade dos números de dados
+
+exp 35
+	lr: 1e-3
+	loss_fn: MAE
+	scheduler: Noam
+	epoch: 500
+	Metade dos números de dados
+	
+exp 36
+	lr: 1e-4
+	loss_fn: MAE
+	scheduler: Noam
+	epoch: 500
+	Metade dos números de dados
+	
+exp 37
+	lr: 5e-6
+	loss_fn: MAE
+	scheduler: None
+	epoch: 500
+	Metade dos números de dados
+
+exp 38
+	exp 20
+	lr: 1e-4
+	loss_fn: MAE
+	scheduler: None
+	epoch: 500	
+	Metade dos números de dados
+	
+exp 39
+	lr: 1e-4
+	loss_fn: MSE
+	Schedule: Noam
+	epoch: 500
+	batch: 10
+	Metade dos números de dados
+
+exp 40
+	lr: 1e-3
+	loss_fn: MAE
+	scheduler: Noam
+	epoch: 500
+	batch: 10
+	Metade dos números de dados
+	
+exp 41
+	lr: 1e-4
+	loss_fn: MAE
+	scheduler: Noam
+	epoch: 500
+	batch: 10
+	Metade dos números de dados
+	
+exp 42
+	lr: 5e-6
+	loss_fn: MAE
+	scheduler: None
+	epoch: 500
+	batch: 10
+	Metade dos números de dados
+
+exp 43
+	exp 20
+	lr: 1e-4
+	loss_fn: MAE
+	scheduler: None
+	epoch: 500
+	batch: 10
+	Metade dos números de dados

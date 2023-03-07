@@ -2,6 +2,7 @@
 
     "model_name": "SpiraConvV2",
     "audio": {
+	"feature": "MFCC",
         "sr": 16000,
         "hop_length": 160,
         "win_length": 400,

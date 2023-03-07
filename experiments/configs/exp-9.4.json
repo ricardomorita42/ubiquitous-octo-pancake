@@ -1,0 +1,40 @@
+{
+
+    "model_name": "SpiraConvV2",
+    "audio": {
+	"feature": "MFCC",
+        "sr": 16000,
+        "hop_length": 160,
+        "win_length": 400,
+        "n_fft": 1200,
+        "n_mfcc": 40,
+        "n_mels": 40,
+        "mono": false,
+        "window_length": 4,
+        "step": 1
+    },
+    "dataset": {
+        "train_csv": "SPIRA_Dataset_V2/metadata_train.csv",
+        "test_csv": "SPIRA_Dataset_V2/metadata_test.csv",
+        "eval_csv": "SPIRA_Dataset_V2/metadata_eval.csv"
+    },
+    "model_config": {
+        "fc1_dim": 100,
+        "fc2_dim": 1
+    },
+    "train_config": {
+        "optimizer": "Adam",
+        "loss_fn": "MSE",
+        "scheduler": "None",
+        "warmup_steps": 10,
+        "epochs": 1000,
+        "lr": 1e-2,
+        "weight_decay": 0.01,
+        "logs_dir": "checkpoints/exp-9.4/",
+        "checkpoint_interval": 50,
+        "summary_interval": 2,
+        "batch_size": 5,
+        "num_workers": 4,
+        "acceptable_interval": 5
+    }
+}

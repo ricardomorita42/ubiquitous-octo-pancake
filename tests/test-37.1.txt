@@ -1,0 +1,4229 @@
+device:  cuda:1
+Arquivo recebido: SPIRA_Dataset_V2/metadata_train_half.csv
+Arquivo pré-processado encontrado: SPIRA_Dataset_V2/metadata_train_half_processed.json
+Carregando este arquivo...
+Arquivo recebido: SPIRA_Dataset_V2/metadata_eval.csv
+Arquivo pré-processado encontrado: SPIRA_Dataset_V2/metadata_eval_processed.json
+Carregando este arquivo...
+Arquivo recebido: SPIRA_Dataset_V2/metadata_test.csv
+Arquivo pré-processado encontrado: SPIRA_Dataset_V2/metadata_test_processed.json
+Carregando este arquivo...
+========================================================================
+Epoch 0
+========================================================================
+Error: 
+ Avg loss: 92.503295
+
+Não existe melhor checkpoint ou falhou na leitura
+Saved loss:  9999999 , Actual loss: 92.50329483387083
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 1
+========================================================================
+Error: 
+ Avg loss: 92.478848
+
+Write summary at epoch 2
+Avg. Train Loss: 93.832826
+Avg. Val Loss: 92.478848
+
+Saved loss:  92.50329483387083 , Actual loss: 92.4788484795149
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 2
+========================================================================
+Error: 
+ Avg loss: 92.446434
+
+Saved loss:  92.4788484795149 , Actual loss: 92.4464340209961
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 3
+========================================================================
+Error: 
+ Avg loss: 92.403150
+
+Write summary at epoch 4
+Avg. Train Loss: 93.772882
+Avg. Val Loss: 92.403150
+
+Saved loss:  92.4464340209961 , Actual loss: 92.40314998183139
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 4
+========================================================================
+Error: 
+ Avg loss: 92.351087
+
+Saved loss:  92.40314998183139 , Actual loss: 92.35108681612236
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 5
+========================================================================
+Error: 
+ Avg loss: 92.289893
+
+Write summary at epoch 6
+Avg. Train Loss: 93.677314
+Avg. Val Loss: 92.289893
+
+Saved loss:  92.35108681612236 , Actual loss: 92.28989303943723
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 6
+========================================================================
+Error: 
+ Avg loss: 92.215828
+
+Saved loss:  92.28989303943723 , Actual loss: 92.21582811932231
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 7
+========================================================================
+Error: 
+ Avg loss: 92.131575
+
+Write summary at epoch 8
+Avg. Train Loss: 93.540049
+Avg. Val Loss: 92.131575
+
+Saved loss:  92.21582811932231 , Actual loss: 92.1315751186637
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 8
+========================================================================
+Error: 
+ Avg loss: 92.032849
+
+Saved loss:  92.1315751186637 , Actual loss: 92.03284933400708
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 9
+========================================================================
+Error: 
+ Avg loss: 91.918710
+
+Write summary at epoch 10
+Avg. Train Loss: 93.372111
+Avg. Val Loss: 91.918710
+
+Saved loss:  92.03284933400708 , Actual loss: 91.91871022069176
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 10
+========================================================================
+Error: 
+ Avg loss: 91.779584
+
+Saved loss:  91.91871022069176 , Actual loss: 91.77958448543104
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 11
+========================================================================
+Error: 
+ Avg loss: 91.618169
+
+Write summary at epoch 12
+Avg. Train Loss: 93.150187
+Avg. Val Loss: 91.618169
+
+Saved loss:  91.77958448543104 , Actual loss: 91.61816867562227
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 12
+========================================================================
+Error: 
+ Avg loss: 91.421606
+
+Saved loss:  91.61816867562227 , Actual loss: 91.42160584205804
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 13
+========================================================================
+Error: 
+ Avg loss: 91.194680
+
+Write summary at epoch 14
+Avg. Train Loss: 92.882398
+Avg. Val Loss: 91.194680
+
+Saved loss:  91.42160584205804 , Actual loss: 91.1946801473928
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 14
+========================================================================
+Error: 
+ Avg loss: 90.924306
+
+Saved loss:  91.1946801473928 , Actual loss: 90.92430593801099
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 15
+========================================================================
+Error: 
+ Avg loss: 90.632900
+
+Write summary at epoch 16
+Avg. Train Loss: 92.582896
+Avg. Val Loss: 90.632900
+
+Saved loss:  90.92430593801099 , Actual loss: 90.63289979446766
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 16
+========================================================================
+Error: 
+ Avg loss: 90.350742
+
+Saved loss:  90.63289979446766 , Actual loss: 90.35074207394622
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 17
+========================================================================
+Error: 
+ Avg loss: 90.076409
+
+Write summary at epoch 18
+Avg. Train Loss: 92.246855
+Avg. Val Loss: 90.076409
+
+Saved loss:  90.35074207394622 , Actual loss: 90.07640874108603
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 18
+========================================================================
+Error: 
+ Avg loss: 89.799719
+
+Saved loss:  90.07640874108603 , Actual loss: 89.79971863502679
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 19
+========================================================================
+Error: 
+ Avg loss: 89.515039
+
+Write summary at epoch 20
+Avg. Train Loss: 91.858754
+Avg. Val Loss: 89.515039
+
+Saved loss:  89.79971863502679 , Actual loss: 89.5150391334711
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 20
+========================================================================
+Error: 
+ Avg loss: 89.216185
+
+Saved loss:  89.5150391334711 , Actual loss: 89.21618457173192
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 21
+========================================================================
+Error: 
+ Avg loss: 88.886202
+
+Write summary at epoch 22
+Avg. Train Loss: 91.371658
+Avg. Val Loss: 88.886202
+
+Saved loss:  89.21618457173192 , Actual loss: 88.8862024351608
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 22
+========================================================================
+Error: 
+ Avg loss: 88.543756
+
+Saved loss:  88.8862024351608 , Actual loss: 88.54375635191451
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 23
+========================================================================
+Error: 
+ Avg loss: 88.159873
+
+Write summary at epoch 24
+Avg. Train Loss: 90.844665
+Avg. Val Loss: 88.159873
+
+Saved loss:  88.54375635191451 , Actual loss: 88.15987307526345
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 24
+========================================================================
+Error: 
+ Avg loss: 87.750403
+
+Saved loss:  88.15987307526345 , Actual loss: 87.7504031159157
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 25
+========================================================================
+Error: 
+ Avg loss: 87.317664
+
+Write summary at epoch 26
+Avg. Train Loss: 90.304728
+Avg. Val Loss: 87.317664
+
+Saved loss:  87.7504031159157 , Actual loss: 87.31766421295876
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 26
+========================================================================
+Error: 
+ Avg loss: 86.830229
+
+Saved loss:  87.31766421295876 , Actual loss: 86.83022893861283
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 27
+========================================================================
+Error: 
+ Avg loss: 86.315917
+
+Write summary at epoch 28
+Avg. Train Loss: 89.705772
+Avg. Val Loss: 86.315917
+
+Saved loss:  86.83022893861283 , Actual loss: 86.3159170816111
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 28
+========================================================================
+Error: 
+ Avg loss: 85.762908
+
+Saved loss:  86.3159170816111 , Actual loss: 85.76290840326354
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 29
+========================================================================
+Error: 
+ Avg loss: 85.183804
+
+Write summary at epoch 30
+Avg. Train Loss: 88.938129
+Avg. Val Loss: 85.183804
+
+Saved loss:  85.76290840326354 , Actual loss: 85.18380417934684
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 30
+========================================================================
+Error: 
+ Avg loss: 84.545937
+
+Saved loss:  85.18380417934684 , Actual loss: 84.545937116756
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 31
+========================================================================
+Error: 
+ Avg loss: 83.868201
+
+Write summary at epoch 32
+Avg. Train Loss: 88.113358
+Avg. Val Loss: 83.868201
+
+Saved loss:  84.545937116756 , Actual loss: 83.86820149976154
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 32
+========================================================================
+Error: 
+ Avg loss: 83.154852
+
+Saved loss:  83.86820149976154 , Actual loss: 83.15485204652299
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 33
+========================================================================
+Error: 
+ Avg loss: 82.380417
+
+Write summary at epoch 34
+Avg. Train Loss: 87.164805
+Avg. Val Loss: 82.380417
+
+Saved loss:  83.15485204652299 , Actual loss: 82.38041651526163
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 34
+========================================================================
+Error: 
+ Avg loss: 81.587455
+
+Saved loss:  82.38041651526163 , Actual loss: 81.58745539465616
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 35
+========================================================================
+Error: 
+ Avg loss: 80.744670
+
+Write summary at epoch 36
+Avg. Train Loss: 86.239638
+Avg. Val Loss: 80.744670
+
+Saved loss:  81.58745539465616 , Actual loss: 80.7446702469227
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 36
+========================================================================
+Error: 
+ Avg loss: 79.857287
+
+Saved loss:  80.7446702469227 , Actual loss: 79.85728738474292
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 37
+========================================================================
+Error: 
+ Avg loss: 78.951310
+
+Write summary at epoch 38
+Avg. Train Loss: 85.122434
+Avg. Val Loss: 78.951310
+
+Saved loss:  79.85728738474292 , Actual loss: 78.95131009124046
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 38
+========================================================================
+Error: 
+ Avg loss: 77.996283
+
+Saved loss:  78.95131009124046 , Actual loss: 77.9962825331577
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 39
+========================================================================
+Error: 
+ Avg loss: 77.020589
+
+Write summary at epoch 40
+Avg. Train Loss: 83.853771
+Avg. Val Loss: 77.020589
+
+Saved loss:  77.9962825331577 , Actual loss: 77.02058889699536
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 40
+========================================================================
+Error: 
+ Avg loss: 75.997707
+
+Saved loss:  77.02058889699536 , Actual loss: 75.99770692337391
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 41
+========================================================================
+Error: 
+ Avg loss: 74.923409
+
+Write summary at epoch 42
+Avg. Train Loss: 82.072394
+Avg. Val Loss: 74.923409
+
+Saved loss:  75.99770692337391 , Actual loss: 74.9234092180119
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 42
+========================================================================
+Error: 
+ Avg loss: 73.813743
+
+Saved loss:  74.9234092180119 , Actual loss: 73.81374252674192
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 43
+========================================================================
+Error: 
+ Avg loss: 72.680620
+
+Write summary at epoch 44
+Avg. Train Loss: 80.260880
+Avg. Val Loss: 72.680620
+
+Saved loss:  73.81374252674192 , Actual loss: 72.68062041526618
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 44
+========================================================================
+Error: 
+ Avg loss: 71.517506
+
+Saved loss:  72.68062041526618 , Actual loss: 71.51750555703806
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 45
+========================================================================
+Error: 
+ Avg loss: 70.332633
+
+Write summary at epoch 46
+Avg. Train Loss: 78.186077
+Avg. Val Loss: 70.332633
+
+Saved loss:  71.51750555703806 , Actual loss: 70.33263255274574
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 46
+========================================================================
+Error: 
+ Avg loss: 69.096706
+
+Saved loss:  70.33263255274574 , Actual loss: 69.09670550324196
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 47
+========================================================================
+Error: 
+ Avg loss: 67.825024
+
+Write summary at epoch 48
+Avg. Train Loss: 75.730506
+Avg. Val Loss: 67.825024
+
+Saved loss:  69.09670550324196 , Actual loss: 67.82502427212027
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 48
+========================================================================
+Error: 
+ Avg loss: 66.496160
+
+Saved loss:  67.82502427212027 , Actual loss: 66.49616028541742
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 49
+========================================================================
+Error: 
+ Avg loss: 65.129410
+
+Write summary at epoch 50
+Avg. Train Loss: 73.332671
+Avg. Val Loss: 65.129410
+
+Salvou checkpoint em checkpoints/exp-37.1/checkpoint_50.pt
+Saved loss:  66.49616028541742 , Actual loss: 65.12941023360851
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 50
+========================================================================
+Error: 
+ Avg loss: 63.681767
+
+Saved loss:  65.12941023360851 , Actual loss: 63.681766510009766
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 51
+========================================================================
+Error: 
+ Avg loss: 62.171873
+
+Write summary at epoch 52
+Avg. Train Loss: 70.094782
+Avg. Val Loss: 62.171873
+
+Saved loss:  63.681766510009766 , Actual loss: 62.17187313700831
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 52
+========================================================================
+Error: 
+ Avg loss: 60.615362
+
+Saved loss:  62.17187313700831 , Actual loss: 60.61536221171534
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 53
+========================================================================
+Error: 
+ Avg loss: 59.002077
+
+Write summary at epoch 54
+Avg. Train Loss: 67.326133
+Avg. Val Loss: 59.002077
+
+Saved loss:  60.61536221171534 , Actual loss: 59.00207670344863
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 54
+========================================================================
+Error: 
+ Avg loss: 57.367454
+
+Saved loss:  59.00207670344863 , Actual loss: 57.367454351380815
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 55
+========================================================================
+Error: 
+ Avg loss: 55.659040
+
+Write summary at epoch 56
+Avg. Train Loss: 64.412525
+Avg. Val Loss: 55.659040
+
+Saved loss:  57.367454351380815 , Actual loss: 55.65904040669286
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 56
+========================================================================
+Error: 
+ Avg loss: 53.862376
+
+Saved loss:  55.65904040669286 , Actual loss: 53.86237574732581
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 57
+========================================================================
+Error: 
+ Avg loss: 51.998151
+
+Write summary at epoch 58
+Avg. Train Loss: 60.264018
+Avg. Val Loss: 51.998151
+
+Saved loss:  53.86237574732581 , Actual loss: 51.99815102510674
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 58
+========================================================================
+Error: 
+ Avg loss: 50.109315
+
+Saved loss:  51.99815102510674 , Actual loss: 50.1093152955521
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 59
+========================================================================
+Error: 
+ Avg loss: 48.168151
+
+Write summary at epoch 60
+Avg. Train Loss: 56.936547
+Avg. Val Loss: 48.168151
+
+Saved loss:  50.1093152955521 , Actual loss: 48.1681514118993
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 60
+========================================================================
+Error: 
+ Avg loss: 46.163822
+
+Saved loss:  48.1681514118993 , Actual loss: 46.16382155307504
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 61
+========================================================================
+Error: 
+ Avg loss: 44.100683
+
+Write summary at epoch 62
+Avg. Train Loss: 52.841023
+Avg. Val Loss: 44.100683
+
+Saved loss:  46.16382155307504 , Actual loss: 44.10068272435388
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 62
+========================================================================
+Error: 
+ Avg loss: 41.967163
+
+Saved loss:  44.10068272435388 , Actual loss: 41.96716273108194
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 63
+========================================================================
+Error: 
+ Avg loss: 39.799096
+
+Write summary at epoch 64
+Avg. Train Loss: 48.758517
+Avg. Val Loss: 39.799096
+
+Saved loss:  41.96716273108194 , Actual loss: 39.799096484516944
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 64
+========================================================================
+Error: 
+ Avg loss: 37.558307
+
+Saved loss:  39.799096484516944 , Actual loss: 37.55830662749534
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 65
+========================================================================
+Error: 
+ Avg loss: 35.282502
+
+Write summary at epoch 66
+Avg. Train Loss: 44.494326
+Avg. Val Loss: 35.282502
+
+Saved loss:  37.55830662749534 , Actual loss: 35.28250228526981
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 66
+========================================================================
+Error: 
+ Avg loss: 32.925908
+
+Saved loss:  35.28250228526981 , Actual loss: 32.92590780036394
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 67
+========================================================================
+Error: 
+ Avg loss: 30.502611
+
+Write summary at epoch 68
+Avg. Train Loss: 39.041112
+Avg. Val Loss: 30.502611
+
+Saved loss:  32.92590780036394 , Actual loss: 30.50261142641999
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 68
+========================================================================
+Error: 
+ Avg loss: 28.058554
+
+Saved loss:  30.50261142641999 , Actual loss: 28.058553828749545
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 69
+========================================================================
+Error: 
+ Avg loss: 25.586686
+
+Write summary at epoch 70
+Avg. Train Loss: 33.856366
+Avg. Val Loss: 25.586686
+
+Saved loss:  28.058553828749545 , Actual loss: 25.586685579876566
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 70
+========================================================================
+Error: 
+ Avg loss: 23.143112
+
+Saved loss:  25.586685579876566 , Actual loss: 23.143112138260243
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 71
+========================================================================
+Error: 
+ Avg loss: 20.795914
+
+Write summary at epoch 72
+Avg. Train Loss: 29.493764
+Avg. Val Loss: 20.795914
+
+Saved loss:  23.143112138260243 , Actual loss: 20.795913718467535
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 72
+========================================================================
+Error: 
+ Avg loss: 18.478346
+
+Saved loss:  20.795913718467535 , Actual loss: 18.478346092756404
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 73
+========================================================================
+Error: 
+ Avg loss: 16.259316
+
+Write summary at epoch 74
+Avg. Train Loss: 25.828391
+Avg. Val Loss: 16.259316
+
+Saved loss:  18.478346092756404 , Actual loss: 16.259315645971963
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 74
+========================================================================
+Error: 
+ Avg loss: 14.115786
+
+Saved loss:  16.259315645971963 , Actual loss: 14.115785654201064
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 75
+========================================================================
+Error: 
+ Avg loss: 12.261792
+
+Write summary at epoch 76
+Avg. Train Loss: 22.398868
+Avg. Val Loss: 12.261792
+
+Saved loss:  14.115785654201064 , Actual loss: 12.261792160743891
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 76
+========================================================================
+Error: 
+ Avg loss: 10.466027
+
+Saved loss:  12.261792160743891 , Actual loss: 10.4660270269527
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 77
+========================================================================
+Error: 
+ Avg loss: 8.783754
+
+Write summary at epoch 78
+Avg. Train Loss: 20.560130
+Avg. Val Loss: 8.783754
+
+Saved loss:  10.4660270269527 , Actual loss: 8.783753578052965
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 78
+========================================================================
+Error: 
+ Avg loss: 7.433765
+
+Saved loss:  8.783753578052965 , Actual loss: 7.433765182661456
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 79
+========================================================================
+Error: 
+ Avg loss: 6.273627
+
+Write summary at epoch 80
+Avg. Train Loss: 19.320248
+Avg. Val Loss: 6.273627
+
+Saved loss:  7.433765182661456 , Actual loss: 6.273627428121345
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 80
+========================================================================
+Error: 
+ Avg loss: 5.274550
+
+Saved loss:  6.273627428121345 , Actual loss: 5.274549958664317
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 81
+========================================================================
+Error: 
+ Avg loss: 4.545662
+
+Write summary at epoch 82
+Avg. Train Loss: 18.585660
+Avg. Val Loss: 4.545662
+
+Saved loss:  5.274549958664317 , Actual loss: 4.5456616892371065
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 82
+========================================================================
+Error: 
+ Avg loss: 3.925225
+
+Saved loss:  4.5456616892371065 , Actual loss: 3.9252253566370454
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 83
+========================================================================
+Error: 
+ Avg loss: 3.269522
+
+Write summary at epoch 84
+Avg. Train Loss: 18.322424
+Avg. Val Loss: 3.269522
+
+Saved loss:  3.9252253566370454 , Actual loss: 3.2695221332616584
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 84
+========================================================================
+Error: 
+ Avg loss: 2.794157
+
+Saved loss:  3.2695221332616584 , Actual loss: 2.794156726449728
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 85
+========================================================================
+Error: 
+ Avg loss: 2.467434
+
+Write summary at epoch 86
+Avg. Train Loss: 17.667750
+Avg. Val Loss: 2.467434
+
+Saved loss:  2.794156726449728 , Actual loss: 2.467434293655462
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 86
+========================================================================
+Error: 
+ Avg loss: 2.341912
+
+Saved loss:  2.467434293655462 , Actual loss: 2.3419122084282167
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 87
+========================================================================
+Error: 
+ Avg loss: 2.323258
+
+Write summary at epoch 88
+Avg. Train Loss: 18.190894
+Avg. Val Loss: 2.323258
+
+Saved loss:  2.3419122084282167 , Actual loss: 2.323257592874904
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 88
+========================================================================
+Error: 
+ Avg loss: 2.346010
+
+========================================================================
+Epoch 89
+========================================================================
+Error: 
+ Avg loss: 2.424333
+
+Write summary at epoch 90
+Avg. Train Loss: 17.998601
+Avg. Val Loss: 2.424333
+
+========================================================================
+Epoch 90
+========================================================================
+Error: 
+ Avg loss: 2.442519
+
+========================================================================
+Epoch 91
+========================================================================
+Error: 
+ Avg loss: 2.475921
+
+Write summary at epoch 92
+Avg. Train Loss: 17.913096
+Avg. Val Loss: 2.475921
+
+========================================================================
+Epoch 92
+========================================================================
+Error: 
+ Avg loss: 2.488472
+
+========================================================================
+Epoch 93
+========================================================================
+Error: 
+ Avg loss: 2.545623
+
+Write summary at epoch 94
+Avg. Train Loss: 17.447538
+Avg. Val Loss: 2.545623
+
+========================================================================
+Epoch 94
+========================================================================
+Error: 
+ Avg loss: 2.669487
+
+========================================================================
+Epoch 95
+========================================================================
+Error: 
+ Avg loss: 2.624508
+
+Write summary at epoch 96
+Avg. Train Loss: 17.835861
+Avg. Val Loss: 2.624508
+
+========================================================================
+Epoch 96
+========================================================================
+Error: 
+ Avg loss: 2.742343
+
+========================================================================
+Epoch 97
+========================================================================
+Error: 
+ Avg loss: 2.895416
+
+Write summary at epoch 98
+Avg. Train Loss: 17.323645
+Avg. Val Loss: 2.895416
+
+========================================================================
+Epoch 98
+========================================================================
+Error: 
+ Avg loss: 2.951095
+
+========================================================================
+Epoch 99
+========================================================================
+Error: 
+ Avg loss: 2.974605
+
+Write summary at epoch 100
+Avg. Train Loss: 17.642025
+Avg. Val Loss: 2.974605
+
+Salvou checkpoint em checkpoints/exp-37.1/checkpoint_100.pt
+========================================================================
+Epoch 100
+========================================================================
+Error: 
+ Avg loss: 3.063237
+
+========================================================================
+Epoch 101
+========================================================================
+Error: 
+ Avg loss: 3.095317
+
+Write summary at epoch 102
+Avg. Train Loss: 17.217126
+Avg. Val Loss: 3.095317
+
+========================================================================
+Epoch 102
+========================================================================
+Error: 
+ Avg loss: 3.041971
+
+========================================================================
+Epoch 103
+========================================================================
+Error: 
+ Avg loss: 3.008571
+
+Write summary at epoch 104
+Avg. Train Loss: 17.925989
+Avg. Val Loss: 3.008571
+
+========================================================================
+Epoch 104
+========================================================================
+Error: 
+ Avg loss: 3.051466
+
+========================================================================
+Epoch 105
+========================================================================
+Error: 
+ Avg loss: 3.002677
+
+Write summary at epoch 106
+Avg. Train Loss: 17.379642
+Avg. Val Loss: 3.002677
+
+========================================================================
+Epoch 106
+========================================================================
+Error: 
+ Avg loss: 3.067935
+
+========================================================================
+Epoch 107
+========================================================================
+Error: 
+ Avg loss: 2.942091
+
+Write summary at epoch 108
+Avg. Train Loss: 18.152760
+Avg. Val Loss: 2.942091
+
+========================================================================
+Epoch 108
+========================================================================
+Error: 
+ Avg loss: 2.942884
+
+========================================================================
+Epoch 109
+========================================================================
+Error: 
+ Avg loss: 2.941897
+
+Write summary at epoch 110
+Avg. Train Loss: 17.690432
+Avg. Val Loss: 2.941897
+
+========================================================================
+Epoch 110
+========================================================================
+Error: 
+ Avg loss: 2.920642
+
+========================================================================
+Epoch 111
+========================================================================
+Error: 
+ Avg loss: 2.898743
+
+Write summary at epoch 112
+Avg. Train Loss: 17.692267
+Avg. Val Loss: 2.898743
+
+========================================================================
+Epoch 112
+========================================================================
+Error: 
+ Avg loss: 2.938701
+
+========================================================================
+Epoch 113
+========================================================================
+Error: 
+ Avg loss: 3.012260
+
+Write summary at epoch 114
+Avg. Train Loss: 18.254358
+Avg. Val Loss: 3.012260
+
+========================================================================
+Epoch 114
+========================================================================
+Error: 
+ Avg loss: 2.883460
+
+========================================================================
+Epoch 115
+========================================================================
+Error: 
+ Avg loss: 2.879320
+
+Write summary at epoch 116
+Avg. Train Loss: 17.232101
+Avg. Val Loss: 2.879320
+
+========================================================================
+Epoch 116
+========================================================================
+Error: 
+ Avg loss: 2.865931
+
+========================================================================
+Epoch 117
+========================================================================
+Error: 
+ Avg loss: 2.852311
+
+Write summary at epoch 118
+Avg. Train Loss: 17.263845
+Avg. Val Loss: 2.852311
+
+========================================================================
+Epoch 118
+========================================================================
+Error: 
+ Avg loss: 2.928418
+
+========================================================================
+Epoch 119
+========================================================================
+Error: 
+ Avg loss: 2.907982
+
+Write summary at epoch 120
+Avg. Train Loss: 17.756142
+Avg. Val Loss: 2.907982
+
+========================================================================
+Epoch 120
+========================================================================
+Error: 
+ Avg loss: 2.825338
+
+========================================================================
+Epoch 121
+========================================================================
+Error: 
+ Avg loss: 2.646397
+
+Write summary at epoch 122
+Avg. Train Loss: 17.466910
+Avg. Val Loss: 2.646397
+
+========================================================================
+Epoch 122
+========================================================================
+Error: 
+ Avg loss: 2.610291
+
+========================================================================
+Epoch 123
+========================================================================
+Error: 
+ Avg loss: 2.695634
+
+Write summary at epoch 124
+Avg. Train Loss: 17.582978
+Avg. Val Loss: 2.695634
+
+========================================================================
+Epoch 124
+========================================================================
+Error: 
+ Avg loss: 2.658915
+
+========================================================================
+Epoch 125
+========================================================================
+Error: 
+ Avg loss: 2.574909
+
+Write summary at epoch 126
+Avg. Train Loss: 17.654867
+Avg. Val Loss: 2.574909
+
+========================================================================
+Epoch 126
+========================================================================
+Error: 
+ Avg loss: 2.649122
+
+========================================================================
+Epoch 127
+========================================================================
+Error: 
+ Avg loss: 2.701202
+
+Write summary at epoch 128
+Avg. Train Loss: 17.845790
+Avg. Val Loss: 2.701202
+
+========================================================================
+Epoch 128
+========================================================================
+Error: 
+ Avg loss: 2.772263
+
+========================================================================
+Epoch 129
+========================================================================
+Error: 
+ Avg loss: 2.810284
+
+Write summary at epoch 130
+Avg. Train Loss: 16.433140
+Avg. Val Loss: 2.810284
+
+========================================================================
+Epoch 130
+========================================================================
+Error: 
+ Avg loss: 2.810474
+
+========================================================================
+Epoch 131
+========================================================================
+Error: 
+ Avg loss: 2.793355
+
+Write summary at epoch 132
+Avg. Train Loss: 17.666099
+Avg. Val Loss: 2.793355
+
+========================================================================
+Epoch 132
+========================================================================
+Error: 
+ Avg loss: 2.664271
+
+========================================================================
+Epoch 133
+========================================================================
+Error: 
+ Avg loss: 2.662615
+
+Write summary at epoch 134
+Avg. Train Loss: 18.158119
+Avg. Val Loss: 2.662615
+
+========================================================================
+Epoch 134
+========================================================================
+Error: 
+ Avg loss: 2.757208
+
+========================================================================
+Epoch 135
+========================================================================
+Error: 
+ Avg loss: 2.785643
+
+Write summary at epoch 136
+Avg. Train Loss: 17.527549
+Avg. Val Loss: 2.785643
+
+========================================================================
+Epoch 136
+========================================================================
+Error: 
+ Avg loss: 2.847679
+
+========================================================================
+Epoch 137
+========================================================================
+Error: 
+ Avg loss: 2.806054
+
+Write summary at epoch 138
+Avg. Train Loss: 17.241356
+Avg. Val Loss: 2.806054
+
+========================================================================
+Epoch 138
+========================================================================
+Error: 
+ Avg loss: 2.730449
+
+========================================================================
+Epoch 139
+========================================================================
+Error: 
+ Avg loss: 2.751290
+
+Write summary at epoch 140
+Avg. Train Loss: 17.800312
+Avg. Val Loss: 2.751290
+
+========================================================================
+Epoch 140
+========================================================================
+Error: 
+ Avg loss: 2.814102
+
+========================================================================
+Epoch 141
+========================================================================
+Error: 
+ Avg loss: 2.778634
+
+Write summary at epoch 142
+Avg. Train Loss: 17.238110
+Avg. Val Loss: 2.778634
+
+========================================================================
+Epoch 142
+========================================================================
+Error: 
+ Avg loss: 2.750956
+
+========================================================================
+Epoch 143
+========================================================================
+Error: 
+ Avg loss: 2.776836
+
+Write summary at epoch 144
+Avg. Train Loss: 17.143519
+Avg. Val Loss: 2.776836
+
+========================================================================
+Epoch 144
+========================================================================
+Error: 
+ Avg loss: 2.646561
+
+========================================================================
+Epoch 145
+========================================================================
+Error: 
+ Avg loss: 2.717010
+
+Write summary at epoch 146
+Avg. Train Loss: 17.940872
+Avg. Val Loss: 2.717010
+
+========================================================================
+Epoch 146
+========================================================================
+Error: 
+ Avg loss: 2.681707
+
+========================================================================
+Epoch 147
+========================================================================
+Error: 
+ Avg loss: 2.716463
+
+Write summary at epoch 148
+Avg. Train Loss: 17.015271
+Avg. Val Loss: 2.716463
+
+========================================================================
+Epoch 148
+========================================================================
+Error: 
+ Avg loss: 2.757840
+
+========================================================================
+Epoch 149
+========================================================================
+Error: 
+ Avg loss: 2.734558
+
+Write summary at epoch 150
+Avg. Train Loss: 16.468575
+Avg. Val Loss: 2.734558
+
+Salvou checkpoint em checkpoints/exp-37.1/checkpoint_150.pt
+========================================================================
+Epoch 150
+========================================================================
+Error: 
+ Avg loss: 2.791639
+
+========================================================================
+Epoch 151
+========================================================================
+Error: 
+ Avg loss: 2.751320
+
+Write summary at epoch 152
+Avg. Train Loss: 17.105561
+Avg. Val Loss: 2.751320
+
+========================================================================
+Epoch 152
+========================================================================
+Error: 
+ Avg loss: 2.608295
+
+========================================================================
+Epoch 153
+========================================================================
+Error: 
+ Avg loss: 2.544762
+
+Write summary at epoch 154
+Avg. Train Loss: 17.093333
+Avg. Val Loss: 2.544762
+
+========================================================================
+Epoch 154
+========================================================================
+Error: 
+ Avg loss: 2.603064
+
+========================================================================
+Epoch 155
+========================================================================
+Error: 
+ Avg loss: 2.668822
+
+Write summary at epoch 156
+Avg. Train Loss: 16.726542
+Avg. Val Loss: 2.668822
+
+========================================================================
+Epoch 156
+========================================================================
+Error: 
+ Avg loss: 2.654456
+
+========================================================================
+Epoch 157
+========================================================================
+Error: 
+ Avg loss: 2.544992
+
+Write summary at epoch 158
+Avg. Train Loss: 17.080067
+Avg. Val Loss: 2.544992
+
+========================================================================
+Epoch 158
+========================================================================
+Error: 
+ Avg loss: 2.513662
+
+========================================================================
+Epoch 159
+========================================================================
+Error: 
+ Avg loss: 2.514765
+
+Write summary at epoch 160
+Avg. Train Loss: 17.578284
+Avg. Val Loss: 2.514765
+
+========================================================================
+Epoch 160
+========================================================================
+Error: 
+ Avg loss: 2.507199
+
+========================================================================
+Epoch 161
+========================================================================
+Error: 
+ Avg loss: 2.553770
+
+Write summary at epoch 162
+Avg. Train Loss: 17.544083
+Avg. Val Loss: 2.553770
+
+========================================================================
+Epoch 162
+========================================================================
+Error: 
+ Avg loss: 2.637337
+
+========================================================================
+Epoch 163
+========================================================================
+Error: 
+ Avg loss: 2.600099
+
+Write summary at epoch 164
+Avg. Train Loss: 17.851206
+Avg. Val Loss: 2.600099
+
+========================================================================
+Epoch 164
+========================================================================
+Error: 
+ Avg loss: 2.658594
+
+========================================================================
+Epoch 165
+========================================================================
+Error: 
+ Avg loss: 2.623265
+
+Write summary at epoch 166
+Avg. Train Loss: 17.663557
+Avg. Val Loss: 2.623265
+
+========================================================================
+Epoch 166
+========================================================================
+Error: 
+ Avg loss: 2.681472
+
+========================================================================
+Epoch 167
+========================================================================
+Error: 
+ Avg loss: 2.706877
+
+Write summary at epoch 168
+Avg. Train Loss: 17.437462
+Avg. Val Loss: 2.706877
+
+========================================================================
+Epoch 168
+========================================================================
+Error: 
+ Avg loss: 2.655015
+
+========================================================================
+Epoch 169
+========================================================================
+Error: 
+ Avg loss: 2.630214
+
+Write summary at epoch 170
+Avg. Train Loss: 17.364436
+Avg. Val Loss: 2.630214
+
+========================================================================
+Epoch 170
+========================================================================
+Error: 
+ Avg loss: 2.646394
+
+========================================================================
+Epoch 171
+========================================================================
+Error: 
+ Avg loss: 2.615576
+
+Write summary at epoch 172
+Avg. Train Loss: 16.899970
+Avg. Val Loss: 2.615576
+
+========================================================================
+Epoch 172
+========================================================================
+Error: 
+ Avg loss: 2.724652
+
+========================================================================
+Epoch 173
+========================================================================
+Error: 
+ Avg loss: 2.688277
+
+Write summary at epoch 174
+Avg. Train Loss: 17.869847
+Avg. Val Loss: 2.688277
+
+========================================================================
+Epoch 174
+========================================================================
+Error: 
+ Avg loss: 2.671320
+
+========================================================================
+Epoch 175
+========================================================================
+Error: 
+ Avg loss: 2.659649
+
+Write summary at epoch 176
+Avg. Train Loss: 17.162807
+Avg. Val Loss: 2.659649
+
+========================================================================
+Epoch 176
+========================================================================
+Error: 
+ Avg loss: 2.671089
+
+========================================================================
+Epoch 177
+========================================================================
+Error: 
+ Avg loss: 2.632569
+
+Write summary at epoch 178
+Avg. Train Loss: 17.026471
+Avg. Val Loss: 2.632569
+
+========================================================================
+Epoch 178
+========================================================================
+Error: 
+ Avg loss: 2.603494
+
+========================================================================
+Epoch 179
+========================================================================
+Error: 
+ Avg loss: 2.657176
+
+Write summary at epoch 180
+Avg. Train Loss: 17.208469
+Avg. Val Loss: 2.657176
+
+========================================================================
+Epoch 180
+========================================================================
+Error: 
+ Avg loss: 2.636259
+
+========================================================================
+Epoch 181
+========================================================================
+Error: 
+ Avg loss: 2.729506
+
+Write summary at epoch 182
+Avg. Train Loss: 16.440569
+Avg. Val Loss: 2.729506
+
+========================================================================
+Epoch 182
+========================================================================
+Error: 
+ Avg loss: 2.615627
+
+========================================================================
+Epoch 183
+========================================================================
+Error: 
+ Avg loss: 2.597756
+
+Write summary at epoch 184
+Avg. Train Loss: 17.542208
+Avg. Val Loss: 2.597756
+
+========================================================================
+Epoch 184
+========================================================================
+Error: 
+ Avg loss: 2.659653
+
+========================================================================
+Epoch 185
+========================================================================
+Error: 
+ Avg loss: 2.703871
+
+Write summary at epoch 186
+Avg. Train Loss: 17.622862
+Avg. Val Loss: 2.703871
+
+========================================================================
+Epoch 186
+========================================================================
+Error: 
+ Avg loss: 2.764587
+
+========================================================================
+Epoch 187
+========================================================================
+Error: 
+ Avg loss: 2.753626
+
+Write summary at epoch 188
+Avg. Train Loss: 16.522758
+Avg. Val Loss: 2.753626
+
+========================================================================
+Epoch 188
+========================================================================
+Error: 
+ Avg loss: 2.741470
+
+========================================================================
+Epoch 189
+========================================================================
+Error: 
+ Avg loss: 2.599207
+
+Write summary at epoch 190
+Avg. Train Loss: 16.779163
+Avg. Val Loss: 2.599207
+
+========================================================================
+Epoch 190
+========================================================================
+Error: 
+ Avg loss: 2.558107
+
+========================================================================
+Epoch 191
+========================================================================
+Error: 
+ Avg loss: 2.732210
+
+Write summary at epoch 192
+Avg. Train Loss: 17.809599
+Avg. Val Loss: 2.732210
+
+========================================================================
+Epoch 192
+========================================================================
+Error: 
+ Avg loss: 2.675492
+
+========================================================================
+Epoch 193
+========================================================================
+Error: 
+ Avg loss: 2.645333
+
+Write summary at epoch 194
+Avg. Train Loss: 17.585028
+Avg. Val Loss: 2.645333
+
+========================================================================
+Epoch 194
+========================================================================
+Error: 
+ Avg loss: 2.754066
+
+========================================================================
+Epoch 195
+========================================================================
+Error: 
+ Avg loss: 2.655599
+
+Write summary at epoch 196
+Avg. Train Loss: 17.086170
+Avg. Val Loss: 2.655599
+
+========================================================================
+Epoch 196
+========================================================================
+Error: 
+ Avg loss: 2.588437
+
+========================================================================
+Epoch 197
+========================================================================
+Error: 
+ Avg loss: 2.674456
+
+Write summary at epoch 198
+Avg. Train Loss: 17.591124
+Avg. Val Loss: 2.674456
+
+========================================================================
+Epoch 198
+========================================================================
+Error: 
+ Avg loss: 2.678254
+
+========================================================================
+Epoch 199
+========================================================================
+Error: 
+ Avg loss: 2.560305
+
+Write summary at epoch 200
+Avg. Train Loss: 17.954406
+Avg. Val Loss: 2.560305
+
+Salvou checkpoint em checkpoints/exp-37.1/checkpoint_200.pt
+========================================================================
+Epoch 200
+========================================================================
+Error: 
+ Avg loss: 2.617440
+
+========================================================================
+Epoch 201
+========================================================================
+Error: 
+ Avg loss: 2.609360
+
+Write summary at epoch 202
+Avg. Train Loss: 17.112948
+Avg. Val Loss: 2.609360
+
+========================================================================
+Epoch 202
+========================================================================
+Error: 
+ Avg loss: 2.603862
+
+========================================================================
+Epoch 203
+========================================================================
+Error: 
+ Avg loss: 2.631522
+
+Write summary at epoch 204
+Avg. Train Loss: 16.637390
+Avg. Val Loss: 2.631522
+
+========================================================================
+Epoch 204
+========================================================================
+Error: 
+ Avg loss: 2.575348
+
+========================================================================
+Epoch 205
+========================================================================
+Error: 
+ Avg loss: 2.649342
+
+Write summary at epoch 206
+Avg. Train Loss: 17.228755
+Avg. Val Loss: 2.649342
+
+========================================================================
+Epoch 206
+========================================================================
+Error: 
+ Avg loss: 2.673206
+
+========================================================================
+Epoch 207
+========================================================================
+Error: 
+ Avg loss: 2.684816
+
+Write summary at epoch 208
+Avg. Train Loss: 17.124728
+Avg. Val Loss: 2.684816
+
+========================================================================
+Epoch 208
+========================================================================
+Error: 
+ Avg loss: 2.606360
+
+========================================================================
+Epoch 209
+========================================================================
+Error: 
+ Avg loss: 2.582669
+
+Write summary at epoch 210
+Avg. Train Loss: 17.687335
+Avg. Val Loss: 2.582669
+
+========================================================================
+Epoch 210
+========================================================================
+Error: 
+ Avg loss: 2.591794
+
+========================================================================
+Epoch 211
+========================================================================
+Error: 
+ Avg loss: 2.487019
+
+Write summary at epoch 212
+Avg. Train Loss: 17.306393
+Avg. Val Loss: 2.487019
+
+========================================================================
+Epoch 212
+========================================================================
+Error: 
+ Avg loss: 2.439191
+
+========================================================================
+Epoch 213
+========================================================================
+Error: 
+ Avg loss: 2.452098
+
+Write summary at epoch 214
+Avg. Train Loss: 17.503742
+Avg. Val Loss: 2.452098
+
+========================================================================
+Epoch 214
+========================================================================
+Error: 
+ Avg loss: 2.479934
+
+========================================================================
+Epoch 215
+========================================================================
+Error: 
+ Avg loss: 2.536628
+
+Write summary at epoch 216
+Avg. Train Loss: 17.270963
+Avg. Val Loss: 2.536628
+
+========================================================================
+Epoch 216
+========================================================================
+Error: 
+ Avg loss: 2.498159
+
+========================================================================
+Epoch 217
+========================================================================
+Error: 
+ Avg loss: 2.511005
+
+Write summary at epoch 218
+Avg. Train Loss: 17.143136
+Avg. Val Loss: 2.511005
+
+========================================================================
+Epoch 218
+========================================================================
+Error: 
+ Avg loss: 2.445841
+
+========================================================================
+Epoch 219
+========================================================================
+Error: 
+ Avg loss: 2.475082
+
+Write summary at epoch 220
+Avg. Train Loss: 17.170196
+Avg. Val Loss: 2.475082
+
+========================================================================
+Epoch 220
+========================================================================
+Error: 
+ Avg loss: 2.470866
+
+========================================================================
+Epoch 221
+========================================================================
+Error: 
+ Avg loss: 2.517435
+
+Write summary at epoch 222
+Avg. Train Loss: 16.307999
+Avg. Val Loss: 2.517435
+
+========================================================================
+Epoch 222
+========================================================================
+Error: 
+ Avg loss: 2.483487
+
+========================================================================
+Epoch 223
+========================================================================
+Error: 
+ Avg loss: 2.462450
+
+Write summary at epoch 224
+Avg. Train Loss: 16.743538
+Avg. Val Loss: 2.462450
+
+========================================================================
+Epoch 224
+========================================================================
+Error: 
+ Avg loss: 2.429236
+
+========================================================================
+Epoch 225
+========================================================================
+Error: 
+ Avg loss: 2.463218
+
+Write summary at epoch 226
+Avg. Train Loss: 17.257306
+Avg. Val Loss: 2.463218
+
+========================================================================
+Epoch 226
+========================================================================
+Error: 
+ Avg loss: 2.455172
+
+========================================================================
+Epoch 227
+========================================================================
+Error: 
+ Avg loss: 2.437285
+
+Write summary at epoch 228
+Avg. Train Loss: 16.972889
+Avg. Val Loss: 2.437285
+
+========================================================================
+Epoch 228
+========================================================================
+Error: 
+ Avg loss: 2.420085
+
+========================================================================
+Epoch 229
+========================================================================
+Error: 
+ Avg loss: 2.451826
+
+Write summary at epoch 230
+Avg. Train Loss: 17.291869
+Avg. Val Loss: 2.451826
+
+========================================================================
+Epoch 230
+========================================================================
+Error: 
+ Avg loss: 2.457325
+
+========================================================================
+Epoch 231
+========================================================================
+Error: 
+ Avg loss: 2.429998
+
+Write summary at epoch 232
+Avg. Train Loss: 17.371685
+Avg. Val Loss: 2.429998
+
+========================================================================
+Epoch 232
+========================================================================
+Error: 
+ Avg loss: 2.474462
+
+========================================================================
+Epoch 233
+========================================================================
+Error: 
+ Avg loss: 2.485462
+
+Write summary at epoch 234
+Avg. Train Loss: 17.438602
+Avg. Val Loss: 2.485462
+
+========================================================================
+Epoch 234
+========================================================================
+Error: 
+ Avg loss: 2.468043
+
+========================================================================
+Epoch 235
+========================================================================
+Error: 
+ Avg loss: 2.467683
+
+Write summary at epoch 236
+Avg. Train Loss: 16.418594
+Avg. Val Loss: 2.467683
+
+========================================================================
+Epoch 236
+========================================================================
+Error: 
+ Avg loss: 2.467299
+
+========================================================================
+Epoch 237
+========================================================================
+Error: 
+ Avg loss: 2.524687
+
+Write summary at epoch 238
+Avg. Train Loss: 16.597148
+Avg. Val Loss: 2.524687
+
+========================================================================
+Epoch 238
+========================================================================
+Error: 
+ Avg loss: 2.485759
+
+========================================================================
+Epoch 239
+========================================================================
+Error: 
+ Avg loss: 2.475839
+
+Write summary at epoch 240
+Avg. Train Loss: 16.885356
+Avg. Val Loss: 2.475839
+
+========================================================================
+Epoch 240
+========================================================================
+Error: 
+ Avg loss: 2.498999
+
+========================================================================
+Epoch 241
+========================================================================
+Error: 
+ Avg loss: 2.481492
+
+Write summary at epoch 242
+Avg. Train Loss: 16.642121
+Avg. Val Loss: 2.481492
+
+========================================================================
+Epoch 242
+========================================================================
+Error: 
+ Avg loss: 2.493338
+
+========================================================================
+Epoch 243
+========================================================================
+Error: 
+ Avg loss: 2.477822
+
+Write summary at epoch 244
+Avg. Train Loss: 16.123791
+Avg. Val Loss: 2.477822
+
+========================================================================
+Epoch 244
+========================================================================
+Error: 
+ Avg loss: 2.499447
+
+========================================================================
+Epoch 245
+========================================================================
+Error: 
+ Avg loss: 2.564235
+
+Write summary at epoch 246
+Avg. Train Loss: 17.355697
+Avg. Val Loss: 2.564235
+
+========================================================================
+Epoch 246
+========================================================================
+Error: 
+ Avg loss: 2.490702
+
+========================================================================
+Epoch 247
+========================================================================
+Error: 
+ Avg loss: 2.462121
+
+Write summary at epoch 248
+Avg. Train Loss: 17.034758
+Avg. Val Loss: 2.462121
+
+========================================================================
+Epoch 248
+========================================================================
+Error: 
+ Avg loss: 2.432981
+
+========================================================================
+Epoch 249
+========================================================================
+Error: 
+ Avg loss: 2.453167
+
+Write summary at epoch 250
+Avg. Train Loss: 17.115194
+Avg. Val Loss: 2.453167
+
+Salvou checkpoint em checkpoints/exp-37.1/checkpoint_250.pt
+========================================================================
+Epoch 250
+========================================================================
+Error: 
+ Avg loss: 2.485430
+
+========================================================================
+Epoch 251
+========================================================================
+Error: 
+ Avg loss: 2.495311
+
+Write summary at epoch 252
+Avg. Train Loss: 17.437921
+Avg. Val Loss: 2.495311
+
+========================================================================
+Epoch 252
+========================================================================
+Error: 
+ Avg loss: 2.539316
+
+========================================================================
+Epoch 253
+========================================================================
+Error: 
+ Avg loss: 2.486963
+
+Write summary at epoch 254
+Avg. Train Loss: 17.038463
+Avg. Val Loss: 2.486963
+
+========================================================================
+Epoch 254
+========================================================================
+Error: 
+ Avg loss: 2.550214
+
+========================================================================
+Epoch 255
+========================================================================
+Error: 
+ Avg loss: 2.619195
+
+Write summary at epoch 256
+Avg. Train Loss: 17.360509
+Avg. Val Loss: 2.619195
+
+========================================================================
+Epoch 256
+========================================================================
+Error: 
+ Avg loss: 2.568398
+
+========================================================================
+Epoch 257
+========================================================================
+Error: 
+ Avg loss: 2.592877
+
+Write summary at epoch 258
+Avg. Train Loss: 17.235523
+Avg. Val Loss: 2.592877
+
+========================================================================
+Epoch 258
+========================================================================
+Error: 
+ Avg loss: 2.505588
+
+========================================================================
+Epoch 259
+========================================================================
+Error: 
+ Avg loss: 2.516657
+
+Write summary at epoch 260
+Avg. Train Loss: 18.023152
+Avg. Val Loss: 2.516657
+
+========================================================================
+Epoch 260
+========================================================================
+Error: 
+ Avg loss: 2.546850
+
+========================================================================
+Epoch 261
+========================================================================
+Error: 
+ Avg loss: 2.536393
+
+Write summary at epoch 262
+Avg. Train Loss: 17.367634
+Avg. Val Loss: 2.536393
+
+========================================================================
+Epoch 262
+========================================================================
+Error: 
+ Avg loss: 2.518883
+
+========================================================================
+Epoch 263
+========================================================================
+Error: 
+ Avg loss: 2.527271
+
+Write summary at epoch 264
+Avg. Train Loss: 16.616908
+Avg. Val Loss: 2.527271
+
+========================================================================
+Epoch 264
+========================================================================
+Error: 
+ Avg loss: 2.557921
+
+========================================================================
+Epoch 265
+========================================================================
+Error: 
+ Avg loss: 2.512218
+
+Write summary at epoch 266
+Avg. Train Loss: 17.000109
+Avg. Val Loss: 2.512218
+
+========================================================================
+Epoch 266
+========================================================================
+Error: 
+ Avg loss: 2.470722
+
+========================================================================
+Epoch 267
+========================================================================
+Error: 
+ Avg loss: 2.441847
+
+Write summary at epoch 268
+Avg. Train Loss: 17.276214
+Avg. Val Loss: 2.441847
+
+========================================================================
+Epoch 268
+========================================================================
+Error: 
+ Avg loss: 2.428273
+
+========================================================================
+Epoch 269
+========================================================================
+Error: 
+ Avg loss: 2.419245
+
+Write summary at epoch 270
+Avg. Train Loss: 16.541900
+Avg. Val Loss: 2.419245
+
+========================================================================
+Epoch 270
+========================================================================
+Error: 
+ Avg loss: 2.412762
+
+========================================================================
+Epoch 271
+========================================================================
+Error: 
+ Avg loss: 2.355383
+
+Write summary at epoch 272
+Avg. Train Loss: 17.430818
+Avg. Val Loss: 2.355383
+
+========================================================================
+Epoch 272
+========================================================================
+Error: 
+ Avg loss: 2.391850
+
+========================================================================
+Epoch 273
+========================================================================
+Error: 
+ Avg loss: 2.408056
+
+Write summary at epoch 274
+Avg. Train Loss: 17.158507
+Avg. Val Loss: 2.408056
+
+========================================================================
+Epoch 274
+========================================================================
+Error: 
+ Avg loss: 2.383390
+
+========================================================================
+Epoch 275
+========================================================================
+Error: 
+ Avg loss: 2.406901
+
+Write summary at epoch 276
+Avg. Train Loss: 17.257744
+Avg. Val Loss: 2.406901
+
+========================================================================
+Epoch 276
+========================================================================
+Error: 
+ Avg loss: 2.392154
+
+========================================================================
+Epoch 277
+========================================================================
+Error: 
+ Avg loss: 2.375299
+
+Write summary at epoch 278
+Avg. Train Loss: 17.620310
+Avg. Val Loss: 2.375299
+
+========================================================================
+Epoch 278
+========================================================================
+Error: 
+ Avg loss: 2.390151
+
+========================================================================
+Epoch 279
+========================================================================
+Error: 
+ Avg loss: 2.414814
+
+Write summary at epoch 280
+Avg. Train Loss: 16.714426
+Avg. Val Loss: 2.414814
+
+========================================================================
+Epoch 280
+========================================================================
+Error: 
+ Avg loss: 2.337531
+
+========================================================================
+Epoch 281
+========================================================================
+Error: 
+ Avg loss: 2.361867
+
+Write summary at epoch 282
+Avg. Train Loss: 16.172820
+Avg. Val Loss: 2.361867
+
+========================================================================
+Epoch 282
+========================================================================
+Error: 
+ Avg loss: 2.364662
+
+========================================================================
+Epoch 283
+========================================================================
+Error: 
+ Avg loss: 2.383098
+
+Write summary at epoch 284
+Avg. Train Loss: 16.855595
+Avg. Val Loss: 2.383098
+
+========================================================================
+Epoch 284
+========================================================================
+Error: 
+ Avg loss: 2.374644
+
+========================================================================
+Epoch 285
+========================================================================
+Error: 
+ Avg loss: 2.349205
+
+Write summary at epoch 286
+Avg. Train Loss: 17.160117
+Avg. Val Loss: 2.349205
+
+========================================================================
+Epoch 286
+========================================================================
+Error: 
+ Avg loss: 2.359317
+
+========================================================================
+Epoch 287
+========================================================================
+Error: 
+ Avg loss: 2.362014
+
+Write summary at epoch 288
+Avg. Train Loss: 18.019894
+Avg. Val Loss: 2.362014
+
+========================================================================
+Epoch 288
+========================================================================
+Error: 
+ Avg loss: 2.333217
+
+========================================================================
+Epoch 289
+========================================================================
+Error: 
+ Avg loss: 2.341351
+
+Write summary at epoch 290
+Avg. Train Loss: 17.425664
+Avg. Val Loss: 2.341351
+
+========================================================================
+Epoch 290
+========================================================================
+Error: 
+ Avg loss: 2.342952
+
+========================================================================
+Epoch 291
+========================================================================
+Error: 
+ Avg loss: 2.359346
+
+Write summary at epoch 292
+Avg. Train Loss: 17.124741
+Avg. Val Loss: 2.359346
+
+========================================================================
+Epoch 292
+========================================================================
+Error: 
+ Avg loss: 2.360188
+
+========================================================================
+Epoch 293
+========================================================================
+Error: 
+ Avg loss: 2.332692
+
+Write summary at epoch 294
+Avg. Train Loss: 17.104817
+Avg. Val Loss: 2.332692
+
+========================================================================
+Epoch 294
+========================================================================
+Error: 
+ Avg loss: 2.344123
+
+========================================================================
+Epoch 295
+========================================================================
+Error: 
+ Avg loss: 2.339980
+
+Write summary at epoch 296
+Avg. Train Loss: 17.189002
+Avg. Val Loss: 2.339980
+
+========================================================================
+Epoch 296
+========================================================================
+Error: 
+ Avg loss: 2.356908
+
+========================================================================
+Epoch 297
+========================================================================
+Error: 
+ Avg loss: 2.436894
+
+Write summary at epoch 298
+Avg. Train Loss: 17.663452
+Avg. Val Loss: 2.436894
+
+========================================================================
+Epoch 298
+========================================================================
+Error: 
+ Avg loss: 2.423621
+
+========================================================================
+Epoch 299
+========================================================================
+Error: 
+ Avg loss: 2.403749
+
+Write summary at epoch 300
+Avg. Train Loss: 17.513822
+Avg. Val Loss: 2.403749
+
+Salvou checkpoint em checkpoints/exp-37.1/checkpoint_300.pt
+========================================================================
+Epoch 300
+========================================================================
+Error: 
+ Avg loss: 2.398071
+
+========================================================================
+Epoch 301
+========================================================================
+Error: 
+ Avg loss: 2.348375
+
+Write summary at epoch 302
+Avg. Train Loss: 18.459145
+Avg. Val Loss: 2.348375
+
+========================================================================
+Epoch 302
+========================================================================
+Error: 
+ Avg loss: 2.378555
+
+========================================================================
+Epoch 303
+========================================================================
+Error: 
+ Avg loss: 2.398131
+
+Write summary at epoch 304
+Avg. Train Loss: 16.831094
+Avg. Val Loss: 2.398131
+
+========================================================================
+Epoch 304
+========================================================================
+Error: 
+ Avg loss: 2.405994
+
+========================================================================
+Epoch 305
+========================================================================
+Error: 
+ Avg loss: 2.371123
+
+Write summary at epoch 306
+Avg. Train Loss: 17.388617
+Avg. Val Loss: 2.371123
+
+========================================================================
+Epoch 306
+========================================================================
+Error: 
+ Avg loss: 2.329017
+
+========================================================================
+Epoch 307
+========================================================================
+Error: 
+ Avg loss: 2.359753
+
+Write summary at epoch 308
+Avg. Train Loss: 16.931052
+Avg. Val Loss: 2.359753
+
+========================================================================
+Epoch 308
+========================================================================
+Error: 
+ Avg loss: 2.385375
+
+========================================================================
+Epoch 309
+========================================================================
+Error: 
+ Avg loss: 2.347943
+
+Write summary at epoch 310
+Avg. Train Loss: 16.628104
+Avg. Val Loss: 2.347943
+
+========================================================================
+Epoch 310
+========================================================================
+Error: 
+ Avg loss: 2.334366
+
+========================================================================
+Epoch 311
+========================================================================
+Error: 
+ Avg loss: 2.324457
+
+Write summary at epoch 312
+Avg. Train Loss: 17.280139
+Avg. Val Loss: 2.324457
+
+========================================================================
+Epoch 312
+========================================================================
+Error: 
+ Avg loss: 2.318416
+
+Saved loss:  2.323257592874904 , Actual loss: 2.3184158907726755
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 313
+========================================================================
+Error: 
+ Avg loss: 2.313622
+
+Write summary at epoch 314
+Avg. Train Loss: 16.979994
+Avg. Val Loss: 2.313622
+
+Saved loss:  2.3184158907726755 , Actual loss: 2.313621959194194
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 314
+========================================================================
+Error: 
+ Avg loss: 2.320333
+
+========================================================================
+Epoch 315
+========================================================================
+Error: 
+ Avg loss: 2.312559
+
+Write summary at epoch 316
+Avg. Train Loss: 17.631295
+Avg. Val Loss: 2.312559
+
+Saved loss:  2.313621959194194 , Actual loss: 2.312558674968259
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 316
+========================================================================
+Error: 
+ Avg loss: 2.319842
+
+========================================================================
+Epoch 317
+========================================================================
+Error: 
+ Avg loss: 2.313856
+
+Write summary at epoch 318
+Avg. Train Loss: 17.698690
+Avg. Val Loss: 2.313856
+
+========================================================================
+Epoch 318
+========================================================================
+Error: 
+ Avg loss: 2.311779
+
+Saved loss:  2.312558674968259 , Actual loss: 2.311778904393662
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 319
+========================================================================
+Error: 
+ Avg loss: 2.311720
+
+Write summary at epoch 320
+Avg. Train Loss: 16.956697
+Avg. Val Loss: 2.311720
+
+Saved loss:  2.311778904393662 , Actual loss: 2.311720282803181
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 320
+========================================================================
+Error: 
+ Avg loss: 2.316929
+
+========================================================================
+Epoch 321
+========================================================================
+Error: 
+ Avg loss: 2.321317
+
+Write summary at epoch 322
+Avg. Train Loss: 17.500440
+Avg. Val Loss: 2.321317
+
+========================================================================
+Epoch 322
+========================================================================
+Error: 
+ Avg loss: 2.330326
+
+========================================================================
+Epoch 323
+========================================================================
+Error: 
+ Avg loss: 2.350007
+
+Write summary at epoch 324
+Avg. Train Loss: 17.308110
+Avg. Val Loss: 2.350007
+
+========================================================================
+Epoch 324
+========================================================================
+Error: 
+ Avg loss: 2.386427
+
+========================================================================
+Epoch 325
+========================================================================
+Error: 
+ Avg loss: 2.385606
+
+Write summary at epoch 326
+Avg. Train Loss: 17.168990
+Avg. Val Loss: 2.385606
+
+========================================================================
+Epoch 326
+========================================================================
+Error: 
+ Avg loss: 2.383337
+
+========================================================================
+Epoch 327
+========================================================================
+Error: 
+ Avg loss: 2.341801
+
+Write summary at epoch 328
+Avg. Train Loss: 16.896935
+Avg. Val Loss: 2.341801
+
+========================================================================
+Epoch 328
+========================================================================
+Error: 
+ Avg loss: 2.318128
+
+========================================================================
+Epoch 329
+========================================================================
+Error: 
+ Avg loss: 2.327210
+
+Write summary at epoch 330
+Avg. Train Loss: 16.215916
+Avg. Val Loss: 2.327210
+
+========================================================================
+Epoch 330
+========================================================================
+Error: 
+ Avg loss: 2.323025
+
+========================================================================
+Epoch 331
+========================================================================
+Error: 
+ Avg loss: 2.314397
+
+Write summary at epoch 332
+Avg. Train Loss: 16.888739
+Avg. Val Loss: 2.314397
+
+========================================================================
+Epoch 332
+========================================================================
+Error: 
+ Avg loss: 2.322880
+
+========================================================================
+Epoch 333
+========================================================================
+Error: 
+ Avg loss: 2.319251
+
+Write summary at epoch 334
+Avg. Train Loss: 17.577483
+Avg. Val Loss: 2.319251
+
+========================================================================
+Epoch 334
+========================================================================
+Error: 
+ Avg loss: 2.315252
+
+========================================================================
+Epoch 335
+========================================================================
+Error: 
+ Avg loss: 2.316666
+
+Write summary at epoch 336
+Avg. Train Loss: 17.640763
+Avg. Val Loss: 2.316666
+
+========================================================================
+Epoch 336
+========================================================================
+Error: 
+ Avg loss: 2.333616
+
+========================================================================
+Epoch 337
+========================================================================
+Error: 
+ Avg loss: 2.342441
+
+Write summary at epoch 338
+Avg. Train Loss: 16.731757
+Avg. Val Loss: 2.342441
+
+========================================================================
+Epoch 338
+========================================================================
+Error: 
+ Avg loss: 2.325418
+
+========================================================================
+Epoch 339
+========================================================================
+Error: 
+ Avg loss: 2.362103
+
+Write summary at epoch 340
+Avg. Train Loss: 17.071220
+Avg. Val Loss: 2.362103
+
+========================================================================
+Epoch 340
+========================================================================
+Error: 
+ Avg loss: 2.378428
+
+========================================================================
+Epoch 341
+========================================================================
+Error: 
+ Avg loss: 2.343308
+
+Write summary at epoch 342
+Avg. Train Loss: 17.120860
+Avg. Val Loss: 2.343308
+
+========================================================================
+Epoch 342
+========================================================================
+Error: 
+ Avg loss: 2.329366
+
+========================================================================
+Epoch 343
+========================================================================
+Error: 
+ Avg loss: 2.314155
+
+Write summary at epoch 344
+Avg. Train Loss: 16.707834
+Avg. Val Loss: 2.314155
+
+========================================================================
+Epoch 344
+========================================================================
+Error: 
+ Avg loss: 2.312838
+
+========================================================================
+Epoch 345
+========================================================================
+Error: 
+ Avg loss: 2.315586
+
+Write summary at epoch 346
+Avg. Train Loss: 17.251343
+Avg. Val Loss: 2.315586
+
+========================================================================
+Epoch 346
+========================================================================
+Error: 
+ Avg loss: 2.326021
+
+========================================================================
+Epoch 347
+========================================================================
+Error: 
+ Avg loss: 2.320584
+
+Write summary at epoch 348
+Avg. Train Loss: 17.747866
+Avg. Val Loss: 2.320584
+
+========================================================================
+Epoch 348
+========================================================================
+Error: 
+ Avg loss: 2.325585
+
+========================================================================
+Epoch 349
+========================================================================
+Error: 
+ Avg loss: 2.322526
+
+Write summary at epoch 350
+Avg. Train Loss: 17.263060
+Avg. Val Loss: 2.322526
+
+Salvou checkpoint em checkpoints/exp-37.1/checkpoint_350.pt
+========================================================================
+Epoch 350
+========================================================================
+Error: 
+ Avg loss: 2.333325
+
+========================================================================
+Epoch 351
+========================================================================
+Error: 
+ Avg loss: 2.330638
+
+Write summary at epoch 352
+Avg. Train Loss: 16.830512
+Avg. Val Loss: 2.330638
+
+========================================================================
+Epoch 352
+========================================================================
+Error: 
+ Avg loss: 2.328507
+
+========================================================================
+Epoch 353
+========================================================================
+Error: 
+ Avg loss: 2.330578
+
+Write summary at epoch 354
+Avg. Train Loss: 17.289391
+Avg. Val Loss: 2.330578
+
+========================================================================
+Epoch 354
+========================================================================
+Error: 
+ Avg loss: 2.325425
+
+========================================================================
+Epoch 355
+========================================================================
+Error: 
+ Avg loss: 2.323409
+
+Write summary at epoch 356
+Avg. Train Loss: 17.441905
+Avg. Val Loss: 2.323409
+
+========================================================================
+Epoch 356
+========================================================================
+Error: 
+ Avg loss: 2.319416
+
+========================================================================
+Epoch 357
+========================================================================
+Error: 
+ Avg loss: 2.314442
+
+Write summary at epoch 358
+Avg. Train Loss: 16.640558
+Avg. Val Loss: 2.314442
+
+========================================================================
+Epoch 358
+========================================================================
+Error: 
+ Avg loss: 2.322759
+
+========================================================================
+Epoch 359
+========================================================================
+Error: 
+ Avg loss: 2.312816
+
+Write summary at epoch 360
+Avg. Train Loss: 16.758506
+Avg. Val Loss: 2.312816
+
+========================================================================
+Epoch 360
+========================================================================
+Error: 
+ Avg loss: 2.312530
+
+========================================================================
+Epoch 361
+========================================================================
+Error: 
+ Avg loss: 2.314811
+
+Write summary at epoch 362
+Avg. Train Loss: 17.455702
+Avg. Val Loss: 2.314811
+
+========================================================================
+Epoch 362
+========================================================================
+Error: 
+ Avg loss: 2.313643
+
+========================================================================
+Epoch 363
+========================================================================
+Error: 
+ Avg loss: 2.322152
+
+Write summary at epoch 364
+Avg. Train Loss: 16.727187
+Avg. Val Loss: 2.322152
+
+========================================================================
+Epoch 364
+========================================================================
+Error: 
+ Avg loss: 2.323415
+
+========================================================================
+Epoch 365
+========================================================================
+Error: 
+ Avg loss: 2.324480
+
+Write summary at epoch 366
+Avg. Train Loss: 17.186165
+Avg. Val Loss: 2.324480
+
+========================================================================
+Epoch 366
+========================================================================
+Error: 
+ Avg loss: 2.318669
+
+========================================================================
+Epoch 367
+========================================================================
+Error: 
+ Avg loss: 2.316858
+
+Write summary at epoch 368
+Avg. Train Loss: 17.171603
+Avg. Val Loss: 2.316858
+
+========================================================================
+Epoch 368
+========================================================================
+Error: 
+ Avg loss: 2.312712
+
+========================================================================
+Epoch 369
+========================================================================
+Error: 
+ Avg loss: 2.322951
+
+Write summary at epoch 370
+Avg. Train Loss: 17.419749
+Avg. Val Loss: 2.322951
+
+========================================================================
+Epoch 370
+========================================================================
+Error: 
+ Avg loss: 2.321036
+
+========================================================================
+Epoch 371
+========================================================================
+Error: 
+ Avg loss: 2.317753
+
+Write summary at epoch 372
+Avg. Train Loss: 16.246850
+Avg. Val Loss: 2.317753
+
+========================================================================
+Epoch 372
+========================================================================
+Error: 
+ Avg loss: 2.312148
+
+========================================================================
+Epoch 373
+========================================================================
+Error: 
+ Avg loss: 2.314988
+
+Write summary at epoch 374
+Avg. Train Loss: 17.366422
+Avg. Val Loss: 2.314988
+
+========================================================================
+Epoch 374
+========================================================================
+Error: 
+ Avg loss: 2.321787
+
+========================================================================
+Epoch 375
+========================================================================
+Error: 
+ Avg loss: 2.313009
+
+Write summary at epoch 376
+Avg. Train Loss: 16.765314
+Avg. Val Loss: 2.313009
+
+========================================================================
+Epoch 376
+========================================================================
+Error: 
+ Avg loss: 2.314532
+
+========================================================================
+Epoch 377
+========================================================================
+Error: 
+ Avg loss: 2.324920
+
+Write summary at epoch 378
+Avg. Train Loss: 17.063099
+Avg. Val Loss: 2.324920
+
+========================================================================
+Epoch 378
+========================================================================
+Error: 
+ Avg loss: 2.318631
+
+========================================================================
+Epoch 379
+========================================================================
+Error: 
+ Avg loss: 2.323358
+
+Write summary at epoch 380
+Avg. Train Loss: 16.706715
+Avg. Val Loss: 2.323358
+
+========================================================================
+Epoch 380
+========================================================================
+Error: 
+ Avg loss: 2.316862
+
+========================================================================
+Epoch 381
+========================================================================
+Error: 
+ Avg loss: 2.311619
+
+Write summary at epoch 382
+Avg. Train Loss: 17.401350
+Avg. Val Loss: 2.311619
+
+Saved loss:  2.311720282803181 , Actual loss: 2.311618804411833
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 382
+========================================================================
+Error: 
+ Avg loss: 2.314456
+
+========================================================================
+Epoch 383
+========================================================================
+Error: 
+ Avg loss: 2.316016
+
+Write summary at epoch 384
+Avg. Train Loss: 16.729122
+Avg. Val Loss: 2.316016
+
+========================================================================
+Epoch 384
+========================================================================
+Error: 
+ Avg loss: 2.312367
+
+========================================================================
+Epoch 385
+========================================================================
+Error: 
+ Avg loss: 2.312264
+
+Write summary at epoch 386
+Avg. Train Loss: 16.406516
+Avg. Val Loss: 2.312264
+
+========================================================================
+Epoch 386
+========================================================================
+Error: 
+ Avg loss: 2.315133
+
+========================================================================
+Epoch 387
+========================================================================
+Error: 
+ Avg loss: 2.322572
+
+Write summary at epoch 388
+Avg. Train Loss: 17.462855
+Avg. Val Loss: 2.322572
+
+========================================================================
+Epoch 388
+========================================================================
+Error: 
+ Avg loss: 2.315529
+
+========================================================================
+Epoch 389
+========================================================================
+Error: 
+ Avg loss: 2.326879
+
+Write summary at epoch 390
+Avg. Train Loss: 17.869325
+Avg. Val Loss: 2.326879
+
+========================================================================
+Epoch 390
+========================================================================
+Error: 
+ Avg loss: 2.328476
+
+========================================================================
+Epoch 391
+========================================================================
+Error: 
+ Avg loss: 2.319406
+
+Write summary at epoch 392
+Avg. Train Loss: 17.041371
+Avg. Val Loss: 2.319406
+
+========================================================================
+Epoch 392
+========================================================================
+Error: 
+ Avg loss: 2.327386
+
+========================================================================
+Epoch 393
+========================================================================
+Error: 
+ Avg loss: 2.322738
+
+Write summary at epoch 394
+Avg. Train Loss: 17.445217
+Avg. Val Loss: 2.322738
+
+========================================================================
+Epoch 394
+========================================================================
+Error: 
+ Avg loss: 2.316648
+
+========================================================================
+Epoch 395
+========================================================================
+Error: 
+ Avg loss: 2.312027
+
+Write summary at epoch 396
+Avg. Train Loss: 16.895150
+Avg. Val Loss: 2.312027
+
+========================================================================
+Epoch 396
+========================================================================
+Error: 
+ Avg loss: 2.317658
+
+========================================================================
+Epoch 397
+========================================================================
+Error: 
+ Avg loss: 2.313529
+
+Write summary at epoch 398
+Avg. Train Loss: 17.006513
+Avg. Val Loss: 2.313529
+
+========================================================================
+Epoch 398
+========================================================================
+Error: 
+ Avg loss: 2.320661
+
+========================================================================
+Epoch 399
+========================================================================
+Error: 
+ Avg loss: 2.323207
+
+Write summary at epoch 400
+Avg. Train Loss: 16.257428
+Avg. Val Loss: 2.323207
+
+Salvou checkpoint em checkpoints/exp-37.1/checkpoint_400.pt
+========================================================================
+Epoch 400
+========================================================================
+Error: 
+ Avg loss: 2.317780
+
+========================================================================
+Epoch 401
+========================================================================
+Error: 
+ Avg loss: 2.311804
+
+Write summary at epoch 402
+Avg. Train Loss: 15.963079
+Avg. Val Loss: 2.311804
+
+========================================================================
+Epoch 402
+========================================================================
+Error: 
+ Avg loss: 2.314753
+
+========================================================================
+Epoch 403
+========================================================================
+Error: 
+ Avg loss: 2.316098
+
+Write summary at epoch 404
+Avg. Train Loss: 17.407009
+Avg. Val Loss: 2.316098
+
+========================================================================
+Epoch 404
+========================================================================
+Error: 
+ Avg loss: 2.317606
+
+========================================================================
+Epoch 405
+========================================================================
+Error: 
+ Avg loss: 2.322043
+
+Write summary at epoch 406
+Avg. Train Loss: 17.879736
+Avg. Val Loss: 2.322043
+
+========================================================================
+Epoch 406
+========================================================================
+Error: 
+ Avg loss: 2.313208
+
+========================================================================
+Epoch 407
+========================================================================
+Error: 
+ Avg loss: 2.315605
+
+Write summary at epoch 408
+Avg. Train Loss: 17.787855
+Avg. Val Loss: 2.315605
+
+========================================================================
+Epoch 408
+========================================================================
+Error: 
+ Avg loss: 2.311382
+
+Saved loss:  2.311618804411833 , Actual loss: 2.3113817755609403
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 409
+========================================================================
+Error: 
+ Avg loss: 2.311279
+
+Write summary at epoch 410
+Avg. Train Loss: 17.550424
+Avg. Val Loss: 2.311279
+
+Saved loss:  2.3113817755609403 , Actual loss: 2.311279429393539
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 410
+========================================================================
+Error: 
+ Avg loss: 2.311694
+
+========================================================================
+Epoch 411
+========================================================================
+Error: 
+ Avg loss: 2.314226
+
+Write summary at epoch 412
+Avg. Train Loss: 16.482286
+Avg. Val Loss: 2.314226
+
+========================================================================
+Epoch 412
+========================================================================
+Error: 
+ Avg loss: 2.312761
+
+========================================================================
+Epoch 413
+========================================================================
+Error: 
+ Avg loss: 2.317685
+
+Write summary at epoch 414
+Avg. Train Loss: 17.215916
+Avg. Val Loss: 2.317685
+
+========================================================================
+Epoch 414
+========================================================================
+Error: 
+ Avg loss: 2.314472
+
+========================================================================
+Epoch 415
+========================================================================
+Error: 
+ Avg loss: 2.317185
+
+Write summary at epoch 416
+Avg. Train Loss: 17.369617
+Avg. Val Loss: 2.317185
+
+========================================================================
+Epoch 416
+========================================================================
+Error: 
+ Avg loss: 2.310684
+
+Saved loss:  2.311279429393539 , Actual loss: 2.3106836069721814
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 417
+========================================================================
+Error: 
+ Avg loss: 2.317656
+
+Write summary at epoch 418
+Avg. Train Loss: 17.152356
+Avg. Val Loss: 2.317656
+
+========================================================================
+Epoch 418
+========================================================================
+Error: 
+ Avg loss: 2.311014
+
+========================================================================
+Epoch 419
+========================================================================
+Error: 
+ Avg loss: 2.314582
+
+Write summary at epoch 420
+Avg. Train Loss: 16.723597
+Avg. Val Loss: 2.314582
+
+========================================================================
+Epoch 420
+========================================================================
+Error: 
+ Avg loss: 2.310952
+
+========================================================================
+Epoch 421
+========================================================================
+Error: 
+ Avg loss: 2.319623
+
+Write summary at epoch 422
+Avg. Train Loss: 16.705776
+Avg. Val Loss: 2.319623
+
+========================================================================
+Epoch 422
+========================================================================
+Error: 
+ Avg loss: 2.328246
+
+========================================================================
+Epoch 423
+========================================================================
+Error: 
+ Avg loss: 2.331700
+
+Write summary at epoch 424
+Avg. Train Loss: 17.040927
+Avg. Val Loss: 2.331700
+
+========================================================================
+Epoch 424
+========================================================================
+Error: 
+ Avg loss: 2.327601
+
+========================================================================
+Epoch 425
+========================================================================
+Error: 
+ Avg loss: 2.327888
+
+Write summary at epoch 426
+Avg. Train Loss: 17.116203
+Avg. Val Loss: 2.327888
+
+========================================================================
+Epoch 426
+========================================================================
+Error: 
+ Avg loss: 2.321493
+
+========================================================================
+Epoch 427
+========================================================================
+Error: 
+ Avg loss: 2.311918
+
+Write summary at epoch 428
+Avg. Train Loss: 17.731637
+Avg. Val Loss: 2.311918
+
+========================================================================
+Epoch 428
+========================================================================
+Error: 
+ Avg loss: 2.316754
+
+========================================================================
+Epoch 429
+========================================================================
+Error: 
+ Avg loss: 2.317199
+
+Write summary at epoch 430
+Avg. Train Loss: 17.394753
+Avg. Val Loss: 2.317199
+
+========================================================================
+Epoch 430
+========================================================================
+Error: 
+ Avg loss: 2.309993
+
+Saved loss:  2.3106836069721814 , Actual loss: 2.3099931355045977
+Salvou melhor checkpoint em checkpoints/exp-37.1/best_checkpoint.pt
+========================================================================
+Epoch 431
+========================================================================
+Error: 
+ Avg loss: 2.319473
+
+Write summary at epoch 432
+Avg. Train Loss: 17.142053
+Avg. Val Loss: 2.319473
+
+========================================================================
+Epoch 432
+========================================================================
+Error: 
+ Avg loss: 2.321060
+
+========================================================================
+Epoch 433
+========================================================================
+Error: 
+ Avg loss: 2.324424
+
+Write summary at epoch 434
+Avg. Train Loss: 17.840417
+Avg. Val Loss: 2.324424
+
+========================================================================
+Epoch 434
+========================================================================
+Error: 
+ Avg loss: 2.327872
+
+========================================================================
+Epoch 435
+========================================================================
+Error: 
+ Avg loss: 2.339759
+
+Write summary at epoch 436
+Avg. Train Loss: 17.082893
+Avg. Val Loss: 2.339759
+
+========================================================================
+Epoch 436
+========================================================================
+Error: 
+ Avg loss: 2.340365
+
+========================================================================
+Epoch 437
+========================================================================
+Error: 
+ Avg loss: 2.342316
+
+Write summary at epoch 438
+Avg. Train Loss: 17.504044
+Avg. Val Loss: 2.342316
+
+========================================================================
+Epoch 438
+========================================================================
+Error: 
+ Avg loss: 2.344455
+
+========================================================================
+Epoch 439
+========================================================================
+Error: 
+ Avg loss: 2.337333
+
+Write summary at epoch 440
+Avg. Train Loss: 17.213485
+Avg. Val Loss: 2.337333
+
+========================================================================
+Epoch 440
+========================================================================
+Error: 
+ Avg loss: 2.337102
+
+========================================================================
+Epoch 441
+========================================================================
+Error: 
+ Avg loss: 2.337040
+
+Write summary at epoch 442
+Avg. Train Loss: 17.304297
+Avg. Val Loss: 2.337040
+
+========================================================================
+Epoch 442
+========================================================================
+Error: 
+ Avg loss: 2.335016
+
+========================================================================
+Epoch 443
+========================================================================
+Error: 
+ Avg loss: 2.324698
+
+Write summary at epoch 444
+Avg. Train Loss: 17.310129
+Avg. Val Loss: 2.324698
+
+========================================================================
+Epoch 444
+========================================================================
+Error: 
+ Avg loss: 2.332672
+
+========================================================================
+Epoch 445
+========================================================================
+Error: 
+ Avg loss: 2.329229
+
+Write summary at epoch 446
+Avg. Train Loss: 17.262029
+Avg. Val Loss: 2.329229
+
+========================================================================
+Epoch 446
+========================================================================
+Error: 
+ Avg loss: 2.326677
+
+========================================================================
+Epoch 447
+========================================================================
+Error: 
+ Avg loss: 2.324368
+
+Write summary at epoch 448
+Avg. Train Loss: 16.835263
+Avg. Val Loss: 2.324368
+
+========================================================================
+Epoch 448
+========================================================================
+Error: 
+ Avg loss: 2.316730
+
+========================================================================
+Epoch 449
+========================================================================
+Error: 
+ Avg loss: 2.320514
+
+Write summary at epoch 450
+Avg. Train Loss: 17.182120
+Avg. Val Loss: 2.320514
+
+Salvou checkpoint em checkpoints/exp-37.1/checkpoint_450.pt
+========================================================================
+Epoch 450
+========================================================================
+Error: 
+ Avg loss: 2.315670
+
+========================================================================
+Epoch 451
+========================================================================
+Error: 
+ Avg loss: 2.321180
+
+Write summary at epoch 452
+Avg. Train Loss: 17.054323
+Avg. Val Loss: 2.321180
+
+========================================================================
+Epoch 452
+========================================================================
+Error: 
+ Avg loss: 2.327885
+
+========================================================================
+Epoch 453
+========================================================================
+Error: 
+ Avg loss: 2.340427
+
+Write summary at epoch 454
+Avg. Train Loss: 17.854182
+Avg. Val Loss: 2.340427
+
+========================================================================
+Epoch 454
+========================================================================
+Error: 
+ Avg loss: 2.335712
+
+========================================================================
+Epoch 455
+========================================================================
+Error: 
+ Avg loss: 2.329455
+
+Write summary at epoch 456
+Avg. Train Loss: 16.493479
+Avg. Val Loss: 2.329455
+
+========================================================================
+Epoch 456
+========================================================================
+Error: 
+ Avg loss: 2.323128
+
+========================================================================
+Epoch 457
+========================================================================
+Error: 
+ Avg loss: 2.319216
+
+Write summary at epoch 458
+Avg. Train Loss: 16.944141
+Avg. Val Loss: 2.319216
+
+========================================================================
+Epoch 458
+========================================================================
+Error: 
+ Avg loss: 2.324548
+
+========================================================================
+Epoch 459
+========================================================================
+Error: 
+ Avg loss: 2.332588
+
+Write summary at epoch 460
+Avg. Train Loss: 17.048694
+Avg. Val Loss: 2.332588
+
+========================================================================
+Epoch 460
+========================================================================
+Error: 
+ Avg loss: 2.329792
+
+========================================================================
+Epoch 461
+========================================================================
+Error: 
+ Avg loss: 2.315883
+
+Write summary at epoch 462
+Avg. Train Loss: 17.329190
+Avg. Val Loss: 2.315883
+
+========================================================================
+Epoch 462
+========================================================================
+Error: 
+ Avg loss: 2.310222
+
+========================================================================
+Epoch 463
+========================================================================
+Error: 
+ Avg loss: 2.321443
+
+Write summary at epoch 464
+Avg. Train Loss: 18.038427
+Avg. Val Loss: 2.321443
+
+========================================================================
+Epoch 464
+========================================================================
+Error: 
+ Avg loss: 2.332097
+
+========================================================================
+Epoch 465
+========================================================================
+Error: 
+ Avg loss: 2.338469
+
+Write summary at epoch 466
+Avg. Train Loss: 16.883443
+Avg. Val Loss: 2.338469
+
+========================================================================
+Epoch 466
+========================================================================
+Error: 
+ Avg loss: 2.341358
+
+========================================================================
+Epoch 467
+========================================================================
+Error: 
+ Avg loss: 2.345053
+
+Write summary at epoch 468
+Avg. Train Loss: 17.033809
+Avg. Val Loss: 2.345053
+
+========================================================================
+Epoch 468
+========================================================================
+Error: 
+ Avg loss: 2.361537
+
+========================================================================
+Epoch 469
+========================================================================
+Error: 
+ Avg loss: 2.375740
+
+Write summary at epoch 470
+Avg. Train Loss: 17.688252
+Avg. Val Loss: 2.375740
+
+========================================================================
+Epoch 470
+========================================================================
+Error: 
+ Avg loss: 2.436049
+
+========================================================================
+Epoch 471
+========================================================================
+Error: 
+ Avg loss: 2.367745
+
+Write summary at epoch 472
+Avg. Train Loss: 17.181326
+Avg. Val Loss: 2.367745
+
+========================================================================
+Epoch 472
+========================================================================
+Error: 
+ Avg loss: 2.376259
+
+========================================================================
+Epoch 473
+========================================================================
+Error: 
+ Avg loss: 2.359675
+
+Write summary at epoch 474
+Avg. Train Loss: 16.992170
+Avg. Val Loss: 2.359675
+
+========================================================================
+Epoch 474
+========================================================================
+Error: 
+ Avg loss: 2.358267
+
+========================================================================
+Epoch 475
+========================================================================
+Error: 
+ Avg loss: 2.372976
+
+Write summary at epoch 476
+Avg. Train Loss: 17.636951
+Avg. Val Loss: 2.372976
+
+========================================================================
+Epoch 476
+========================================================================
+Error: 
+ Avg loss: 2.357385
+
+========================================================================
+Epoch 477
+========================================================================
+Error: 
+ Avg loss: 2.360513
+
+Write summary at epoch 478
+Avg. Train Loss: 17.023171
+Avg. Val Loss: 2.360513
+
+========================================================================
+Epoch 478
+========================================================================
+Error: 
+ Avg loss: 2.352863
+
+========================================================================
+Epoch 479
+========================================================================
+Error: 
+ Avg loss: 2.340028
+
+Write summary at epoch 480
+Avg. Train Loss: 17.416989
+Avg. Val Loss: 2.340028
+
+========================================================================
+Epoch 480
+========================================================================
+Error: 
+ Avg loss: 2.346487
+
+========================================================================
+Epoch 481
+========================================================================
+Error: 
+ Avg loss: 2.342831
+
+Write summary at epoch 482
+Avg. Train Loss: 16.940431
+Avg. Val Loss: 2.342831
+
+========================================================================
+Epoch 482
+========================================================================
+Error: 
+ Avg loss: 2.337067
+
+========================================================================
+Epoch 483
+========================================================================
+Error: 
+ Avg loss: 2.326161
+
+Write summary at epoch 484
+Avg. Train Loss: 17.346458
+Avg. Val Loss: 2.326161
+
+========================================================================
+Epoch 484
+========================================================================
+Error: 
+ Avg loss: 2.322471
+
+========================================================================
+Epoch 485
+========================================================================
+Error: 
+ Avg loss: 2.316285
+
+Write summary at epoch 486
+Avg. Train Loss: 16.227441
+Avg. Val Loss: 2.316285
+
+========================================================================
+Epoch 486
+========================================================================
+Error: 
+ Avg loss: 2.315999
+
+========================================================================
+Epoch 487
+========================================================================
+Error: 
+ Avg loss: 2.312808
+
+Write summary at epoch 488
+Avg. Train Loss: 16.753009
+Avg. Val Loss: 2.312808
+
+========================================================================
+Epoch 488
+========================================================================
+Error: 
+ Avg loss: 2.322160
+
+========================================================================
+Epoch 489
+========================================================================
+Error: 
+ Avg loss: 2.323966
+
+Write summary at epoch 490
+Avg. Train Loss: 16.948391
+Avg. Val Loss: 2.323966
+
+========================================================================
+Epoch 490
+========================================================================
+Error: 
+ Avg loss: 2.327564
+
+========================================================================
+Epoch 491
+========================================================================
+Error: 
+ Avg loss: 2.322627
+
+Write summary at epoch 492
+Avg. Train Loss: 17.116817
+Avg. Val Loss: 2.322627
+
+========================================================================
+Epoch 492
+========================================================================
+Error: 
+ Avg loss: 2.326940
+
+========================================================================
+Epoch 493
+========================================================================
+Error: 
+ Avg loss: 2.329295
+
+Write summary at epoch 494
+Avg. Train Loss: 17.299209
+Avg. Val Loss: 2.329295
+
+========================================================================
+Epoch 494
+========================================================================
+Error: 
+ Avg loss: 2.333583
+
+========================================================================
+Epoch 495
+========================================================================
+Error: 
+ Avg loss: 2.339396
+
+Write summary at epoch 496
+Avg. Train Loss: 17.721892
+Avg. Val Loss: 2.339396
+
+========================================================================
+Epoch 496
+========================================================================
+Error: 
+ Avg loss: 2.390401
+
+========================================================================
+Epoch 497
+========================================================================
+Error: 
+ Avg loss: 2.474704
+
+Write summary at epoch 498
+Avg. Train Loss: 16.374712
+Avg. Val Loss: 2.474704
+
+========================================================================
+Epoch 498
+========================================================================
+Error: 
+ Avg loss: 2.421940
+
+========================================================================
+Epoch 499
+========================================================================
+Error: 
+ Avg loss: 2.348617
+
+Write summary at epoch 500
+Avg. Train Loss: 16.770308
+Avg. Val Loss: 2.348617
+
+Salvou checkpoint em checkpoints/exp-37.1/checkpoint_500.pt
+Done!
+
+========================================================================
+TEST SUMMARY OF THE BEST CHECKPOINT
+========================================================================
+Error: 
+ Avg loss: 3.032558, Std dev: 1.833634 
+
+Avg. Test Loss: 3.032558
+Avg. Test std dev: 1.833634
+
+Best Epoch: 500

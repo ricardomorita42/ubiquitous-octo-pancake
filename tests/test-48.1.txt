@@ -1,0 +1,182 @@
+device:  cuda:1
+Arquivo recebido: SPIRA_Dataset_V2/metadata_train.csv
+Arquivo pré-processado encontrado: SPIRA_Dataset_V2/metadata_train_processed.json
+Carregando este arquivo...
+Arquivo recebido: SPIRA_Dataset_V2/metadata_eval.csv
+Arquivo pré-processado encontrado: SPIRA_Dataset_V2/metadata_eval_processed.json
+Carregando este arquivo...
+Arquivo recebido: SPIRA_Dataset_V2/metadata_test.csv
+Arquivo pré-processado encontrado: SPIRA_Dataset_V2/metadata_test_processed.json
+Carregando este arquivo...
+========================================================================
+Epoch 0
+========================================================================
+Error: 
+ Avg loss: 13.652311
+
+Saved loss:  31.057925372525414 , Actual loss: 13.6523107378158
+Salvou melhor checkpoint em checkpoints/exp-48.1/best_checkpoint.pt
+========================================================================
+Epoch 1
+========================================================================
+Error: 
+ Avg loss: 16.293260
+
+Write summary at epoch 2
+Avg. Train Loss: 21.347440
+Avg. Val Loss: 16.293260
+
+========================================================================
+Epoch 2
+========================================================================
+Error: 
+ Avg loss: 18.933609
+
+========================================================================
+Epoch 3
+========================================================================
+Error: 
+ Avg loss: 14.448296
+
+Write summary at epoch 4
+Avg. Train Loss: 20.634673
+Avg. Val Loss: 14.448296
+
+========================================================================
+Epoch 4
+========================================================================
+Error: 
+ Avg loss: 17.478562
+
+========================================================================
+Epoch 5
+========================================================================
+Error: 
+ Avg loss: 10.719994
+
+Write summary at epoch 6
+Avg. Train Loss: 21.139209
+Avg. Val Loss: 10.719994
+
+Saved loss:  13.6523107378158 , Actual loss: 10.719993890454141
+Salvou melhor checkpoint em checkpoints/exp-48.1/best_checkpoint.pt
+========================================================================
+Epoch 6
+========================================================================
+Error: 
+ Avg loss: 8.849117
+
+Saved loss:  10.719993890454141 , Actual loss: 8.849116848320191
+Salvou melhor checkpoint em checkpoints/exp-48.1/best_checkpoint.pt
+========================================================================
+Epoch 7
+========================================================================
+Error: 
+ Avg loss: 8.640863
+
+Write summary at epoch 8
+Avg. Train Loss: 20.449232
+Avg. Val Loss: 8.640863
+
+Saved loss:  8.849116848320191 , Actual loss: 8.640863201965848
+Salvou melhor checkpoint em checkpoints/exp-48.1/best_checkpoint.pt
+========================================================================
+Epoch 8
+========================================================================
+Error: 
+ Avg loss: 9.317744
+
+========================================================================
+Epoch 9
+========================================================================
+Error: 
+ Avg loss: 9.407018
+
+Write summary at epoch 10
+Avg. Train Loss: 21.293482
+Avg. Val Loss: 9.407018
+
+Done!
+
+========================================================================
+TEST SUMMARY OF THE BEST CHECKPOINT
+========================================================================
+pred =  tensor([ 96.3398,  98.6886, 100.5605, 102.9520, 103.5296], device='cuda:1')
+targets =  tensor([98., 98., 98., 98., 98.], device='cuda:1')
+pred =  tensor([105.9044, 101.8640, 105.2642, 102.9480, 102.6821], device='cuda:1')
+targets =  tensor([98., 98., 98., 98., 90.], device='cuda:1')
+pred =  tensor([103.4164, 100.7964, 102.8805, 105.3791,  98.2895], device='cuda:1')
+targets =  tensor([90., 90., 90., 90., 98.], device='cuda:1')
+pred =  tensor([ 97.4146,  99.7541, 100.4464, 100.5587, 100.9026], device='cuda:1')
+targets =  tensor([98., 98., 98., 98., 98.], device='cuda:1')
+pred =  tensor([102.5529,  97.0473,  98.1657,  97.9760,  99.5011], device='cuda:1')
+targets =  tensor([98., 96., 96., 96., 96.], device='cuda:1')
+pred =  tensor([95.5810, 95.7668, 97.7751, 99.2714, 98.3984], device='cuda:1')
+targets =  tensor([98., 98., 98., 98., 94.], device='cuda:1')
+pred =  tensor([ 98.9491, 101.5367, 102.2959, 101.6418, 104.9552], device='cuda:1')
+targets =  tensor([94., 94., 94., 94., 94.], device='cuda:1')
+pred =  tensor([104.0126, 102.5319,  99.0169, 100.1165,  99.2177], device='cuda:1')
+targets =  tensor([94., 94., 94., 94., 94.], device='cuda:1')
+pred =  tensor([102.0844, 102.8256, 103.9205, 105.7194, 100.7492], device='cuda:1')
+targets =  tensor([94., 94., 94., 94., 96.], device='cuda:1')
+pred =  tensor([100.3361, 103.6046, 103.6084, 104.8170,  97.3665], device='cuda:1')
+targets =  tensor([96., 96., 96., 96., 97.], device='cuda:1')
+pred =  tensor([96.4616, 97.2085, 96.8272, 96.7900, 95.6304], device='cuda:1')
+targets =  tensor([97., 97., 97., 97., 97.], device='cuda:1')
+pred =  tensor([ 96.9644,  98.7852,  98.6140, 100.1037,  98.6546], device='cuda:1')
+targets =  tensor([97., 93., 93., 93., 93.], device='cuda:1')
+pred =  tensor([ 99.5246,  99.7353,  99.9311, 102.6910, 101.2239], device='cuda:1')
+targets =  tensor([93., 93., 93., 93., 93.], device='cuda:1')
+pred =  tensor([101.4913, 101.6400, 101.2163, 102.7219, 103.1146], device='cuda:1')
+targets =  tensor([93., 93., 93., 93., 93.], device='cuda:1')
+pred =  tensor([101.7169, 100.8080, 100.5581, 102.1666, 102.3849], device='cuda:1')
+targets =  tensor([93., 93., 93., 93., 93.], device='cuda:1')
+pred =  tensor([101.1742, 102.9352, 103.8238, 103.4021,  98.0554], device='cuda:1')
+targets =  tensor([90., 90., 90., 90., 90.], device='cuda:1')
+pred =  tensor([96.1024, 97.3469, 98.2427, 99.4510, 97.1063], device='cuda:1')
+targets =  tensor([88., 88., 88., 88., 88.], device='cuda:1')
+pred =  tensor([ 97.1339,  98.6369, 103.3529, 102.0780, 100.9852], device='cuda:1')
+targets =  tensor([88., 88., 92., 92., 92.], device='cuda:1')
+pred =  tensor([102.4718, 101.9783, 100.8110, 101.4413, 100.0298], device='cuda:1')
+targets =  tensor([92., 92., 92., 92., 92.], device='cuda:1')
+pred =  tensor([100.6262, 100.9442, 101.5902, 104.0069, 103.2877], device='cuda:1')
+targets =  tensor([92., 92., 92., 92., 92.], device='cuda:1')
+pred =  tensor([95.2679, 96.5471, 98.2093, 99.1327, 99.3743], device='cuda:1')
+targets =  tensor([97., 97., 97., 97., 97.], device='cuda:1')
+pred =  tensor([ 99.2995,  97.7302, 100.3578, 101.1201, 101.8052], device='cuda:1')
+targets =  tensor([97., 97., 97., 89., 89.], device='cuda:1')
+pred =  tensor([102.7906, 100.0939,  98.5818, 101.7505, 101.4202], device='cuda:1')
+targets =  tensor([89., 89., 89., 89., 89.], device='cuda:1')
+pred =  tensor([102.1055, 103.3623, 104.2305, 104.5363, 104.3298], device='cuda:1')
+targets =  tensor([89., 89., 89., 89., 89.], device='cuda:1')
+pred =  tensor([102.0309,  99.7602,  99.2048,  98.1850,  98.7943], device='cuda:1')
+targets =  tensor([89., 97., 97., 97., 97.], device='cuda:1')
+pred =  tensor([100.6996, 103.5598, 102.8558, 102.4176, 104.9702], device='cuda:1')
+targets =  tensor([97., 97., 97., 97., 97.], device='cuda:1')
+pred =  tensor([102.4339, 105.0406,  96.4146,  97.6235,  99.3525], device='cuda:1')
+targets =  tensor([97., 97., 97., 97., 97.], device='cuda:1')
+pred =  tensor([101.5383, 105.1007, 104.3554, 104.2709, 104.9515], device='cuda:1')
+targets =  tensor([94., 94., 94., 94., 94.], device='cuda:1')
+pred =  tensor([104.8704,  98.5235,  98.0628,  99.7146, 101.9004], device='cuda:1')
+targets =  tensor([95., 95., 95., 95., 95.], device='cuda:1')
+pred =  tensor([101.1349, 101.5970, 103.3353, 100.2315, 102.0958], device='cuda:1')
+targets =  tensor([95., 95., 95., 95., 95.], device='cuda:1')
+pred =  tensor([101.8780, 101.5535, 103.3479, 102.5577, 101.5811], device='cuda:1')
+targets =  tensor([95., 95., 91., 91., 91.], device='cuda:1')
+pred =  tensor([101.4175,  98.8207,  98.7512, 101.6811,  99.0816], device='cuda:1')
+targets =  tensor([91., 91., 91., 91., 91.], device='cuda:1')
+pred =  tensor([ 98.8562, 101.2785, 102.8576,  99.8945, 101.3806], device='cuda:1')
+targets =  tensor([91., 91., 91., 91., 91.], device='cuda:1')
+pred =  tensor([100.2437,  98.3699, 101.5203,  99.4251, 101.3263], device='cuda:1')
+targets =  tensor([91., 91., 91., 91., 91.], device='cuda:1')
+pred =  tensor([101.3643, 105.9138, 105.1477, 107.4731, 108.1546], device='cuda:1')
+targets =  tensor([91., 89., 89., 89., 89.], device='cuda:1')
+pred =  tensor([106.1220, 100.5134, 100.9439, 101.6896, 102.1375], device='cuda:1')
+targets =  tensor([89., 89., 89., 89., 89.], device='cuda:1')
+diff_list: [1.66, 0.69, 2.56, 4.95, 5.53, 7.9, 3.86, 7.26, 4.95, 12.68, 13.42, 10.8, 12.88, 15.38, 0.29, 0.59, 1.75, 2.45, 2.56, 2.9, 4.55, 1.05, 2.17, 1.98, 3.5, 2.42, 2.23, 0.22, 1.27, 4.4, 4.95, 7.54, 8.3, 7.64, 10.96, 10.01, 8.53, 5.02, 6.12, 5.22, 8.08, 8.83, 9.92, 11.72, 4.75, 4.34, 7.6, 7.61, 8.82, 0.37, 0.54, 0.21, 0.17, 0.21, 1.37, 0.04, 5.79, 5.61, 7.1, 5.65, 6.52, 6.74, 6.93, 9.69, 8.22, 8.49, 8.64, 8.22, 9.72, 10.11, 8.72, 7.81, 7.56, 9.17, 9.38, 11.17, 12.94, 13.82, 13.4, 8.06, 8.1, 9.35, 10.24, 11.45, 9.11, 9.13, 10.64, 11.35, 10.08, 8.99, 10.47, 9.98, 8.81, 9.44, 8.03, 8.63, 8.94, 9.59, 12.01, 11.29, 1.73, 0.45, 1.21, 2.13, 2.37, 2.3, 0.73, 3.36, 12.12, 12.81, 13.79, 11.09, 9.58, 12.75, 12.42, 13.11, 14.36, 15.23, 15.54, 15.33, 13.03, 2.76, 2.2, 1.18, 1.79, 3.7, 6.56, 5.86, 5.42, 7.97, 5.43, 8.04, 0.59, 0.62, 2.35, 7.54, 11.1, 10.36, 10.27, 10.95, 9.87, 3.52, 3.06, 4.71, 6.9, 6.13, 6.6, 8.34, 5.23, 7.1, 6.88, 6.55, 12.35, 11.56, 10.58, 10.42, 7.82, 7.75, 10.68, 8.08, 7.86, 10.28, 11.86, 8.89, 10.38, 9.24, 7.37, 10.52, 8.43, 10.33, 10.36, 16.91, 16.15, 18.47, 19.15, 17.12, 11.51, 11.94, 12.69, 13.14]
+diff mean; 7.664918178982205
+Avg Difference: 7.664918, Std dev: 4.305134 
+
+Avg. Test Loss: 7.664918
+Avg. Test std dev: 4.305134
+

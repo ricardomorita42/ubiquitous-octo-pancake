@@ -80,7 +80,7 @@ class SpiraConvV2(nn.Module):
         x = self.mish(x)
         x = self.dropout(x)
         x = self.fc2(x)
-        # x = torch.sigmoid(x)
+        #x = torch.sigmoid(x)
         x = self.linear(x)
 
         return x
